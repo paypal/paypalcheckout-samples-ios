@@ -1,0 +1,20 @@
+PODS:
+  - Braintree/Core (4.33.0)
+  - Braintree/PayPalDataCollector (4.33.0):
+    - Braintree/Core
+    - Braintree/PayPalUtils
+  - Braintree/PayPalUtils (4.33.0)
+
+DEPENDENCIES:
+  - Braintree/PayPalDataCollector (~> 4.27)
+
+SPEC REPOS:
+  trunk:
+    - Braintree
+
+SPEC CHECKSUMS:
+  Braintree: 586e4d274398fabe9d70ab790eefca41660b8a17
+
+PODFILE CHECKSUM: df80534729718818301813a7f77a262e0595c795
+
+COCOAPODS: 1.9.0
