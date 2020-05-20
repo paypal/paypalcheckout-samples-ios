@@ -10,3 +10,10 @@ target 'PayPalCheckout-Samples-iOS' do
   # Pods for PayPalCheckout-Samples-iOS
 
 end
+
+target 'PayPalCheckout-Samples-iOS-Objc' do 
+  use_frameworks!
+
+  pod 'Braintree/PayPalDataCollector', '~>4.27'
+
+end
