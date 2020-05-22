@@ -1,1 +1,3 @@
-binary "https://github.com/paypal/paypalcheckout-ios/raw/master/Carthage/PayPalCheckout.json" "0.2.3"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseDatabaseBinary.json" "6.24.0"
+git "git@github.paypal.com:nativexo/ios-native-checkout.git" "2cbdf2432fe6a49d88322884e9eb7de6706f295d"
+github "https://github.paypal.com/nativexo/real-time-comms" "8848ad84bfd5ff290b14112840ab5749a6216118"
