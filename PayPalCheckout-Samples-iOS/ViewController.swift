@@ -81,9 +81,3 @@ class ViewController: UIViewController {
     Checkout.start()
   }
 }
-
-extension ViewController: ASWebAuthenticationPresentationContextProviding {
-  func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-    UIApplication.shared.keyWindow ?? UIWindow(frame: self.view.frame)
-  }
-}

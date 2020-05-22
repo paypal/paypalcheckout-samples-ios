@@ -14,7 +14,6 @@
 		11660D33247450AA002A36F6 /* CreateOrderEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 11660D32247450AA002A36F6 /* CreateOrderEndpoint.m */; };
 		11660D3624745216002A36F6 /* CreateOrderResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 11660D3524745216002A36F6 /* CreateOrderResponse.m */; };
 		11660D392474528C002A36F6 /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = 11660D382474528C002A36F6 /* Link.m */; };
-		11660D3A2474697B002A36F6 /* Pods_PayPalCheckout_Samples_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F0C8AEC242CDBB78658CD9 /* Pods_PayPalCheckout_Samples_iOS.framework */; };
 		11944FCD2465E8FF00A44A07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944FCC2465E8FF00A44A07 /* AppDelegate.swift */; };
 		11944FCF2465E8FF00A44A07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944FCE2465E8FF00A44A07 /* SceneDelegate.swift */; };
 		11944FD12465E8FF00A44A07 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11944FD02465E8FF00A44A07 /* ViewController.swift */; };
@@ -25,9 +24,6 @@
 		11B0D90F247325A400E5F08C /* Order.Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B0D90E247325A400E5F08C /* Order.Models.swift */; };
 		11B0D911247325B100E5F08C /* CreateOrder.Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B0D910247325B100E5F08C /* CreateOrder.Request.swift */; };
 		11B0D91324732B1E00E5F08C /* CreateOrder.Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B0D91224732B1E00E5F08C /* CreateOrder.Response.swift */; };
-		11B0D91924734B6F00E5F08C /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B0D91724734B5600E5F08C /* PayPalCheckout.framework */; };
-		11B0D91A24734B6F00E5F08C /* PayPalCheckout.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 11B0D91724734B5600E5F08C /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		11B0D91F24734E9A00E5F08C /* PayPalPartnerAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B0D91B24734D5200E5F08C /* PayPalPartnerAuth.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		11B0D929247352EF00E5F08C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B0D928247352EF00E5F08C /* AppDelegate.m */; };
 		11B0D92C247352EF00E5F08C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B0D92B247352EF00E5F08C /* SceneDelegate.m */; };
 		11B0D92F247352EF00E5F08C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B0D92E247352EF00E5F08C /* ViewController.m */; };
@@ -35,15 +31,15 @@
 		11B0D934247352F000E5F08C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11B0D933247352F000E5F08C /* Assets.xcassets */; };
 		11B0D937247352F000E5F08C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11B0D935247352F000E5F08C /* LaunchScreen.storyboard */; };
 		11B0D93A247352F000E5F08C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B0D939247352F000E5F08C /* main.m */; };
-		11B0D93E2473549D00E5F08C /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B0D91724734B5600E5F08C /* PayPalCheckout.framework */; };
-		11B0D93F2473549D00E5F08C /* PayPalCheckout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11B0D91724734B5600E5F08C /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		11B0D941247354A000E5F08C /* PayPalPartnerAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B0D91B24734D5200E5F08C /* PayPalPartnerAuth.framework */; };
 		11B0D9462473558C00E5F08C /* PayPalAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B0D9452473558C00E5F08C /* PayPalAPI.m */; };
 		11B0D94B247359C300E5F08C /* FetchAccessTokenEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B0D94A247359C300E5F08C /* FetchAccessTokenEndpoint.m */; };
 		11B0D94F24735DAE00E5F08C /* FetchAccessTokenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B0D94E24735DAE00E5F08C /* FetchAccessTokenRequest.m */; };
 		11B0D9522473616F00E5F08C /* CreateOrderRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B0D9512473616F00E5F08C /* CreateOrderRequest.m */; };
 		11B0D9592473627E00E5F08C /* PurchaseUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B0D9582473627E00E5F08C /* PurchaseUnit.m */; };
 		11B0D95D24736DFE00E5F08C /* AccessTokenResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B0D95C24736DFE00E5F08C /* AccessTokenResponse.m */; };
+		11D8A49C2475F0DA0013FDF1 /* PayPalPartnerAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D8A49B2475F0DA0013FDF1 /* PayPalPartnerAuth.framework */; };
+		11D8A4A42476F7F30013FDF1 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D8A4A22476F7E20013FDF1 /* PayPalCheckout.framework */; };
+		11D8A4A52476F7F30013FDF1 /* PayPalCheckout.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 11D8A4A22476F7E20013FDF1 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FC1A91E3E4C01BFE0968D01D /* Pods_PayPalCheckout_Samples_iOS_Objc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3ADD5E457C8D04F331483C /* Pods_PayPalCheckout_Samples_iOS_Objc.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +50,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				11B0D91A24734B6F00E5F08C /* PayPalCheckout.framework in CopyFiles */,
+				11D8A4A52476F7F30013FDF1 /* PayPalCheckout.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +60,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				11B0D93F2473549D00E5F08C /* PayPalCheckout.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,8 +92,6 @@
 		11B0D90E247325A400E5F08C /* Order.Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.Models.swift; sourceTree = "<group>"; };
 		11B0D910247325B100E5F08C /* CreateOrder.Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrder.Request.swift; sourceTree = "<group>"; };
 		11B0D91224732B1E00E5F08C /* CreateOrder.Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrder.Response.swift; sourceTree = "<group>"; };
-		11B0D91724734B5600E5F08C /* PayPalCheckout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalCheckout.framework; path = Carthage/Build/iOS/PayPalCheckout.framework; sourceTree = SOURCE_ROOT; };
-		11B0D91B24734D5200E5F08C /* PayPalPartnerAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalPartnerAuth.framework; path = Carthage/Build/iOS/PayPalPartnerAuth.framework; sourceTree = SOURCE_ROOT; };
 		11B0D925247352EF00E5F08C /* PayPalCheckout-Samples-iOS-Objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PayPalCheckout-Samples-iOS-Objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11B0D927247352EF00E5F08C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		11B0D928247352EF00E5F08C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -123,6 +116,8 @@
 		11B0D9582473627E00E5F08C /* PurchaseUnit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PurchaseUnit.m; sourceTree = "<group>"; };
 		11B0D95B24736DFE00E5F08C /* AccessTokenResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccessTokenResponse.h; sourceTree = "<group>"; };
 		11B0D95C24736DFE00E5F08C /* AccessTokenResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccessTokenResponse.m; sourceTree = "<group>"; };
+		11D8A49B2475F0DA0013FDF1 /* PayPalPartnerAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalPartnerAuth.framework; path = Carthage/Build/iOS/PayPalPartnerAuth.framework; sourceTree = SOURCE_ROOT; };
+		11D8A4A22476F7E20013FDF1 /* PayPalCheckout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalCheckout.framework; path = Carthage/Build/iOS/PayPalCheckout.framework; sourceTree = SOURCE_ROOT; };
 		1C648E7044BED546A0451B03 /* Pods-PayPalCheckout-Samples-iOS-Objc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayPalCheckout-Samples-iOS-Objc.release.xcconfig"; path = "Target Support Files/Pods-PayPalCheckout-Samples-iOS-Objc/Pods-PayPalCheckout-Samples-iOS-Objc.release.xcconfig"; sourceTree = "<group>"; };
 		2CBA356B173FA8308DF75D9C /* Pods-PayPalCheckout-Samples-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayPalCheckout-Samples-iOS.release.xcconfig"; path = "Target Support Files/Pods-PayPalCheckout-Samples-iOS/Pods-PayPalCheckout-Samples-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		66342550E6B085416FB938DC /* Pods-PayPalCheckout-Samples-iOS-Objc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayPalCheckout-Samples-iOS-Objc.debug.xcconfig"; path = "Target Support Files/Pods-PayPalCheckout-Samples-iOS-Objc/Pods-PayPalCheckout-Samples-iOS-Objc.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,9 +131,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11B0D91F24734E9A00E5F08C /* PayPalPartnerAuth.framework in Frameworks */,
-				11B0D91924734B6F00E5F08C /* PayPalCheckout.framework in Frameworks */,
-				11660D3A2474697B002A36F6 /* Pods_PayPalCheckout_Samples_iOS.framework in Frameworks */,
+				11D8A49C2475F0DA0013FDF1 /* PayPalPartnerAuth.framework in Frameworks */,
+				11D8A4A42476F7F30013FDF1 /* PayPalCheckout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,8 +141,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC1A91E3E4C01BFE0968D01D /* Pods_PayPalCheckout_Samples_iOS_Objc.framework in Frameworks */,
-				11B0D941247354A000E5F08C /* PayPalPartnerAuth.framework in Frameworks */,
-				11B0D93E2473549D00E5F08C /* PayPalCheckout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,8 +224,8 @@
 		11B0D91624734B4900E5F08C /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				11B0D91B24734D5200E5F08C /* PayPalPartnerAuth.framework */,
-				11B0D91724734B5600E5F08C /* PayPalCheckout.framework */,
+				11D8A4A22476F7E20013FDF1 /* PayPalCheckout.framework */,
+				11D8A49B2475F0DA0013FDF1 /* PayPalPartnerAuth.framework */,
 			);
 			path = Dependencies;
 			sourceTree = "<group>";
@@ -762,6 +754,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/PayPalCheckout-Samples-iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS/PayPalCheckout.framework/Frameworks/**/**",
 				);
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS/**";
 				INFOPLIST_FILE = "PayPalCheckout-Samples-iOS/Info.plist";
@@ -785,24 +778,25 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 727K56WV67;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/**",
+					"$(PROJECT_DIR)/Dependencies",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Braintree/Braintree.framework/Headers\"",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS/**",
 				);
 				INFOPLIST_FILE = "PayPalCheckout-Samples-iOS-Objc/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MODULEMAP_FILE = "$(PROJECT_DIR)/Carthage/Build/iOS/PayPalCheckout.framework/Modules/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.paypal.ppclient-development.PayPalCheckout-Samples-iOS-Objc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -820,7 +814,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 727K56WV67;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -832,11 +826,11 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "PayPalCheckout-Samples-iOS-Objc/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MODULEMAP_FILE = "$(PROJECT_DIR)/Carthage/Build/iOS/PayPalCheckout.framework/Modules/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.paypal.ppclient-development.PayPalCheckout-Samples-iOS-Objc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

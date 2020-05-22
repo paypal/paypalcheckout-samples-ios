@@ -12,8 +12,8 @@
 #import "AccessTokenResponse.h"
 #import "CreateOrderRequest.h"
 #import "CreateOrderResponse.h"
-#import <PayPalCheckout/PayPalCheckout.h>
-#import <PayPalCheckout/PayPalCheckout-Swift.h>
+
+@import PayPalCheckout;
 
 @interface ViewController ()
 
@@ -61,7 +61,30 @@
 
 - (void)startNativeCheckout:(CreateOrderResponse *)createOrderResponse {
   
+  PayPalAPI *api = [PayPalAPI shared];
   
+  // Our order response contains our EC-Token / Order id requried to start
+  // a checkout experience
+  PPCConfig *config = [
+    [PPCConfig alloc]
+      initWithClientID:[api clientId]
+      payToken:createOrderResponse.id
+      universalLink:@""
+      uriScheme:@"testapp://testing"
+      onApprove:^{
+        NSLog(@"Approved");
+      }
+      onCancel:^{
+        NSLog(@"Cancelled");
+      }
+      onError:^(NSError * _Nonnull error) {
+        NSLog(@"Error: %@", error.localizedDescription);
+      }
+      environment:PPCEnvironmentSandbox
+  ];
+  config.presentingViewController = self;
+  [PPCheckout setConfig:config];
+  [PPCheckout start];
 }
 
 @end

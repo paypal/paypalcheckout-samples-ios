@@ -1,2 +1,2 @@
-#binary "https://raw.githubusercontent.com/Auth-Identity/PayPalPartnerAuthSDK/master/PayPalPartnerAuth.json" ~> 1.0
+binary "https://raw.githubusercontent.com/Auth-Identity/PayPalPartnerAuthSDK/1.0/PayPalPartnerAuth.json" ~> 1.0.0
 binary "https://github.com/paypal/paypalcheckout-ios/raw/master/Carthage/PayPalCheckout.json" ~> 0.2.3
