@@ -76,8 +76,14 @@ class ViewController: UIViewController {
       },
       environment: .sandbox
     )
-    config.presentingViewController = self
+//    config.presentingViewController = self
     Checkout.set(config: config)
     Checkout.start()
+  }
+}
+
+extension UIViewController: ASAuthorizationControllerPresentationContextProviding {
+  public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+    return UIApplication.shared.keyWindow ?? UIWindow()
   }
 }

@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  PayPalCheckout-Samples-iOS
+//  PayPalCheckout-Samples-iOS-Swift
 //
-//  Created by Haider Khan on 5/8/20.
+//  Created by Haider Khan on 5/23/20.
 //  Copyright © 2020 PayPal. All rights reserved.
 //
 
