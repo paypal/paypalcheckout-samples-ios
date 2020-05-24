@@ -64,7 +64,7 @@ class ViewController: UIViewController {
       clientID: PayPal.clientId,
       payToken: orderResponse.id,
       universalLink: "",
-      uriScheme: "testapp://testing",
+      uriScheme: "<redirect_url>",
       onApprove: {
         print("approved")
       },

@@ -70,7 +70,7 @@
       initWithClientID:[api clientId]
       payToken:createOrderResponse.id
       universalLink:@""
-      uriScheme:@"testapp://testing"
+      uriScheme:@"<redirect_uri>"
       onApprove:^{
         NSLog(@"Approved");
       }
