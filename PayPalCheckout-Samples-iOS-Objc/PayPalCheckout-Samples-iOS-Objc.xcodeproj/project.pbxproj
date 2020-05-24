@@ -1,0 +1,529 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		117AAA7F2479FAE600A63B34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAA7E2479FAE600A63B34 /* AppDelegate.m */; };
+		117AAA822479FAE600A63B34 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAA812479FAE600A63B34 /* SceneDelegate.m */; };
+		117AAA852479FAE600A63B34 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAA842479FAE600A63B34 /* ViewController.m */; };
+		117AAA882479FAE600A63B34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 117AAA862479FAE600A63B34 /* Main.storyboard */; };
+		117AAA8A2479FAE700A63B34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 117AAA892479FAE700A63B34 /* Assets.xcassets */; };
+		117AAA8D2479FAE700A63B34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 117AAA8B2479FAE700A63B34 /* LaunchScreen.storyboard */; };
+		117AAA902479FAE700A63B34 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAA8F2479FAE700A63B34 /* main.m */; };
+		117AAAC92479FDBA00A63B34 /* PayPalAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAC82479FDBA00A63B34 /* PayPalAPI.m */; };
+		117AAACD2479FDF300A63B34 /* CreateOrderEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAACC2479FDF300A63B34 /* CreateOrderEndpoint.m */; };
+		117AAAD02479FE2F00A63B34 /* FetchAccessTokenEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAACF2479FE2F00A63B34 /* FetchAccessTokenEndpoint.m */; };
+		117AAAD42479FE5B00A63B34 /* Amount.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAD32479FE5B00A63B34 /* Amount.m */; };
+		117AAAD72479FE7700A63B34 /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAD62479FE7700A63B34 /* Link.m */; };
+		117AAADA2479FE9C00A63B34 /* NSString+CurrencyCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAD92479FE9C00A63B34 /* NSString+CurrencyCodes.m */; };
+		117AAADD2479FEBF00A63B34 /* PurchaseUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAADC2479FEBF00A63B34 /* PurchaseUnit.m */; };
+		117AAAE12479FEF500A63B34 /* CreateOrderRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAE02479FEF500A63B34 /* CreateOrderRequest.m */; };
+		117AAAE42479FF1000A63B34 /* FetchAccessTokenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAE32479FF1000A63B34 /* FetchAccessTokenRequest.m */; };
+		117AAAE82479FF3900A63B34 /* AccessTokenResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAE72479FF3900A63B34 /* AccessTokenResponse.m */; };
+		117AAAEB2479FF7100A63B34 /* CreateOrderResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAEA2479FF7100A63B34 /* CreateOrderResponse.m */; };
+		117AAAED247A006300A63B34 /* CreateOrderRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAADF2479FEF500A63B34 /* CreateOrderRequest.h */; };
+		117AAAEE247A006F00A63B34 /* FetchAccessTokenRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAE22479FF1000A63B34 /* FetchAccessTokenRequest.h */; };
+		117AAAEF247A007300A63B34 /* AccessTokenResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAE62479FF3900A63B34 /* AccessTokenResponse.h */; };
+		117AAAF0247A007600A63B34 /* CreateOrderResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAE92479FF7100A63B34 /* CreateOrderResponse.h */; };
+		117AAAF1247A007800A63B34 /* PayPalAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAC72479FDBA00A63B34 /* PayPalAPI.h */; };
+		117AAAF3247A008400A63B34 /* Amount.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAD22479FE5B00A63B34 /* Amount.h */; };
+		117AAAF4247A008600A63B34 /* Link.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAD52479FE7700A63B34 /* Link.h */; };
+		117AAAF5247A008800A63B34 /* NSString+CurrencyCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAD82479FE9C00A63B34 /* NSString+CurrencyCodes.h */; };
+		117AAAF6247A008A00A63B34 /* PurchaseUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAADB2479FEBF00A63B34 /* PurchaseUnit.h */; };
+		117AAAF7247A008E00A63B34 /* CreateOrderEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAACB2479FDF300A63B34 /* CreateOrderEndpoint.h */; };
+		117AAAF8247A009000A63B34 /* FetchAccessTokenEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAACE2479FE2F00A63B34 /* FetchAccessTokenEndpoint.h */; };
+		117AABAB247B20F300A63B34 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117AABA9247B20D100A63B34 /* PayPalCheckout.framework */; };
+		117AABAC247B20F300A63B34 /* PayPalCheckout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 117AABA9247B20D100A63B34 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		11FAAB3A247B214500154FB1 /* PayPalPartnerAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FAAB39247B214500154FB1 /* PayPalPartnerAuth.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		117AABAD247B20F300A63B34 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				117AABAC247B20F300A63B34 /* PayPalCheckout.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		117AAA7A2479FAE600A63B34 /* PayPalCheckout-Samples-iOS-Objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PayPalCheckout-Samples-iOS-Objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		117AAA7D2479FAE600A63B34 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		117AAA7E2479FAE600A63B34 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		117AAA802479FAE600A63B34 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		117AAA812479FAE600A63B34 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		117AAA832479FAE600A63B34 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		117AAA842479FAE600A63B34 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		117AAA872479FAE600A63B34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		117AAA892479FAE700A63B34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		117AAA8C2479FAE700A63B34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		117AAA8E2479FAE700A63B34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		117AAA8F2479FAE700A63B34 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		117AAAC72479FDBA00A63B34 /* PayPalAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayPalAPI.h; sourceTree = "<group>"; };
+		117AAAC82479FDBA00A63B34 /* PayPalAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayPalAPI.m; sourceTree = "<group>"; };
+		117AAACB2479FDF300A63B34 /* CreateOrderEndpoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateOrderEndpoint.h; sourceTree = "<group>"; };
+		117AAACC2479FDF300A63B34 /* CreateOrderEndpoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateOrderEndpoint.m; sourceTree = "<group>"; };
+		117AAACE2479FE2F00A63B34 /* FetchAccessTokenEndpoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FetchAccessTokenEndpoint.h; sourceTree = "<group>"; };
+		117AAACF2479FE2F00A63B34 /* FetchAccessTokenEndpoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FetchAccessTokenEndpoint.m; sourceTree = "<group>"; };
+		117AAAD22479FE5B00A63B34 /* Amount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Amount.h; sourceTree = "<group>"; };
+		117AAAD32479FE5B00A63B34 /* Amount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Amount.m; sourceTree = "<group>"; };
+		117AAAD52479FE7700A63B34 /* Link.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Link.h; sourceTree = "<group>"; };
+		117AAAD62479FE7700A63B34 /* Link.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Link.m; sourceTree = "<group>"; };
+		117AAAD82479FE9C00A63B34 /* NSString+CurrencyCodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+CurrencyCodes.h"; sourceTree = "<group>"; };
+		117AAAD92479FE9C00A63B34 /* NSString+CurrencyCodes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+CurrencyCodes.m"; sourceTree = "<group>"; };
+		117AAADB2479FEBF00A63B34 /* PurchaseUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PurchaseUnit.h; sourceTree = "<group>"; };
+		117AAADC2479FEBF00A63B34 /* PurchaseUnit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PurchaseUnit.m; sourceTree = "<group>"; };
+		117AAADF2479FEF500A63B34 /* CreateOrderRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateOrderRequest.h; sourceTree = "<group>"; };
+		117AAAE02479FEF500A63B34 /* CreateOrderRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateOrderRequest.m; sourceTree = "<group>"; };
+		117AAAE22479FF1000A63B34 /* FetchAccessTokenRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FetchAccessTokenRequest.h; sourceTree = "<group>"; };
+		117AAAE32479FF1000A63B34 /* FetchAccessTokenRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FetchAccessTokenRequest.m; sourceTree = "<group>"; };
+		117AAAE62479FF3900A63B34 /* AccessTokenResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccessTokenResponse.h; sourceTree = "<group>"; };
+		117AAAE72479FF3900A63B34 /* AccessTokenResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccessTokenResponse.m; sourceTree = "<group>"; };
+		117AAAE92479FF7100A63B34 /* CreateOrderResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateOrderResponse.h; sourceTree = "<group>"; };
+		117AAAEA2479FF7100A63B34 /* CreateOrderResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateOrderResponse.m; sourceTree = "<group>"; };
+		117AABA9247B20D100A63B34 /* PayPalCheckout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalCheckout.framework; path = ../../Carthage/Build/iOS/PayPalCheckout.framework; sourceTree = "<group>"; };
+		11FAAB39247B214500154FB1 /* PayPalPartnerAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalPartnerAuth.framework; path = ../../Carthage/Build/iOS/PayPalPartnerAuth.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		117AAA772479FAE600A63B34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11FAAB3A247B214500154FB1 /* PayPalPartnerAuth.framework in Frameworks */,
+				117AABAB247B20F300A63B34 /* PayPalCheckout.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		117AAA712479FAE600A63B34 = {
+			isa = PBXGroup;
+			children = (
+				117AABA8247B1FBA00A63B34 /* Dependencies */,
+				117AAA7C2479FAE600A63B34 /* PayPalCheckout-Samples-iOS-Objc */,
+				117AAA7B2479FAE600A63B34 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		117AAA7B2479FAE600A63B34 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				117AAA7A2479FAE600A63B34 /* PayPalCheckout-Samples-iOS-Objc.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		117AAA7C2479FAE600A63B34 /* PayPalCheckout-Samples-iOS-Objc */ = {
+			isa = PBXGroup;
+			children = (
+				117AAAC62479FD7400A63B34 /* API */,
+				117AAA7D2479FAE600A63B34 /* AppDelegate.h */,
+				117AAA7E2479FAE600A63B34 /* AppDelegate.m */,
+				117AAA802479FAE600A63B34 /* SceneDelegate.h */,
+				117AAA812479FAE600A63B34 /* SceneDelegate.m */,
+				117AAA832479FAE600A63B34 /* ViewController.h */,
+				117AAA842479FAE600A63B34 /* ViewController.m */,
+				117AAA862479FAE600A63B34 /* Main.storyboard */,
+				117AAA892479FAE700A63B34 /* Assets.xcassets */,
+				117AAA8B2479FAE700A63B34 /* LaunchScreen.storyboard */,
+				117AAA8E2479FAE700A63B34 /* Info.plist */,
+				117AAA8F2479FAE700A63B34 /* main.m */,
+			);
+			path = "PayPalCheckout-Samples-iOS-Objc";
+			sourceTree = "<group>";
+		};
+		117AAAC62479FD7400A63B34 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				117AAACA2479FDE000A63B34 /* Endpoints */,
+				117AAAD12479FE5100A63B34 /* Models */,
+				117AAADE2479FEDD00A63B34 /* Requests */,
+				117AAAE52479FF1E00A63B34 /* Responses */,
+				117AAAC72479FDBA00A63B34 /* PayPalAPI.h */,
+				117AAAC82479FDBA00A63B34 /* PayPalAPI.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		117AAACA2479FDE000A63B34 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				117AAACB2479FDF300A63B34 /* CreateOrderEndpoint.h */,
+				117AAACC2479FDF300A63B34 /* CreateOrderEndpoint.m */,
+				117AAACE2479FE2F00A63B34 /* FetchAccessTokenEndpoint.h */,
+				117AAACF2479FE2F00A63B34 /* FetchAccessTokenEndpoint.m */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		117AAAD12479FE5100A63B34 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				117AAAD22479FE5B00A63B34 /* Amount.h */,
+				117AAAD32479FE5B00A63B34 /* Amount.m */,
+				117AAAD52479FE7700A63B34 /* Link.h */,
+				117AAAD62479FE7700A63B34 /* Link.m */,
+				117AAAD82479FE9C00A63B34 /* NSString+CurrencyCodes.h */,
+				117AAAD92479FE9C00A63B34 /* NSString+CurrencyCodes.m */,
+				117AAADB2479FEBF00A63B34 /* PurchaseUnit.h */,
+				117AAADC2479FEBF00A63B34 /* PurchaseUnit.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		117AAADE2479FEDD00A63B34 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				117AAADF2479FEF500A63B34 /* CreateOrderRequest.h */,
+				117AAAE02479FEF500A63B34 /* CreateOrderRequest.m */,
+				117AAAE22479FF1000A63B34 /* FetchAccessTokenRequest.h */,
+				117AAAE32479FF1000A63B34 /* FetchAccessTokenRequest.m */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		117AAAE52479FF1E00A63B34 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				117AAAE62479FF3900A63B34 /* AccessTokenResponse.h */,
+				117AAAE72479FF3900A63B34 /* AccessTokenResponse.m */,
+				117AAAE92479FF7100A63B34 /* CreateOrderResponse.h */,
+				117AAAEA2479FF7100A63B34 /* CreateOrderResponse.m */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		117AABA8247B1FBA00A63B34 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				11FAAB39247B214500154FB1 /* PayPalPartnerAuth.framework */,
+				117AABA9247B20D100A63B34 /* PayPalCheckout.framework */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		117AAAEC247A002600A63B34 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				117AAAF7247A008E00A63B34 /* CreateOrderEndpoint.h in Headers */,
+				117AAAED247A006300A63B34 /* CreateOrderRequest.h in Headers */,
+				117AAAEE247A006F00A63B34 /* FetchAccessTokenRequest.h in Headers */,
+				117AAAF5247A008800A63B34 /* NSString+CurrencyCodes.h in Headers */,
+				117AAAF0247A007600A63B34 /* CreateOrderResponse.h in Headers */,
+				117AAAF1247A007800A63B34 /* PayPalAPI.h in Headers */,
+				117AAAF3247A008400A63B34 /* Amount.h in Headers */,
+				117AAAF4247A008600A63B34 /* Link.h in Headers */,
+				117AAAF6247A008A00A63B34 /* PurchaseUnit.h in Headers */,
+				117AAAEF247A007300A63B34 /* AccessTokenResponse.h in Headers */,
+				117AAAF8247A009000A63B34 /* FetchAccessTokenEndpoint.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		117AAA792479FAE600A63B34 /* PayPalCheckout-Samples-iOS-Objc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 117AAA932479FAE700A63B34 /* Build configuration list for PBXNativeTarget "PayPalCheckout-Samples-iOS-Objc" */;
+			buildPhases = (
+				117AAAEC247A002600A63B34 /* Headers */,
+				117AAA762479FAE600A63B34 /* Sources */,
+				117AAA772479FAE600A63B34 /* Frameworks */,
+				117AAA782479FAE600A63B34 /* Resources */,
+				117AABAD247B20F300A63B34 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PayPalCheckout-Samples-iOS-Objc";
+			productName = "PayPalCheckout-Samples-iOS-Objc";
+			productReference = 117AAA7A2479FAE600A63B34 /* PayPalCheckout-Samples-iOS-Objc.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		117AAA722479FAE600A63B34 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = PayPal;
+				TargetAttributes = {
+					117AAA792479FAE600A63B34 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+				};
+			};
+			buildConfigurationList = 117AAA752479FAE600A63B34 /* Build configuration list for PBXProject "PayPalCheckout-Samples-iOS-Objc" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 117AAA712479FAE600A63B34;
+			productRefGroup = 117AAA7B2479FAE600A63B34 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				117AAA792479FAE600A63B34 /* PayPalCheckout-Samples-iOS-Objc */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		117AAA782479FAE600A63B34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				117AAA8D2479FAE700A63B34 /* LaunchScreen.storyboard in Resources */,
+				117AAA8A2479FAE700A63B34 /* Assets.xcassets in Resources */,
+				117AAA882479FAE600A63B34 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		117AAA762479FAE600A63B34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				117AAA852479FAE600A63B34 /* ViewController.m in Sources */,
+				117AAA7F2479FAE600A63B34 /* AppDelegate.m in Sources */,
+				117AAAD02479FE2F00A63B34 /* FetchAccessTokenEndpoint.m in Sources */,
+				117AAA902479FAE700A63B34 /* main.m in Sources */,
+				117AAADD2479FEBF00A63B34 /* PurchaseUnit.m in Sources */,
+				117AAAD72479FE7700A63B34 /* Link.m in Sources */,
+				117AAACD2479FDF300A63B34 /* CreateOrderEndpoint.m in Sources */,
+				117AAAEB2479FF7100A63B34 /* CreateOrderResponse.m in Sources */,
+				117AAAC92479FDBA00A63B34 /* PayPalAPI.m in Sources */,
+				117AAAE82479FF3900A63B34 /* AccessTokenResponse.m in Sources */,
+				117AAAE42479FF1000A63B34 /* FetchAccessTokenRequest.m in Sources */,
+				117AAAE12479FEF500A63B34 /* CreateOrderRequest.m in Sources */,
+				117AAA822479FAE600A63B34 /* SceneDelegate.m in Sources */,
+				117AAAD42479FE5B00A63B34 /* Amount.m in Sources */,
+				117AAADA2479FE9C00A63B34 /* NSString+CurrencyCodes.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		117AAA862479FAE600A63B34 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				117AAA872479FAE600A63B34 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		117AAA8B2479FAE700A63B34 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				117AAA8C2479FAE700A63B34 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		117AAA912479FAE700A63B34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		117AAA922479FAE700A63B34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		117AAA942479FAE700A63B34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 727K56WV67;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Braintree\"",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "PayPalCheckout-Samples-iOS-Objc/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.paypal.PayPalCheckout-Samples-iOS-Objc";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		117AAA952479FAE700A63B34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 727K56WV67;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Braintree\"",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "PayPalCheckout-Samples-iOS-Objc/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.paypal.PayPalCheckout-Samples-iOS-Objc";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		117AAA752479FAE600A63B34 /* Build configuration list for PBXProject "PayPalCheckout-Samples-iOS-Objc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				117AAA912479FAE700A63B34 /* Debug */,
+				117AAA922479FAE700A63B34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		117AAA932479FAE700A63B34 /* Build configuration list for PBXNativeTarget "PayPalCheckout-Samples-iOS-Objc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				117AAA942479FAE700A63B34 /* Debug */,
+				117AAA952479FAE700A63B34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 117AAA722479FAE600A63B34 /* Project object */;
+}

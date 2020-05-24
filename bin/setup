@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+
+if ! command -v pod > /dev/null; then 
+  printf 'Cocoapods not installed.\n'
+  exit 1
+fi
+
+if ! command -v carthage > /dev/null; then 
+  printf 'Carthage not installed.\n'
+  exit 1 
+fi
+
+echo '🔶 Setting up Pod dependencies...\n'
+
+# 1. Setup pods 
+pod install
+
+echo '✅ Pod Setup Completed\n'
+echo '🔶 Setting up Carthage...\n'
+
+# 2. Setup Carthage 
+carthage update 
+
+echo '✅ Carthage Setup Completed\n'
+echo '🔶 Installing Node Package Manager dependencies...\n'
+
+# 3. Setup npm dependencies
+cd node_checkout && npm install && cd ..
+
+echo '✅ Node Setup Completed\n'
+
+# 4. Open workspace and start node server
+open PayPalCheckout-Samples-iOS.xcworkspace && cd node_checkout && node index.js
