@@ -16,10 +16,37 @@
 @import PayPalCheckout;
 
 @interface ViewController ()
-
+@property (nonatomic) PPCConfig *config;
 @end
 
 @implementation ViewController
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+  self = [super initWithCoder:coder];
+  if (self) {
+    PayPalAPI *api = [PayPalAPI shared];
+    self.config = [
+      [PPCConfig alloc]
+        initWithClientID:[api clientId]
+        payToken:@""
+        universalLink:@""
+        uriScheme:@"<redirect_uri>"
+        onApprove:^{
+          NSLog(@"Approved");
+        }
+        onCancel:^{
+          NSLog(@"Cancelled");
+        }
+        onError:^(NSError * _Nonnull error) {
+          NSLog(@"Error: %@", error.localizedDescription);
+        }
+        environment:PPCEnvironmentSandbox
+    ];
+    self.config.presentingViewController = self;
+  }
+  return self;
+}
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -60,30 +87,12 @@
 }
 
 - (void)startNativeCheckout:(CreateOrderResponse *)createOrderResponse {
-  
-  PayPalAPI *api = [PayPalAPI shared];
-  
+    
   // Our order response contains our EC-Token / Order id requried to start
   // a checkout experience
-  PPCConfig *config = [
-    [PPCConfig alloc]
-      initWithClientID:[api clientId]
-      payToken:createOrderResponse.id
-      universalLink:@""
-      uriScheme:@"<redirect_uri>"
-      onApprove:^{
-        NSLog(@"Approved");
-      }
-      onCancel:^{
-        NSLog(@"Cancelled");
-      }
-      onError:^(NSError * _Nonnull error) {
-        NSLog(@"Error: %@", error.localizedDescription);
-      }
-      environment:PPCEnvironmentSandbox
-  ];
-  config.presentingViewController = self;
-  [PPCheckout setConfig:config];
+  self.config.payToken = createOrderResponse.id;
+
+  [PPCheckout setConfig:self.config];
   [PPCheckout start];
 }
 
