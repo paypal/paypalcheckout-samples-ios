@@ -11,6 +11,27 @@ import PayPalCheckout
 
 class ViewController: UIViewController {
 
+  lazy var config: Config = {
+    let config = Config(
+      clientID: PayPal.clientId,
+      payToken: "",
+      universalLink: "",
+      uriScheme: "<redirect_uri>",
+      onApprove: {
+        print("approved")
+      },
+      onCancel: {
+        print("cancelled")
+      },
+      onError: { error in
+        print(error)
+      },
+      environment: .sandbox
+    )
+    config.presentingViewController = self
+    return config
+  }()
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -57,25 +78,11 @@ class ViewController: UIViewController {
 
   func startNativeCheckout(with orderResponse: CreateOrderResponse) {
 
+    // Set our pay token in config
+    config.payToken = orderResponse.id
+
     // Our order response contains our EC-Token / Order id requried to start
     // a checkout experience
-    let config = Config(
-      clientID: PayPal.clientId,
-      payToken: orderResponse.id,
-      universalLink: "",
-      uriScheme: "<redirect_url>",
-      onApprove: {
-        print("approved")
-      },
-      onCancel: {
-        print("cancelled")
-      },
-      onError: { error in
-        print(error)
-      },
-      environment: .sandbox
-    )
-    config.presentingViewController = self
     Checkout.set(config: config)
     Checkout.start()
   }
