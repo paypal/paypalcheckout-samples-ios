@@ -28,7 +28,6 @@ class ViewController: UIViewController {
       },
       environment: .sandbox
     )
-    config.presentingViewController = self
     return config
   }()
 
@@ -72,11 +71,18 @@ class ViewController: UIViewController {
         let data = data,
         let createOrderResponse = try? PayPal.jsonDecoder.decode(CreateOrderResponse.self, from: data)
         else { return }
-      self.startNativeCheckout(with: createOrderResponse)
+      
+      // Ensure we are setting presenting view controller on main thread
+      DispatchQueue.main.async {
+        self.startNativeCheckout(with: createOrderResponse)
+      }
     }
   }
 
   func startNativeCheckout(with orderResponse: CreateOrderResponse) {
+
+    // Set our presenting view controller
+    config.presentingViewController = self
 
     // Set our pay token in config
     config.payToken = orderResponse.id
