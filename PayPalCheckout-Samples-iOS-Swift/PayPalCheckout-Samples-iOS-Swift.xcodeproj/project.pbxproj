@@ -22,6 +22,7 @@
 		117AAAC52479FBF100A63B34 /* CreateOrder.Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAC42479FBF100A63B34 /* CreateOrder.Response.swift */; };
 		117AAB0D247B066100A63B34 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117AAB07247B059700A63B34 /* PayPalCheckout.framework */; };
 		117AAB0E247B066100A63B34 /* PayPalCheckout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 117AAB07247B059700A63B34 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		81FEA16F1549A0D65CEC6FE2 /* Pods_PayPalCheckout_Samples_iOS_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B09C011A226C39D2C5BA197 /* Pods_PayPalCheckout_Samples_iOS_Swift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +40,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B09C011A226C39D2C5BA197 /* Pods_PayPalCheckout_Samples_iOS_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PayPalCheckout_Samples_iOS_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		111DE510247B227A00D2027B /* PayPalPartnerAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalPartnerAuth.framework; path = ../../Carthage/Build/iOS/PayPalPartnerAuth.framework; sourceTree = "<group>"; };
 		117AAA9F2479FB4900A63B34 /* PayPalCheckout-Samples-iOS-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PayPalCheckout-Samples-iOS-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		117AAAA22479FB4900A63B34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +57,8 @@
 		117AAAC22479FBE100A63B34 /* AccessToken.Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.Response.swift; sourceTree = "<group>"; };
 		117AAAC42479FBF100A63B34 /* CreateOrder.Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrder.Response.swift; sourceTree = "<group>"; };
 		117AAB07247B059700A63B34 /* PayPalCheckout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalCheckout.framework; path = ../../Carthage/Build/iOS/PayPalCheckout.framework; sourceTree = "<group>"; };
+		94214CB71AD3B3A8EB25CE23 /* Pods-PayPalCheckout-Samples-iOS-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayPalCheckout-Samples-iOS-Swift.release.xcconfig"; path = "Target Support Files/Pods-PayPalCheckout-Samples-iOS-Swift/Pods-PayPalCheckout-Samples-iOS-Swift.release.xcconfig"; sourceTree = "<group>"; };
+		FF0DB98BD58A024D75E66B2A /* Pods-PayPalCheckout-Samples-iOS-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayPalCheckout-Samples-iOS-Swift.debug.xcconfig"; path = "Target Support Files/Pods-PayPalCheckout-Samples-iOS-Swift/Pods-PayPalCheckout-Samples-iOS-Swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 			files = (
 				117AAB0D247B066100A63B34 /* PayPalCheckout.framework in Frameworks */,
 				111DE511247B227A00D2027B /* PayPalPartnerAuth.framework in Frameworks */,
+				81FEA16F1549A0D65CEC6FE2 /* Pods_PayPalCheckout_Samples_iOS_Swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +81,8 @@
 				117AAAFA247B009300A63B34 /* Dependencies */,
 				117AAAA12479FB4900A63B34 /* PayPalCheckout-Samples-iOS-Swift */,
 				117AAAA02479FB4900A63B34 /* Products */,
+				BD2DAAA1C805872F78154A93 /* Pods */,
+				43DCF7DBF6DBF6B90523CABF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,6 +155,24 @@
 			path = Dependencies;
 			sourceTree = "<group>";
 		};
+		43DCF7DBF6DBF6B90523CABF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0B09C011A226C39D2C5BA197 /* Pods_PayPalCheckout_Samples_iOS_Swift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD2DAAA1C805872F78154A93 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FF0DB98BD58A024D75E66B2A /* Pods-PayPalCheckout-Samples-iOS-Swift.debug.xcconfig */,
+				94214CB71AD3B3A8EB25CE23 /* Pods-PayPalCheckout-Samples-iOS-Swift.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -155,10 +180,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 117AAAB32479FB4900A63B34 /* Build configuration list for PBXNativeTarget "PayPalCheckout-Samples-iOS-Swift" */;
 			buildPhases = (
+				B1EB12DE25FC90A81987EEA5 /* [CP] Check Pods Manifest.lock */,
 				117AAA9B2479FB4900A63B34 /* Sources */,
 				117AAA9C2479FB4900A63B34 /* Frameworks */,
 				117AAA9D2479FB4900A63B34 /* Resources */,
 				117AAB01247B029D00A63B34 /* Embed Frameworks */,
+				49E4C239B7090D8C0CD3009C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -214,6 +241,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		49E4C239B7090D8C0CD3009C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PayPalCheckout-Samples-iOS-Swift/Pods-PayPalCheckout-Samples-iOS-Swift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PayPalCheckout-Samples-iOS-Swift/Pods-PayPalCheckout-Samples-iOS-Swift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PayPalCheckout-Samples-iOS-Swift/Pods-PayPalCheckout-Samples-iOS-Swift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1EB12DE25FC90A81987EEA5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PayPalCheckout-Samples-iOS-Swift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		117AAA9B2479FB4900A63B34 /* Sources */ = {
@@ -370,6 +439,7 @@
 		};
 		117AAAB42479FB4900A63B34 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF0DB98BD58A024D75E66B2A /* Pods-PayPalCheckout-Samples-iOS-Swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -379,7 +449,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Braintree\"",
 				);
 				INFOPLIST_FILE = "PayPalCheckout-Samples-iOS-Swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -393,6 +463,7 @@
 		};
 		117AAAB52479FB4900A63B34 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94214CB71AD3B3A8EB25CE23 /* Pods-PayPalCheckout-Samples-iOS-Swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -402,7 +473,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Braintree\"",
 				);
 				INFOPLIST_FILE = "PayPalCheckout-Samples-iOS-Swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
