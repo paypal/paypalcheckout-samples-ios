@@ -24,6 +24,8 @@ CLIENT_SECRET=my_client_secret
 
 The `node checkout` service requires Docker to run properly. You can install Docker [here](https://docs.docker.com/docker-for-mac/install/). Please note that you will require `docker-compose` support so ensure you install from the official image.
 
+**Note:** You will need to ensure that Docker is running before you execute `./bin/setup`.
+
 ## Setup
 
 In order to setup the project run the following script at the project root directory level:
