@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Setup our variables for use below
+clientId="${1}"
+clientSecret="${2}"
+
+# Create a functions for easy reuse of status
+function STATUS() {
+  printf "\x1b[2G\x1b[${1}m${2}\x1b[0m\n"
+}
+
+# Check to see if we have enough parameters
+if [[ "${#}" -lt 2 ]]; then
+  printf "Usage: setids <client_id> <client_secret>\n"
+  exit 1
+fi
+
+# Let's get started
+printf "\nChecking for places where your client ids and secrets are used\n\n"
+
+# Check to see if have a .env file and if not, create one
+printf "[    ] Check for an existing .env file"
+if [[ -f "node_checkout/.env" ]]; then
+  STATUS 33 skip
+else
+  path="node_checkout/.env"
+  printf >>"${path}" "CLIENT_ID=${clientId}\n"
+  printf >>"${path}" "CLIENT_SECRET=${clientSecret}\n"
+  STATUS 32 done
+fi
+
+sedString=$(echo "xargs -0 sed -i '' 's/<client_id>/${clientId}/g'")
+
+printf "[    ] Updating objective-c files..."
+find . -name "*.m" -print0 | eval $sedString
+STATUS 32 done
+
+printf "[    ] Updating swift files..."
+find . -name "*.swift" -print0 | eval $sedString
+STATUS 32 done
