@@ -43,7 +43,6 @@
         }
         environment:PPCEnvironmentSandbox
     ];
-    self.config.presentingViewController = self;
   }
   return self;
 }
@@ -82,11 +81,18 @@
 
     // Decode
     CreateOrderResponse *createOrderResponse = [[CreateOrderResponse alloc] initWithData:data];
-    [self startNativeCheckout:createOrderResponse];
+
+    // Ensure we are setting our presentation controller on the main thread
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [self startNativeCheckout:createOrderResponse];
+    });
   }];
 }
 
 - (void)startNativeCheckout:(CreateOrderResponse *)createOrderResponse {
+
+  // Set our presentation controler
+  self.config.presentingViewController = self;
     
   // Our order response contains our EC-Token / Order id requried to start
   // a checkout experience
