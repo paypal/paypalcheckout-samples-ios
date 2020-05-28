@@ -10,18 +10,29 @@ if ! command -v carthage > /dev/null; then
   exit 1 
 fi
 
+if ! command -v docker > /dev/null; then
+  printf 'Docker not installed.\n'
+  exit 1
+fi
+
+if ! command -v docker-compose > /dev/null; then
+  printf 'docker-compose not installed.\n'
+  exit 1
+fi
+
 echo '🔶 Setting up Carthage...\n'
 
 # 1. Setup Carthage 
 carthage update 
 
 echo '✅ Carthage Setup Completed\n'
-echo '🔶 Installing Node Package Manager dependencies...\n'
+echo '🔶 Opening workspace...\n'
 
-# 2. Setup npm dependencies
-cd node_checkout && npm install && cd ..
+# 2. Open Workspace
+open PayPalCheckout-Samples-iOS.xcworkspace
 
-echo '✅ Node Setup Completed\n'
+echo '✅ Workspace Opened\n'
+echo '🔶 Running Docker...\n'
 
-# 3. Open workspace and start node server
-open PayPalCheckout-Samples-iOS.xcworkspace && cd node_checkout && node index.js
+# 3. Run local docker container
+cd node_checkout && docker-compose up
