@@ -41,7 +41,7 @@ In order to setup the project run the following script at the project root direc
 
 This activates a build script which do the following steps:
 
-1. Check if Carthage and Cocoapods are installed
+1. Check if Homebrew, Docker (if we specified it), nvm, and Carthage are installed
 2. Run `carthage update` which will download binaries for the project
 3. Open the workspace, `PayPalCheckout-Samples-iOS.xcworkspace`
 4. Check to see if we've specified `--use-docker`
