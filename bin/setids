@@ -1,8 +1,29 @@
 #!/bin/bash
 
-# Setup our variables for use below
-clientId="${1}"
-clientSecret="${2}"
+# If they give us the input on the command line use it
+clientId="${1-}"
+clientSecret="${2-}"
+
+# Gather our input
+if [[ "${clientId}" = "" ]]; then
+  printf "Please enter your \x1b[1mclient id\x1b[0m    : "
+  read clientId
+
+  if [[ "${clientId}" = "" ]]; then
+    printf "\nCanceling; we need a CLIENT_ID from you"
+    exit 1
+  fi
+fi
+
+if [[ "${clientSecret}" = "" ]]; then
+  printf "Please enter your \x1b[1mclient secret\x1b[0m: "
+  read clientSecret 
+
+  if [[ "${clientSecret}" = "" ]]; then
+    printf "\nCanceling; we need a CLIENT_SECRET from you"
+    exit 1
+  fi
+fi
 
 # Create a functions for easy reuse of status
 function STATUS() {
@@ -10,7 +31,7 @@ function STATUS() {
 }
 
 # Check to see if we have enough parameters
-if [[ "${#}" -lt 2 ]]; then
+if [[ "${clientId}" = "" ]] || [[ "${clientSecret}" = "" ]]; then
   printf "Usage: setids <client_id> <client_secret>\n"
   exit 1
 fi
