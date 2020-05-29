@@ -6,25 +6,30 @@ This a sample repository showcasing how to integrate the Native Checkout experie
 
 ### Application Creation
 
-In order for this project to run properly we need to create an application at [PayPal Applications](https://developer.paypal.com/developer/applications/). Make sure you login and create your appropriate application. You can find additional information on our documentation [here](https://developer.paypal.com/docs/limited-release/native-checkout/setup/#obtaining-a-merchant-id).
+In order for this project to run properly we need to create an application at [PayPal Applications](https://developer.paypal.com/developer/applications/). Make sure you login and create your appropriate application. You can find additional information on our documentation [here](https://developer.paypal.com/docs/limited-release/native-checkout/setup/#obtaining-a-merchant-id). Then you need to ensure that you have a `.env` file inside the `node_checkout/` directory which contains your `CLIENT_ID` and `CLIENT_SECRET`.
 
-Once you've obtained your `CLIENT_ID` and your `CLIENT_SECRET` then we need to do the following steps:
+We've automated away the process for you to create your `.env` file and finding / replacing any source code with the `CLIENT_ID` by running the following command:
 
-- Create a `.env` file under `node_checkout/` directory which will contain your `CLIENT_ID` and `CLIENT_SECRET`. Make sure your `.env` file is not checked into version control if you plan to make a fork.
-
-**.env**
-```yaml
-CLIENT_ID=my_client_id
-CLIENT_SECRET=my_client_secret
+```bash
+./bin/setids "CLIENT_ID" "CLIENT_SECRET"
 ```
 
-- Replace `<client_id>` and `<redirect_uri>` in any of the source files in the projects.
+If you do not want to expose your `CLIENT_SECRET` into your bash history, you can optionally choose to only include your `CLIENT_ID`, then bash or zsh will prompt you to enter your `CLIENT_SECRET`:
+
+```bash
+./bin/setids "CLIENT_ID"
+Please enter your [client secret]: "CLIENT_SECRET"
+```
+
+### NVM
+
+The `node checkout` service by default will run the node service through `node@10.17.0 version` and this is done through `nvm`. The `./bin/setup` script ensures that `nvm` is installed if you do not have it installed locally. If you choose to switch back to your original `node version` after running the sample demo, you can simply run `nvm use default`.
 
 ### Docker
 
-The `node checkout` service requires Docker to run properly. You can install Docker [here](https://docs.docker.com/docker-for-mac/install/). Please note that you will require `docker-compose` support so ensure you install from the official image.
+The `node checkout` service can optionally run with Docker. You can install Docker [here](https://docs.docker.com/docker-for-mac/install/), or you can let the `./bin/setup` script install docker for you. Please note that you will require `docker-compose` support.
 
-**Note:** You will need to ensure that Docker is running before you execute `./bin/setup`.
+**Note:** You will need to ensure that Docker is running before you execute `./bin/setup`, if you are installing docker from the `./bin/setup` script you can run it again since the script will ensure Docker opens after install.
 
 ## Setup
 
@@ -39,7 +44,9 @@ This activates a build script which do the following steps:
 1. Check if Carthage and Cocoapods are installed
 2. Run `carthage update` which will download binaries for the project
 3. Open the workspace, `PayPalCheckout-Samples-iOS.xcworkspace`
-4. Run `docker-compose up` which will setup your container, install dependencies, and run on port 3000
+4. Check to see if we've specified `--use-docker`
+    * If we've specified `--use-docker`, we will run `docker-compose up`, this will create the container, install dependencies in container, and run on port 3000
+    * If we did not specify `--use-docker` which is the default flow, then we will use `nvm` to install `node@10.17.0` then switch to that via `nvm use 10.17.0`, and finally `npm install && npm start` 
 
 ## Additional Info
 
