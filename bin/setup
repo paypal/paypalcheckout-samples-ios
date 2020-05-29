@@ -1,23 +1,109 @@
 #!/usr/bin/env sh
 
-if ! command -v pod > /dev/null; then 
-  printf 'Cocoapods not installed.\n'
-  exit 1
+use_docker_enabled=false;
+
+# Get any options if the user has specified it
+for arg in "$@"; do 
+  shift 
+  case "$arg" in 
+    "--use-docker") 
+      use_docker_enabled=true;
+      set -- "$@" "-d" ;;
+  esac
+done
+
+# Checks to see if we have the option --use-docker enabled
+function useDocker() {
+  [ "$use_docker_enabled" = true ];
+}
+
+# Checks to see if the supplied command exists
+function exists() {
+  command -v "$1" > /dev/null 2>&1
+}
+
+# Will install the program specified
+function installProgram() {
+  case $1 in 
+    carthage) 
+      echo '🔶 Installing carthage...';
+      brew install carthage;;
+    nvm) 
+      echo '🔶 Installing nvm...';
+      brew install nvm;
+      source $(brew --prefix nvm)/nvm.sh;; 
+    docker) 
+      echo '🔶 Installing docker with docker-compose';
+      brew cask install docker;
+
+      echo '🏃‍♂️ Starting Docker...';
+      open /Applications/Docker.app;;
+    brew)
+      echo '🔶 Installing brew...';
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)";;
+    * )
+      echo "⚠️ Wrong program specified, exiting...";
+      exit 1;;
+  esac
+}
+
+# Prompts the user to install the specified program
+function promptInstall() {
+  while true; do 
+    read -p "Do you wish to install $1? (y/n):" yn
+    case $yn in 
+      [Yy]* ) installProgram $1; break;;
+      [Nn]* ) 
+        echo "Skipping install, could not execute script...";
+        exit;;
+      * ) 
+        echo exit;;
+    esac 
+  done
+}
+
+# If we are not using docker then 
+# check if we have nvm and source it
+# otherwise checking to see if it exists
+# won't work since nvm is a shell function
+if ! useDocker; then 
+
+  # If installed the usual way source that
+  if [[ -f ~/.nvm/nvm.sh ]]; then 
+    source ~/.nvm/nvm.sh
+  
+  # If installed via homebrew source that
+  elif [[ -f $(bash --prefix nvm)/nvm.sh ]]; then 
+    source $(bash --prefix nvm)/nvm.sh
+  fi
 fi
 
-if ! command -v carthage > /dev/null; then 
+if ! exists brew; then 
+  printf 'Homebrew not installed.\n'
+  promptInstall brew;
+fi
+
+if ! exists carthage; then 
   printf 'Carthage not installed.\n'
-  exit 1 
+  promptInstall carthage
 fi
 
-if ! command -v docker > /dev/null; then
-  printf 'Docker not installed.\n'
-  exit 1
-fi
-
-if ! command -v docker-compose > /dev/null; then
-  printf 'docker-compose not installed.\n'
-  exit 1
+if useDocker; then
+  # Check that we have docker and docker-compose enabled
+  if ! exists docker; then 
+    printf "Docker not installed.\n"
+    promptInstall docker
+  fi
+  if ! exists docker-compose; then 
+    printf "docker-compose not installed.\n"
+    promptInstall docker-compose
+  fi
+else 
+  # Check that we have nvm enabled 
+  if ! exists nvm; then 
+    printf "nvm not installed.\n"
+    promptInstall nvm;
+  fi
 fi
 
 echo '🔶 Setting up Carthage...\n'
@@ -32,7 +118,29 @@ echo '🔶 Opening workspace...\n'
 open PayPalCheckout-Samples-iOS.xcworkspace
 
 echo '✅ Workspace Opened\n'
-echo '🔶 Running Docker...\n'
 
-# 3. Run local docker container
-cd node_checkout && docker-compose up
+# If we want to use docker then use that
+# else use nvm
+if useDocker; then
+  
+  echo '🔶 Running Docker...\n'
+
+  # 3. Run local docker container
+  cd node_checkout && docker-compose up
+  
+else 
+
+  # Move to checkout directory
+  cd node_checkout;
+
+  # Install and switch to node 10.17.0
+  nvm install 10.17.0;
+  nvm use 10.17.0;
+
+  # Install dependencies
+  npm install;
+
+  # Run node app
+  node index.js;
+fi
+
