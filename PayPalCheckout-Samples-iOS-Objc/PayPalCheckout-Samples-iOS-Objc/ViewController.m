@@ -32,7 +32,7 @@
         initWithClientID:[api clientId]
         payToken:@""
         universalLink:@""
-        uriScheme:@"testapp://testing"
+        uriScheme:@"<redirect_uri>"
         onApprove:^{
           if (self.captureLink) {
             [self processCaptureOrderWith:self.captureLink];
