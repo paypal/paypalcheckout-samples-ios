@@ -16,6 +16,7 @@
 @import PayPalCheckout;
 
 @interface ViewController ()
+@property (nonatomic) Link *captureLink;
 @property (nonatomic) PPCConfig *config;
 @end
 
@@ -31,9 +32,11 @@
         initWithClientID:[api clientId]
         payToken:@""
         universalLink:@""
-        uriScheme:@"<redirect_uri>"
+        uriScheme:@"testapp://testing"
         onApprove:^{
-          NSLog(@"Approved");
+          if (self.captureLink) {
+            [self processCaptureOrderWith:self.captureLink];
+          }
         }
         onCancel:^{
           NSLog(@"Cancelled");
@@ -90,6 +93,14 @@
 }
 
 - (void)startNativeCheckout:(CreateOrderResponse *)createOrderResponse {
+  
+  // Set our capture link
+  for (Link *link in createOrderResponse.links) {
+    if ([link.rel isEqualToString:@"capture"]) {
+      self.captureLink = link;
+      break;
+    }
+  }
 
   // Set our presentation controler
   self.config.presentingViewController = self;
@@ -100,6 +111,31 @@
 
   [PPCheckout setConfig:self.config];
   [PPCheckout start];
+}
+
+- (void)processCaptureOrderWith:(Link *)captureLink {
+
+  // Create request
+  CaptureOrderRequest *request = [[CaptureOrderRequest alloc] initWith:captureLink];
+
+  PayPalAPI *api = [PayPalAPI shared];
+  [api captureOrder:request completion:^(NSData * _Nonnull data, NSError * _Nonnull error) {
+    if (error != nil) {
+      NSLog(@"%@", error.localizedDescription);
+      return;
+    }
+
+    if (data == nil) {
+      NSLog(@"No data.");
+      return;
+    }
+
+    NSError *serializationError;
+    NSDictionary *captureResponse = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&serializationError];
+
+    // Success capture / or related response
+    NSLog(@"%@", captureResponse);
+  }];
 }
 
 @end

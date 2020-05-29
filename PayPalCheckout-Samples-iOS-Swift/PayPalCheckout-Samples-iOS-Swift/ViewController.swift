@@ -11,14 +11,24 @@ import PayPalCheckout
 
 class ViewController: UIViewController {
 
+  // MARK: - Attributes
+
+  /// Used to capture the transaction during `Config.onApprove {}`.
+  private var captureLink: Link? = nil
+
+  /// Our `Config` object is a help as an instance property so we can hold a reference to our
+  /// callbacks `onApprove`, `onCancel` and `onError`.
   lazy var config: Config = {
     let config = Config(
       clientID: PayPal.clientId,
       payToken: "",
       universalLink: "",
-      uriScheme: "<redirect_uri>",
+      uriScheme: "testapp://testing",
       onApprove: {
-        print("approved")
+        guard let captureLink = self.captureLink else {
+          return
+        }
+        self.processOrderCapture(with: captureLink)
       },
       onCancel: {
         print("cancelled")
@@ -81,6 +91,11 @@ class ViewController: UIViewController {
 
   func startNativeCheckout(with orderResponse: CreateOrderResponse) {
 
+    // Set our capture link
+    if let captureLink = orderResponse.links.first(where: { $0.rel == "capture" }) {
+      self.captureLink = captureLink
+    }
+
     // Set our presenting view controller
     config.presentingViewController = self
 
@@ -91,5 +106,22 @@ class ViewController: UIViewController {
     // a checkout experience
     Checkout.set(config: config)
     Checkout.start()
+  }
+
+  private func processOrderCapture(with link: Link) {
+    let captureOrderRequest = CaptureOrderRequest(captureLink: link)
+    PayPal.shared.request(on: .captureOrder(captureOrderRequest)) {
+      data, error in
+      guard error == nil else {
+        print(error?.localizedDescription ?? "")
+        return
+      }
+
+      guard
+        let data = data,
+        let captureResponseString = String(data: data, encoding: .utf8)
+        else { return }
+      print(captureResponseString)
+    }
   }
 }

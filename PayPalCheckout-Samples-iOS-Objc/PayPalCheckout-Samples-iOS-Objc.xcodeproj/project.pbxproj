@@ -38,6 +38,10 @@
 		117AAAF8247A009000A63B34 /* FetchAccessTokenEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAACE2479FE2F00A63B34 /* FetchAccessTokenEndpoint.h */; };
 		117AABAB247B20F300A63B34 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117AABA9247B20D100A63B34 /* PayPalCheckout.framework */; };
 		117AABAC247B20F300A63B34 /* PayPalCheckout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 117AABA9247B20D100A63B34 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		11DF7A2A2481B931003B1AC2 /* CaptureOrderRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 11DF7A282481B931003B1AC2 /* CaptureOrderRequest.h */; };
+		11DF7A2B2481B931003B1AC2 /* CaptureOrderRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DF7A292481B931003B1AC2 /* CaptureOrderRequest.m */; };
+		11DF7A2E2481B9B6003B1AC2 /* CaptureOrderEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 11DF7A2C2481B9B6003B1AC2 /* CaptureOrderEndpoint.h */; };
+		11DF7A2F2481B9B6003B1AC2 /* CaptureOrderEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DF7A2D2481B9B6003B1AC2 /* CaptureOrderEndpoint.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -90,6 +94,10 @@
 		117AAAE92479FF7100A63B34 /* CreateOrderResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateOrderResponse.h; sourceTree = "<group>"; };
 		117AAAEA2479FF7100A63B34 /* CreateOrderResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateOrderResponse.m; sourceTree = "<group>"; };
 		117AABA9247B20D100A63B34 /* PayPalCheckout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalCheckout.framework; path = ../../Carthage/Build/iOS/PayPalCheckout.framework; sourceTree = "<group>"; };
+		11DF7A282481B931003B1AC2 /* CaptureOrderRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptureOrderRequest.h; sourceTree = "<group>"; };
+		11DF7A292481B931003B1AC2 /* CaptureOrderRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaptureOrderRequest.m; sourceTree = "<group>"; };
+		11DF7A2C2481B9B6003B1AC2 /* CaptureOrderEndpoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptureOrderEndpoint.h; sourceTree = "<group>"; };
+		11DF7A2D2481B9B6003B1AC2 /* CaptureOrderEndpoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaptureOrderEndpoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +168,8 @@
 				117AAACC2479FDF300A63B34 /* CreateOrderEndpoint.m */,
 				117AAACE2479FE2F00A63B34 /* FetchAccessTokenEndpoint.h */,
 				117AAACF2479FE2F00A63B34 /* FetchAccessTokenEndpoint.m */,
+				11DF7A2C2481B9B6003B1AC2 /* CaptureOrderEndpoint.h */,
+				11DF7A2D2481B9B6003B1AC2 /* CaptureOrderEndpoint.m */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -184,6 +194,8 @@
 			children = (
 				117AAADF2479FEF500A63B34 /* CreateOrderRequest.h */,
 				117AAAE02479FEF500A63B34 /* CreateOrderRequest.m */,
+				11DF7A282481B931003B1AC2 /* CaptureOrderRequest.h */,
+				11DF7A292481B931003B1AC2 /* CaptureOrderRequest.m */,
 				117AAAE22479FF1000A63B34 /* FetchAccessTokenRequest.h */,
 				117AAAE32479FF1000A63B34 /* FetchAccessTokenRequest.m */,
 			);
@@ -220,10 +232,12 @@
 				117AAAED247A006300A63B34 /* CreateOrderRequest.h in Headers */,
 				117AAAEE247A006F00A63B34 /* FetchAccessTokenRequest.h in Headers */,
 				117AAAF5247A008800A63B34 /* NSString+CurrencyCodes.h in Headers */,
+				11DF7A2A2481B931003B1AC2 /* CaptureOrderRequest.h in Headers */,
 				117AAAF0247A007600A63B34 /* CreateOrderResponse.h in Headers */,
 				117AAAF1247A007800A63B34 /* PayPalAPI.h in Headers */,
 				117AAAF3247A008400A63B34 /* Amount.h in Headers */,
 				117AAAF4247A008600A63B34 /* Link.h in Headers */,
+				11DF7A2E2481B9B6003B1AC2 /* CaptureOrderEndpoint.h in Headers */,
 				117AAAF6247A008A00A63B34 /* PurchaseUnit.h in Headers */,
 				117AAAEF247A007300A63B34 /* AccessTokenResponse.h in Headers */,
 				117AAAF8247A009000A63B34 /* FetchAccessTokenEndpoint.h in Headers */,
@@ -311,8 +325,10 @@
 				117AAACD2479FDF300A63B34 /* CreateOrderEndpoint.m in Sources */,
 				117AAAEB2479FF7100A63B34 /* CreateOrderResponse.m in Sources */,
 				117AAAC92479FDBA00A63B34 /* PayPalAPI.m in Sources */,
+				11DF7A2B2481B931003B1AC2 /* CaptureOrderRequest.m in Sources */,
 				117AAAE82479FF3900A63B34 /* AccessTokenResponse.m in Sources */,
 				117AAAE42479FF1000A63B34 /* FetchAccessTokenRequest.m in Sources */,
+				11DF7A2F2481B9B6003B1AC2 /* CaptureOrderEndpoint.m in Sources */,
 				117AAAE12479FEF500A63B34 /* CreateOrderRequest.m in Sources */,
 				117AAA822479FAE600A63B34 /* SceneDelegate.m in Sources */,
 				117AAAD42479FE5B00A63B34 /* Amount.m in Sources */,
