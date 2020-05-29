@@ -23,7 +23,7 @@ class ViewController: UIViewController {
       clientID: PayPal.clientId,
       payToken: "",
       universalLink: "",
-      uriScheme: "testapp://testing",
+      uriScheme: "<redirect_uri>",
       onApprove: {
         guard let captureLink = self.captureLink else {
           return
