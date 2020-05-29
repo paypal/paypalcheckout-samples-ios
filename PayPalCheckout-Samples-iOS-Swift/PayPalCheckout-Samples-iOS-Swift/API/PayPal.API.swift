@@ -47,6 +47,7 @@ class PayPal {
 
     case fetchAccessToken(AccessTokenRequest)
     case createOrder(CreateOrderRequest)
+    case captureOrder(CaptureOrderRequest)
 
     var path: String {
       switch self {
@@ -54,6 +55,8 @@ class PayPal {
         return PayPal.nodeAppBaseURL + "auth/token"
       case .createOrder:
         return PayPal.baseURLv2 + "checkout/orders"
+      case .captureOrder(let request):
+        return request.captureLink.href
       }
     }
 
@@ -63,6 +66,8 @@ class PayPal {
         return "POST"
       case .createOrder:
         return "POST"
+      case .captureOrder(let request):
+        return request.captureLink.method
       }
     }
 
@@ -85,6 +90,15 @@ class PayPal {
           else { return nil }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpBody = encoded
+        urlRequest.httpMethod = self.method
+        urlRequest.addValue(
+          "Bearer \(PayPal.shared.getAccessToken())",
+          forHTTPHeaderField: "Authorization"
+        )
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        return urlRequest
+      case .captureOrder:
+        var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = self.method
         urlRequest.addValue(
           "Bearer \(PayPal.shared.getAccessToken())",

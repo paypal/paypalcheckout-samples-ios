@@ -21,6 +21,7 @@
 		117AAAC52479FBF100A63B34 /* CreateOrder.Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAC42479FBF100A63B34 /* CreateOrder.Response.swift */; };
 		117AAB0D247B066100A63B34 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117AAB07247B059700A63B34 /* PayPalCheckout.framework */; };
 		117AAB0E247B066100A63B34 /* PayPalCheckout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 117AAB07247B059700A63B34 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		11DF7A272481B1A7003B1AC2 /* CaptureOrder.Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DF7A262481B1A7003B1AC2 /* CaptureOrder.Request.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +54,7 @@
 		117AAAC22479FBE100A63B34 /* AccessToken.Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.Response.swift; sourceTree = "<group>"; };
 		117AAAC42479FBF100A63B34 /* CreateOrder.Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrder.Response.swift; sourceTree = "<group>"; };
 		117AAB07247B059700A63B34 /* PayPalCheckout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalCheckout.framework; path = ../../Carthage/Build/iOS/PayPalCheckout.framework; sourceTree = "<group>"; };
+		11DF7A262481B1A7003B1AC2 /* CaptureOrder.Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureOrder.Request.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			children = (
 				117AAABE2479FBC100A63B34 /* AccessToken.Request.swift */,
 				117AAAC02479FBCF00A63B34 /* CreateOrder.Request.swift */,
+				11DF7A262481B1A7003B1AC2 /* CaptureOrder.Request.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				117AAAC12479FBCF00A63B34 /* CreateOrder.Request.swift in Sources */,
 				117AAABD2479FBA700A63B34 /* Order.Models.swift in Sources */,
 				117AAAC52479FBF100A63B34 /* CreateOrder.Response.swift in Sources */,
+				11DF7A272481B1A7003B1AC2 /* CaptureOrder.Request.swift in Sources */,
 				117AAAC32479FBE100A63B34 /* AccessToken.Response.swift in Sources */,
 				117AAAB82479FB7900A63B34 /* PayPal.API.swift in Sources */,
 				117AAAA52479FB4900A63B34 /* SceneDelegate.swift in Sources */,
