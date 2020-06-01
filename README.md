@@ -2,6 +2,16 @@
 
 This is a sample repository showcasing how to integrate the Native Checkout experience into your `iOS` application.
 
+**Table of Contents**:
+<!-- TOC -->  
+1. [Prerequisites](#prerequisites)
+    - [Application Creation](#application-creation)
+    - [NVM](#nvm)
+    - [Docker](#docker)
+2. [Setup](#setup)
+3. [Additional Info](#additional-info)
+<!-- /TOC -->
+
 ## Prerequisites
 
 ### Application Creation
@@ -33,10 +43,21 @@ The `node checkout` service can optionally run with Docker. You can install Dock
 
 ## Setup
 
-In order to setup the project run the following script at the project root directory level:
+There are two steps required to run the project:
+
+```
+1. Set Client ID / Client Secret
+2. Setup Dependencies
+```
+
+The above two steps are handled by two scripts, `./bin/setids` and `./bin/setup`, respectively. Run the following commands at the _project root level_:
 
 ```bash
-./bin/setup
+$ ./bin/setids "CLIENT_ID" "CLIENT_SECRET" 
+# optionally just enter client id and bash will prompt for secret
+
+$ ./bin/setup
+# will run carthage, and install and programs you require
 ```
 
 This activates a build script which runs the following steps:
