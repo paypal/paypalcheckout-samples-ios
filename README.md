@@ -64,14 +64,14 @@ This activates a build script which runs the following steps:
 
 1. Check if Homebrew, Docker (if we specified it), nvm, and Carthage are installed
 2. Run `carthage update` which will download binaries for the project
-3. Open the workspace, `PayPalCheckout-Samples-iOS.xcworkspace`
+3. Open the workspace, `Samples.xcworkspace`
 4. Check to see if we've specified `--use-docker`
     * If we've specified `--use-docker`, we will run `docker-compose up`, this will create the container, install dependencies in container, and run on port 3000
     * If we did not specify `--use-docker` which is the default flow, then we will use `nvm` to install `node@10.17.0` then switch to that via `nvm use 10.17.0`, and finally `npm install && npm start` 
 
 ## Additional Info
 
-The following `Search Paths` must be present under `Framework Search Paths` for both `PayPalCheckout-Samples-iOS-Swift` and `PayPalCheckout-Samples-iOS-Objc`:
+The following `Search Paths` must be present under `Framework Search Paths` for both `Samples.Swift` and `Samples.Objc`:
 
 ```bash
 $(PROJECT_DIR)/../Carthage/Build/iOS
