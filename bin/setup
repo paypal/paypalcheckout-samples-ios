@@ -115,7 +115,7 @@ echo '✅ Carthage Setup Completed\n'
 echo '🔶 Opening workspace...\n'
 
 # 2. Open Workspace
-open PayPalCheckout-Samples-iOS.xcworkspace
+open Samples.xcworkspace
 
 echo '✅ Workspace Opened\n'
 
