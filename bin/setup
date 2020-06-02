@@ -133,14 +133,17 @@ else
   # Move to checkout directory
   cd node_checkout;
 
-  # Install and switch to node 10.17.0
-  nvm install 10.17.0;
-  nvm use 10.17.0;
+  # We have an .nvmrc file nvm will use that
+  # with the following commands
+  nvm use;
 
-  # Install dependencies
+  # Install the node version specified in .nvmrc
+  nvm install;
+
+  # Install node app dependencies
   npm install;
 
-  # Run node app
-  node index.js;
+  # Run the node app
+  nvm run index.js;
 fi
 
