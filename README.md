@@ -21,7 +21,7 @@ In order for this project to run properly we need to create an application at [P
 We've automated away the process for you to create your `.env` file and finding / replacing any source code with the `CLIENT_ID` by running the following command:
 
 ```bash
-./bin/setids "CLIENT_ID" "CLIENT_SECRET"
+./bin/setids "<your_client_id>" "<your_client_secret>"
 ```
 
 If you do not want to expose your `CLIENT_SECRET` into your bash history, you can optionally choose to only include your `CLIENT_ID`, then bash or zsh will prompt you to enter your `CLIENT_SECRET`:
