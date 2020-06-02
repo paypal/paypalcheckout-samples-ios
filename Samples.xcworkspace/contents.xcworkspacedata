@@ -5,6 +5,6 @@
       location = "group:Samples.Swift/Samples.Swift.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Samples.Objc/Samples.Objc.xcodeproj">
+      location = "group:/Users/haikhan/Documents/iOSProjects/PayPalCheckout-Samples-iOS/Samples.Objc/Samples.ObjC.xcodeproj">
    </FileRef>
 </Workspace>

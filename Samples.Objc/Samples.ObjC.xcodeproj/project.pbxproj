@@ -59,7 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		117AAA7A2479FAE600A63B34 /* Samples.Objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samples.Objc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		117AAA7A2479FAE600A63B34 /* Samples.ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samples.ObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		117AAA7D2479FAE600A63B34 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		117AAA7E2479FAE600A63B34 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		117AAA802479FAE600A63B34 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				117AABA8247B1FBA00A63B34 /* Dependencies */,
-				117AAA7C2479FAE600A63B34 /* Samples.Objc */,
+				117AAA7C2479FAE600A63B34 /* Samples.ObjC */,
 				117AAA7B2479FAE600A63B34 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -124,12 +124,12 @@
 		117AAA7B2479FAE600A63B34 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				117AAA7A2479FAE600A63B34 /* Samples.Objc.app */,
+				117AAA7A2479FAE600A63B34 /* Samples.ObjC.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		117AAA7C2479FAE600A63B34 /* Samples.Objc */ = {
+		117AAA7C2479FAE600A63B34 /* Samples.ObjC */ = {
 			isa = PBXGroup;
 			children = (
 				117AAAC62479FD7400A63B34 /* API */,
@@ -145,7 +145,7 @@
 				117AAA8E2479FAE700A63B34 /* Info.plist */,
 				117AAA8F2479FAE700A63B34 /* main.m */,
 			);
-			path = Samples.Objc;
+			path = Samples.ObjC;
 			sourceTree = "<group>";
 		};
 		117AAAC62479FD7400A63B34 /* API */ = {
@@ -247,9 +247,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		117AAA792479FAE600A63B34 /* Samples.Objc */ = {
+		117AAA792479FAE600A63B34 /* Samples.ObjC */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 117AAA932479FAE700A63B34 /* Build configuration list for PBXNativeTarget "Samples.Objc" */;
+			buildConfigurationList = 117AAA932479FAE700A63B34 /* Build configuration list for PBXNativeTarget "Samples.ObjC" */;
 			buildPhases = (
 				117AAAEC247A002600A63B34 /* Headers */,
 				117AAA762479FAE600A63B34 /* Sources */,
@@ -261,9 +261,9 @@
 			);
 			dependencies = (
 			);
-			name = Samples.Objc;
+			name = Samples.ObjC;
 			productName = "PayPalCheckout-Samples-iOS-Objc";
-			productReference = 117AAA7A2479FAE600A63B34 /* Samples.Objc.app */;
+			productReference = 117AAA7A2479FAE600A63B34 /* Samples.ObjC.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -280,7 +280,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 117AAA752479FAE600A63B34 /* Build configuration list for PBXProject "Samples.Objc" */;
+			buildConfigurationList = 117AAA752479FAE600A63B34 /* Build configuration list for PBXProject "Samples.ObjC" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -293,7 +293,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				117AAA792479FAE600A63B34 /* Samples.Objc */,
+				117AAA792479FAE600A63B34 /* Samples.ObjC */,
 			);
 		};
 /* End PBXProject section */
@@ -478,14 +478,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Samples.Objc/Info.plist;
+				INFOPLIST_FILE = Samples.ObjC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.paypal.Samples.Objc;
-				PRODUCT_NAME = Samples.Objc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paypal.Samples.ObjC;
+				PRODUCT_NAME = Samples.ObjC;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -500,14 +500,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Samples.Objc/Info.plist;
+				INFOPLIST_FILE = Samples.ObjC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.paypal.Samples.Objc;
-				PRODUCT_NAME = Samples.Objc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paypal.Samples.ObjC;
+				PRODUCT_NAME = Samples.ObjC;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -515,7 +515,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		117AAA752479FAE600A63B34 /* Build configuration list for PBXProject "Samples.Objc" */ = {
+		117AAA752479FAE600A63B34 /* Build configuration list for PBXProject "Samples.ObjC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				117AAA912479FAE700A63B34 /* Debug */,
@@ -524,7 +524,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		117AAA932479FAE700A63B34 /* Build configuration list for PBXNativeTarget "Samples.Objc" */ = {
+		117AAA932479FAE700A63B34 /* Build configuration list for PBXNativeTarget "Samples.ObjC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				117AAA942479FAE700A63B34 /* Debug */,
