@@ -58,6 +58,11 @@
   FetchAccessTokenRequest *tokenRequest = [[FetchAccessTokenRequest alloc] initWith:clientId];
   
   [api fetchAccessToken:tokenRequest completion:^(NSData * _Nonnull data, NSError * _Nonnull error) {
+
+    if (data == nil) {
+      NSLog(@"⚠️: No data received. Check if server is running.");
+      return;
+    }
     
     // Decode
     AccessTokenResponse *tokenResponse = [[AccessTokenResponse alloc] initWithData:data];

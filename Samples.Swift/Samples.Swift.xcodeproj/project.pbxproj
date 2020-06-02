@@ -39,7 +39,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		117AAA9F2479FB4900A63B34 /* PayPalCheckout-Samples-iOS-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PayPalCheckout-Samples-iOS-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		117AAA9F2479FB4900A63B34 /* Samples.Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samples.Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		117AAAA22479FB4900A63B34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		117AAAA42479FB4900A63B34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		117AAAA62479FB4900A63B34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				117AAAFA247B009300A63B34 /* Dependencies */,
-				117AAAA12479FB4900A63B34 /* PayPalCheckout-Samples-iOS-Swift */,
+				117AAAA12479FB4900A63B34 /* Samples.Swift */,
 				117AAAA02479FB4900A63B34 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,12 +81,12 @@
 		117AAAA02479FB4900A63B34 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				117AAA9F2479FB4900A63B34 /* PayPalCheckout-Samples-iOS-Swift.app */,
+				117AAA9F2479FB4900A63B34 /* Samples.Swift.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		117AAAA12479FB4900A63B34 /* PayPalCheckout-Samples-iOS-Swift */ = {
+		117AAAA12479FB4900A63B34 /* Samples.Swift */ = {
 			isa = PBXGroup;
 			children = (
 				117AAAB62479FB6B00A63B34 /* API */,
@@ -98,7 +98,7 @@
 				117AAAAD2479FB4900A63B34 /* LaunchScreen.storyboard */,
 				117AAAB02479FB4900A63B34 /* Info.plist */,
 			);
-			path = "PayPalCheckout-Samples-iOS-Swift";
+			path = Samples.Swift;
 			sourceTree = "<group>";
 		};
 		117AAAB62479FB6B00A63B34 /* API */ = {
@@ -150,9 +150,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		117AAA9E2479FB4900A63B34 /* PayPalCheckout-Samples-iOS-Swift */ = {
+		117AAA9E2479FB4900A63B34 /* Samples.Swift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 117AAAB32479FB4900A63B34 /* Build configuration list for PBXNativeTarget "PayPalCheckout-Samples-iOS-Swift" */;
+			buildConfigurationList = 117AAAB32479FB4900A63B34 /* Build configuration list for PBXNativeTarget "Samples.Swift" */;
 			buildPhases = (
 				117AAA9B2479FB4900A63B34 /* Sources */,
 				117AAA9C2479FB4900A63B34 /* Frameworks */,
@@ -163,9 +163,9 @@
 			);
 			dependencies = (
 			);
-			name = "PayPalCheckout-Samples-iOS-Swift";
+			name = Samples.Swift;
 			productName = "PayPalCheckout-Samples-iOS-Swift";
-			productReference = 117AAA9F2479FB4900A63B34 /* PayPalCheckout-Samples-iOS-Swift.app */;
+			productReference = 117AAA9F2479FB4900A63B34 /* Samples.Swift.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -183,7 +183,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 117AAA9A2479FB4800A63B34 /* Build configuration list for PBXProject "PayPalCheckout-Samples-iOS-Swift" */;
+			buildConfigurationList = 117AAA9A2479FB4800A63B34 /* Build configuration list for PBXProject "Samples.Swift" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -196,7 +196,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				117AAA9E2479FB4900A63B34 /* PayPalCheckout-Samples-iOS-Swift */,
+				117AAA9E2479FB4900A63B34 /* Samples.Swift */,
 			);
 		};
 /* End PBXProject section */
@@ -374,17 +374,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 727K56WV67;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../Carthage/Build/iOS",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Braintree\"",
-				);
-				INFOPLIST_FILE = "PayPalCheckout-Samples-iOS-Swift/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS";
+				INFOPLIST_FILE = Samples.Swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.paypal.PayPalCheckout-Samples-iOS-Swift";
+				PRODUCT_BUNDLE_IDENTIFIER = com.paypal.Samples.Swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -397,17 +394,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 727K56WV67;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../Carthage/Build/iOS",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Braintree\"",
-				);
-				INFOPLIST_FILE = "PayPalCheckout-Samples-iOS-Swift/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS";
+				INFOPLIST_FILE = Samples.Swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.paypal.PayPalCheckout-Samples-iOS-Swift";
+				PRODUCT_BUNDLE_IDENTIFIER = com.paypal.Samples.Swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -417,7 +411,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		117AAA9A2479FB4800A63B34 /* Build configuration list for PBXProject "PayPalCheckout-Samples-iOS-Swift" */ = {
+		117AAA9A2479FB4800A63B34 /* Build configuration list for PBXProject "Samples.Swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				117AAAB12479FB4900A63B34 /* Debug */,
@@ -426,7 +420,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		117AAAB32479FB4900A63B34 /* Build configuration list for PBXNativeTarget "PayPalCheckout-Samples-iOS-Swift" */ = {
+		117AAAB32479FB4900A63B34 /* Build configuration list for PBXNativeTarget "Samples.Swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				117AAAB42479FB4900A63B34 /* Debug */,
