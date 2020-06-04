@@ -44,6 +44,8 @@ $ ./bin/setup
 
 Your `CLIENT_ID` and `CLIENT_SECRET` are retrieved from the [applications portal](https://developer.paypal.com/developer/applications/). Your `<redirect_uri>` will be retrieved from there as well, but you will need to set the proper [scopes](#application-scopes) before your uri can be utilized.
 
+**Note**: Please note run this on Simulator as you will be running a local server.
+
 ## Prerequisites
 
 ### Application Creation
