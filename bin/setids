@@ -3,8 +3,11 @@
 # If they give us the input on the command line use it
 clientId="${1-}"
 clientSecret="${2-}"
+redirectUri="${3-}"
 
-# Gather our input
+## Gather our input
+
+# Read our client id if provided
 if [[ "${clientId}" = "" ]]; then
   printf "Please enter your \x1b[1mclient id\x1b[0m    : "
   read clientId
@@ -15,6 +18,7 @@ if [[ "${clientId}" = "" ]]; then
   fi
 fi
 
+# Read client secret if provided
 if [[ "${clientSecret}" = "" ]]; then
   printf "Please enter your \x1b[1mclient secret\x1b[0m: "
   read clientSecret 
@@ -25,19 +29,30 @@ if [[ "${clientSecret}" = "" ]]; then
   fi
 fi
 
+# Read redirect uri if provided 
+if [[ "${redirectUri}" = "" ]]; then 
+  printf "Please enter your \x1b[1mclient redirect uri\x1b[0m: "
+  read redirectUri
+
+  if [[ "${redirectUri}" = "" ]]; then 
+    printf "\nCanceling; we need a redirect_uri from you"
+    exit 1
+  fi 
+fi
+
 # Create a functions for easy reuse of status
 function STATUS() {
   printf "\x1b[2G\x1b[${1}m${2}\x1b[0m\n"
 }
 
 # Check to see if we have enough parameters
-if [[ "${clientId}" = "" ]] || [[ "${clientSecret}" = "" ]]; then
-  printf "Usage: setids <client_id> <client_secret>\n"
+if [[ "${clientId}" = "" ]] || [[ "${clientSecret}" = "" ]] || [[ "${redirectUri}" = "" ]]; then
+  printf "Usage: setids <client_id> <client_secret> <redirect_uri>\n"
   exit 1
 fi
 
 # Let's get started
-printf "\nChecking for places where your client ids and secrets are used\n\n"
+printf "\nChecking for places where your client ids, secrets, and redirect uri are used\n\n"
 
 # Check to see if have a .env file and if not, create one
 printf "[    ] Check for an existing .env file"
@@ -52,10 +67,20 @@ fi
 
 sedString=$(echo "xargs -0 sed -i '' 's/<client_id>/${clientId}/g'")
 
-printf "[    ] Updating objective-c files..."
+printf "[    ] Updating objective-c files for CLIENT_ID..."
 find . -name "*.m" -print0 | eval $sedString
 STATUS 32 done
 
-printf "[    ] Updating swift files..."
+printf "[    ] Updating swift files for CLIENT_ID..."
+find . -name "*.swift" -print0 | eval $sedString
+STATUS 32 done
+
+sedString=$(echo "xargs -0 sed -i '' 's,<redirect_uri>,${redirectUri},g'")
+
+printf "[    ] Updating objective-c files for redirect_uri..."
+find . -name "*.m" -print0 | eval $sedString
+STATUS 32 done 
+
+printf "[    ] Updating swift files for redirect_uri..."
 find . -name "*.swift" -print0 | eval $sedString
 STATUS 32 done

@@ -1,6 +1,23 @@
 #!/usr/bin/env sh
 
+# Flag properties 
+
+zsh_enabled=false;
 use_docker_enabled=false;
+nvm_remote_script_location=https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh;
+
+# Determine if we are using bash or zsh 
+function checkIfZshEnabled() {
+  if [[ -z "${ZSH}" ]]; then 
+    zsh_enabled=true;
+  else
+    zsh_enabled=false;
+  fi
+}
+
+function zshEnabled() {
+  [ "$zsh_enabled" = true ];
+}
 
 # Get any options if the user has specified it
 for arg in "$@"; do 
@@ -17,6 +34,15 @@ function useDocker() {
   [ "$use_docker_enabled" = true ];
 }
 
+# Execute remote script
+function executeRemotely() {
+  curl -s "$1" | bash /dev/stdin
+}
+
+function brewHas() {
+  brew ls --versions "$1" > /dev/null
+}
+
 # Checks to see if the supplied command exists
 function exists() {
   command -v "$1" > /dev/null 2>&1
@@ -27,11 +53,17 @@ function installProgram() {
   case $1 in 
     carthage) 
       echo '🔶 Installing carthage...';
-      brew install carthage;;
+      brew tap nsoperations/formulas;
+      brew install nsoperations/formulas/carthage;;
     nvm) 
       echo '🔶 Installing nvm...';
-      brew install nvm;
-      source $(brew --prefix nvm)/nvm.sh;; 
+      curl -s "$nvm_remote_script_location" | bash;
+      if zshEnabled; then 
+        source ~/.zshrc;
+      else 
+        source ~/.bash_profile;
+      fi
+      break;;
     docker) 
       echo '🔶 Installing docker with docker-compose';
       brew cask install docker;
@@ -52,7 +84,9 @@ function promptInstall() {
   while true; do 
     read -p "Do you wish to install $1? (y/n):" yn
     case $yn in 
-      [Yy]* ) installProgram $1; break;;
+      [Yy]* )
+       installProgram $1; 
+       break;;
       [Nn]* ) 
         echo "Skipping install, could not execute script...";
         exit;;
@@ -61,6 +95,16 @@ function promptInstall() {
     esac 
   done
 }
+
+if ! exists brew; then 
+  printf 'Homebrew not installed.\n'
+  promptInstall brew;
+fi
+
+if ! exists carthage; then 
+  printf 'Carthage not installed.\n'
+  promptInstall carthage
+fi
 
 # If we are not using docker then 
 # check if we have nvm and source it
@@ -73,19 +117,14 @@ if ! useDocker; then
     source ~/.nvm/nvm.sh
   
   # If installed via homebrew source that
-  elif [[ -f $(bash --prefix nvm)/nvm.sh ]]; then 
-    source $(bash --prefix nvm)/nvm.sh
+  # We first check if the program is installed from brew
+  elif exists brew; then 
+    if brewHas nvm; then 
+      if [[ -f $(brew --prefix nvm)/nvm.sh ]]; then
+        source $(brew --prefix nvm)/nvm.sh;
+      fi
+    fi
   fi
-fi
-
-if ! exists brew; then 
-  printf 'Homebrew not installed.\n'
-  promptInstall brew;
-fi
-
-if ! exists carthage; then 
-  printf 'Carthage not installed.\n'
-  promptInstall carthage
 fi
 
 if useDocker; then

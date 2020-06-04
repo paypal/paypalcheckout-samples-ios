@@ -81,7 +81,7 @@ class ViewController: UIViewController {
         let data = data,
         let createOrderResponse = try? PayPal.jsonDecoder.decode(CreateOrderResponse.self, from: data)
         else { return }
-      
+
       // Ensure we are setting presenting view controller on main thread
       DispatchQueue.main.async {
         self.startNativeCheckout(with: createOrderResponse)
