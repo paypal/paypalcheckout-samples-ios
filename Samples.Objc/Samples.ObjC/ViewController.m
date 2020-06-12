@@ -33,10 +33,8 @@
         payToken:@""
         universalLink:@""
         uriScheme:@"<redirect_uri>"
-        onApprove:^{
-          if (self.captureLink) {
-            [self processCaptureOrderWith:self.captureLink];
-          }
+        onApprove:^(Approval *approval){
+            [self processCaptureOrderWith:approval.captureLink];
         }
         onCancel:^{
           NSLog(@"Cancelled");
@@ -118,10 +116,12 @@
   [PPCheckout start];
 }
 
-- (void)processCaptureOrderWith:(Link *)captureLink {
+- (void)processCaptureOrderWith:(NSString *)captureLink {
+
+  Link *link = [[Link alloc] initWithRef:captureLink rel:@"capture" method:@"POST"];
 
   // Create request
-  CaptureOrderRequest *request = [[CaptureOrderRequest alloc] initWith:captureLink];
+  CaptureOrderRequest *request = [[CaptureOrderRequest alloc] initWith:link];
 
   PayPalAPI *api = [PayPalAPI shared];
   [api captureOrder:request completion:^(NSData * _Nonnull data, NSError * _Nonnull error) {

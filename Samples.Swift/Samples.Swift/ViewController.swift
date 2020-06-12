@@ -13,9 +13,6 @@ class ViewController: UIViewController {
 
   // MARK: - Attributes
 
-  /// Used to capture the transaction during `Config.onApprove {}`.
-  private var captureLink: Link? = nil
-
   /// Our `Config` object is a help as an instance property so we can hold a reference to our
   /// callbacks `onApprove`, `onCancel` and `onError`.
   lazy var config: Config = {
@@ -24,11 +21,8 @@ class ViewController: UIViewController {
       payToken: "",
       universalLink: "",
       uriScheme: "<redirect_uri>",
-      onApprove: {
-        guard let captureLink = self.captureLink else {
-          return
-        }
-        self.processOrderCapture(with: captureLink)
+      onApprove: { approval in
+        self.processOrderCapture(with: approval.captureLink)
       },
       onCancel: {
         print("cancelled")
@@ -91,11 +85,6 @@ class ViewController: UIViewController {
 
   func startNativeCheckout(with orderResponse: CreateOrderResponse) {
 
-    // Set our capture link
-    if let captureLink = orderResponse.links.first(where: { $0.rel == "capture" }) {
-      self.captureLink = captureLink
-    }
-
     // Set our presenting view controller
     config.presentingViewController = self
 
@@ -108,7 +97,8 @@ class ViewController: UIViewController {
     Checkout.start()
   }
 
-  private func processOrderCapture(with link: Link) {
+  private func processOrderCapture(with captureLink: String) {
+    let link = Link(href: captureLink, rel: "capture", method: "POST")
     let captureOrderRequest = CaptureOrderRequest(captureLink: link)
     PayPal.shared.request(on: .captureOrder(captureOrderRequest)) {
       data, error in
