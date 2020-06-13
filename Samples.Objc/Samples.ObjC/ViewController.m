@@ -33,7 +33,7 @@
         payToken:@""
         universalLink:@""
         uriScheme:@"<redirect_uri>"
-        onApprove:^(Approval *approval){
+        onApprove:^(PPCApproval *approval){
             [self processCaptureOrderWith:approval.captureLink];
         }
         onCancel:^{
