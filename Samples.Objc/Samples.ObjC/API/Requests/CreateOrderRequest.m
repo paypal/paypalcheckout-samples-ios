@@ -1,44 +1,101 @@
 //
 //  CreateOrderRequest.m
-//  PayPalCheckout-Samples-iOS-Objc
+//  PayPalNativeCheckoutObjC
 //
-//  Created by Haider Khan on 5/18/20.
-//  Copyright © 2020 PayPal. All rights reserved.
+//  Created by Nguyen, The Nhat Minh on 3/14/21.
 //
 
 #import "CreateOrderRequest.h"
 
 @implementation CreateOrderRequest
 
-- (id)initWith:(OrderIntent)intent purchaseUnits:(NSArray *)purchaseUnits {
+- (id)initWithOrder:(PPCOrderRequest*)order andAccessToken:(NSString*)token {
   self = [super init];
   if (self) {
-    self.intent = intent;
-    self.purchaseUnits = purchaseUnits;
+    self.order = order;
+    self.accessToken = token;
   }
   return self;
 }
 
 - (NSDictionary *)properties {
+  NSString *intentString = @"";
+  if (intentString == PPCOrderIntentCapture) {
+    intentString = @"CAPTURE";
+  } else {
+    intentString = @"AUTHORIZE";
+  }
 
-  // Convert purchase units to json
   NSMutableArray *purchaseUnitDictionaries = [NSMutableArray new];
-  for (PurchaseUnit *purchaseUnit in [self purchaseUnits]) {
-    NSDictionary *purchaseUnitDictionary = [purchaseUnit dictionaryRepresentation];
+  for (PPCPurchaseUnit *purchaseUnit in self.order.purchaseUnits) {
+    
+    NSMutableArray *itemsDictionary = [NSMutableArray new];
+    
+    for (PPCPurchaseUnitItem *item in purchaseUnit.items) {
+      
+      NSDictionary *itemUnitAmountDictionary = @{
+        @"currency_code": @"USD",
+        @"value": item.unitAmount.value
+      };
+      
+      NSString *itemCategoryString = nil;
+      if (item.category == PPCPurchaseUnitCategoryDigitalGoods) {
+        itemCategoryString = @"DIGITAL_GOODS";
+      } else {
+        itemCategoryString = @"PHYSICAL_GOODS";
+      }
+      
+      NSDictionary *itemDictionary = @{
+        @"name": item.name,
+        @"unit_amount": itemUnitAmountDictionary,
+        @"quantity": item.quantity,
+        @"category": itemCategoryString
+      };
+      
+      [itemsDictionary addObject:itemDictionary];
+    }
+    
+    NSDictionary *breakdownItemTotalDictionary = @{
+      @"currency_code": @"USD",
+      @"value": purchaseUnit.amount.breakdown.itemTotal.value
+    };
+    
+    NSDictionary *breakdownDictionary = @{
+      @"item_total": breakdownItemTotalDictionary
+    };
+    
+    NSDictionary *purchaseUnitAmountDictionary = @{
+      @"currency_code": @"USD",
+      @"value": purchaseUnit.amount.value,
+      @"breakdown": breakdownDictionary
+    };
+    
+    NSDictionary *purchaseUnitDictionary = @{
+      @"amount": purchaseUnitAmountDictionary,
+      @"items": itemsDictionary
+    };
+
     [purchaseUnitDictionaries addObject:purchaseUnitDictionary];
   }
- 
+  
   return @{
-    @"intent": [self intent],
+    @"intent": intentString,
     @"purchase_units": purchaseUnitDictionaries
   };
 }
 
-- (NSData *)jsonData {
+- (NSDictionary *)requestHeader {
+  return @{
+    @"Content-Type": @"application/json",
+    @"Authorization": [NSString stringWithFormat:@"Bearer %@", self.accessToken]
+  };
+}
+
+- (NSData *)requestBody {
   NSError *error;
   NSData *jsonData = [NSJSONSerialization
                       dataWithJSONObject:[self properties]
-                      options:0 // Pass 0 if you don't care about the readability of the generated string
+                      options:0
                       error:&error];
   return jsonData;
 }

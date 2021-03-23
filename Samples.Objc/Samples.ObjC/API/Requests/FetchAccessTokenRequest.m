@@ -1,9 +1,8 @@
 //
 //  FetchAccessTokenRequest.m
-//  PayPalCheckout-Samples-iOS-Objc
+//  PayPalNativeCheckoutObjC
 //
-//  Created by Haider Khan on 5/18/20.
-//  Copyright © 2020 PayPal. All rights reserved.
+//  Created by Nguyen, The Nhat Minh on 3/14/21.
 //
 
 #import "FetchAccessTokenRequest.h"
@@ -18,19 +17,12 @@
   return self;
 }
 
-- (NSDictionary *)properties {
-  return @{
-    @"clientId": [self clientId]
-  };
+- (NSDictionary *)requestHeader {
+  return @{@"Authorization": [NSString stringWithFormat:@"Basic %@", [[self.clientId dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed]]};
 }
 
-- (NSData *)jsonData {
-  NSError *error;
-  NSData *jsonData = [NSJSONSerialization
-                      dataWithJSONObject:[self properties]
-                      options:0 // Pass 0 if you don't care about the readability of the generated string
-                      error:&error];
-  return jsonData;
+- (NSData *)requestBody {
+  return [@"grant_type=client_credentials" dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 @end
