@@ -101,7 +101,7 @@
       [PPCheckout startWithExperience:PPCExperienceNative
              presentingViewController:self
                           createOrder:^(PPCCreateOrderAction *action) {
-        NSString *clientId = @"AeUWafOzgKsxilA4_2Cfzvu3czynOUcgQ2K-DxQryfQ1lb7pY6K35ILU-KRH27XXrPZ7Wcc-CyBZhnav";
+        NSString *clientId = [PayPalAPI.shared clientId];
         FetchAccessTokenRequest *tokenRequest = [[FetchAccessTokenRequest alloc] initWith:clientId];
         [PayPalAPI.shared fetchAccessToken:tokenRequest completion:^(NSData *data, NSError *error) {
           if (data == nil) {
