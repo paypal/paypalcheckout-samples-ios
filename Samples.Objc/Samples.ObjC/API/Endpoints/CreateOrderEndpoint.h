@@ -1,21 +1,17 @@
 //
 //  CreateOrderEndpoint.h
-//  PayPalCheckout-Samples-iOS-Objc
+//  PayPalNativeCheckoutObjC
 //
-//  Created by Haider Khan on 5/19/20.
-//  Copyright © 2020 PayPal. All rights reserved.
+//  Created by Nguyen, The Nhat Minh on 3/14/21.
 //
 
 #import <Foundation/Foundation.h>
-#import "PayPalAPI.h"
 #import "CreateOrderRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CreateOrderEndpoint : NSObject <Endpoint>
-
+@interface CreateOrderEndpoint : NSObject
 - (NSURLRequest *)urlRequestFor:(CreateOrderRequest *)request;
-
 @end
 
 NS_ASSUME_NONNULL_END

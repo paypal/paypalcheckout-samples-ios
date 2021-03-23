@@ -1,24 +1,22 @@
 //
 //  CreateOrderRequest.h
-//  PayPalCheckout-Samples-iOS-Objc
+//  PayPalNativeCheckoutObjC
 //
-//  Created by Haider Khan on 5/18/20.
-//  Copyright © 2020 PayPal. All rights reserved.
+//  Created by Nguyen, The Nhat Minh on 3/14/21.
 //
 
 #import <Foundation/Foundation.h>
-#import "PurchaseUnit.h"
+@import PayPalCheckout;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CreateOrderRequest : NSObject
 
-@property (nonatomic) OrderIntent intent;
-@property (nonatomic) NSArray *purchaseUnits;
-
-- (id)initWith:(OrderIntent)intent purchaseUnits:(NSArray<PurchaseUnit *> *)purchaseUnits;
-- (NSDictionary *)properties;
-- (NSData *)jsonData;
+@property (nonatomic) PPCOrderRequest *order;
+@property (nonatomic) NSString *accessToken;
+- (NSDictionary *)requestHeader;
+- (NSData *)requestBody;
+- (id)initWithOrder:(PPCOrderRequest*)order andAccessToken:(NSString*)token;
 
 @end
 
