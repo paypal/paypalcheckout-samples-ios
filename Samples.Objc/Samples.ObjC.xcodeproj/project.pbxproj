@@ -242,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				06936DD5260A7F330099E314 /* API */,
+				06936DBC260A7F330099E314 /* ViewControllers */,
 				06936DD4260A7F330099E314 /* AppDelegate.h */,
 				06936DE5260A7F330099E314 /* AppDelegate.m */,
 				06936DCF260A7F330099E314 /* Assets.xcassets */,
@@ -251,7 +252,6 @@
 				06936DD0260A7F330099E314 /* Main.storyboard */,
 				06936DD1260A7F330099E314 /* SceneDelegate.h */,
 				06936DE6260A7F330099E314 /* SceneDelegate.m */,
-				06936DBC260A7F330099E314 /* ViewControllers */,
 			);
 			path = Samples.ObjC;
 			sourceTree = "<group>";

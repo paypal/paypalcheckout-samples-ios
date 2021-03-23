@@ -15,6 +15,7 @@
 #import "CreateOrderEndpoint.h"
 #import "AccessTokenResponse.h"
 #import "CreateOrderResponse.h"
+#import "PayPalAPI.h"
 @import PayPalCheckout;
 
 @interface CheckoutViewController ()
@@ -102,7 +103,7 @@
                           createOrder:^(PPCCreateOrderAction *action) {
         NSString *clientId = @"AeUWafOzgKsxilA4_2Cfzvu3czynOUcgQ2K-DxQryfQ1lb7pY6K35ILU-KRH27XXrPZ7Wcc-CyBZhnav";
         FetchAccessTokenRequest *tokenRequest = [[FetchAccessTokenRequest alloc] initWith:clientId];
-        [self fetchAccessToken:tokenRequest completion:^(NSData *data, NSError *error) {
+        [PayPalAPI.shared fetchAccessToken:tokenRequest completion:^(NSData *data, NSError *error) {
           if (data == nil) {
             NSLog(@"Fetch access token failed with no data.");
             return;
@@ -111,7 +112,7 @@
           AccessTokenResponse *tokenResponse = [[AccessTokenResponse alloc] initWithData:data];
           CreateOrderRequest *createOrderRequest = [[CreateOrderRequest alloc] initWithOrder:order andAccessToken:tokenResponse.accessToken];
           
-          [self createOrder:createOrderRequest completion:^(NSData *data, NSError *error) {
+          [PayPalAPI.shared createOrder:createOrderRequest completion:^(NSData *data, NSError *error) {
             if (data == nil) {
               NSLog(@"Create order failed with no data.");
               return;
@@ -251,35 +252,6 @@
     total += price * quantity;
   }
   return [[NSNumber numberWithDouble:total] stringValue];
-}
-
-// MARK: - API calls
-- (void)fetchAccessToken:(FetchAccessTokenRequest *)request completion:(void (^)(NSData *data, NSError *error))completion {
-  FetchAccessTokenEndpoint *fetchAccessTokenEndpoint = [[FetchAccessTokenEndpoint alloc] init];
-  NSURLRequest *urlRequest = [fetchAccessTokenEndpoint urlRequestFor:request];
-  [[[NSURLSession sharedSession]
-    dataTaskWithRequest:urlRequest
-    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-    if (error) {
-      completion(nil, error);
-      return;
-    }
-    completion(data, nil);
-  }] resume];
-}
-
-- (void)createOrder:(CreateOrderRequest *)request completion:(void (^)(NSData *data, NSError *error))completion {
-  CreateOrderEndpoint *createOrderEndpoint = [[CreateOrderEndpoint alloc] init];
-  NSURLRequest *urlRequest = [createOrderEndpoint urlRequestFor:request];
-  [[[NSURLSession sharedSession]
-    dataTaskWithRequest:urlRequest
-    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-    if (error) {
-      completion(nil, error);
-      return;
-    }
-    completion(data, nil);
-  }] resume];
 }
 
 // MARK: - UITableViewDelegate and UITableViewDataSource
