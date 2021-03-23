@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06936DB5260A7DC80099E314 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB4260A7DC80099E314 /* PayPalCheckout.framework */; };
+		06936DB6260A7DC80099E314 /* PayPalCheckout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB4260A7DC80099E314 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		117AAA7F2479FAE600A63B34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAA7E2479FAE600A63B34 /* AppDelegate.m */; };
 		117AAA822479FAE600A63B34 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAA812479FAE600A63B34 /* SceneDelegate.m */; };
 		117AAA852479FAE600A63B34 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAA842479FAE600A63B34 /* ViewController.m */; };
@@ -49,6 +51,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				06936DB6260A7DC80099E314 /* PayPalCheckout.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,6 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		06936DB4260A7DC80099E314 /* PayPalCheckout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalCheckout.framework; path = ../Carthage/Build/iOS/PayPalCheckout.framework; sourceTree = "<group>"; };
 		117AAA7A2479FAE600A63B34 /* Samples.ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samples.ObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		117AAA7D2479FAE600A63B34 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		117AAA7E2479FAE600A63B34 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -101,17 +105,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06936DB5260A7DC80099E314 /* PayPalCheckout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06936DB3260A7DC80099E314 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06936DB4260A7DC80099E314 /* PayPalCheckout.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		117AAA712479FAE600A63B34 = {
 			isa = PBXGroup;
 			children = (
 				117AAA7C2479FAE600A63B34 /* Samples.ObjC */,
 				117AAA7B2479FAE600A63B34 /* Products */,
+				06936DB3260A7DC80099E314 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -399,6 +413,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -451,6 +466,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};
