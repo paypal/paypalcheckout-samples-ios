@@ -35,8 +35,6 @@
 		117AAAF6247A008A00A63B34 /* PurchaseUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAADB2479FEBF00A63B34 /* PurchaseUnit.h */; };
 		117AAAF7247A008E00A63B34 /* CreateOrderEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAACB2479FDF300A63B34 /* CreateOrderEndpoint.h */; };
 		117AAAF8247A009000A63B34 /* FetchAccessTokenEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAACE2479FE2F00A63B34 /* FetchAccessTokenEndpoint.h */; };
-		117AABAB247B20F300A63B34 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117AABA9247B20D100A63B34 /* PayPalCheckout.framework */; };
-		117AABAC247B20F300A63B34 /* PayPalCheckout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 117AABA9247B20D100A63B34 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		119ED0B12485F950004576BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 117AAA862479FAE600A63B34 /* Main.storyboard */; };
 		11DF7A2A2481B931003B1AC2 /* CaptureOrderRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 11DF7A282481B931003B1AC2 /* CaptureOrderRequest.h */; };
 		11DF7A2B2481B931003B1AC2 /* CaptureOrderRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DF7A292481B931003B1AC2 /* CaptureOrderRequest.m */; };
@@ -51,7 +49,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				117AABAC247B20F300A63B34 /* PayPalCheckout.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,7 +90,6 @@
 		117AAAE72479FF3900A63B34 /* AccessTokenResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccessTokenResponse.m; sourceTree = "<group>"; };
 		117AAAE92479FF7100A63B34 /* CreateOrderResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateOrderResponse.h; sourceTree = "<group>"; };
 		117AAAEA2479FF7100A63B34 /* CreateOrderResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateOrderResponse.m; sourceTree = "<group>"; };
-		117AABA9247B20D100A63B34 /* PayPalCheckout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalCheckout.framework; path = ../../Carthage/Build/iOS/PayPalCheckout.framework; sourceTree = "<group>"; };
 		11DF7A282481B931003B1AC2 /* CaptureOrderRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptureOrderRequest.h; sourceTree = "<group>"; };
 		11DF7A292481B931003B1AC2 /* CaptureOrderRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaptureOrderRequest.m; sourceTree = "<group>"; };
 		11DF7A2C2481B9B6003B1AC2 /* CaptureOrderEndpoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptureOrderEndpoint.h; sourceTree = "<group>"; };
@@ -105,7 +101,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				117AABAB247B20F300A63B34 /* PayPalCheckout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +110,6 @@
 		117AAA712479FAE600A63B34 = {
 			isa = PBXGroup;
 			children = (
-				117AABA8247B1FBA00A63B34 /* Dependencies */,
 				117AAA7C2479FAE600A63B34 /* Samples.ObjC */,
 				117AAA7B2479FAE600A63B34 /* Products */,
 			);
@@ -211,14 +205,6 @@
 				117AAAEA2479FF7100A63B34 /* CreateOrderResponse.m */,
 			);
 			path = Responses;
-			sourceTree = "<group>";
-		};
-		117AABA8247B1FBA00A63B34 /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				117AABA9247B20D100A63B34 /* PayPalCheckout.framework */,
-			);
-			path = Dependencies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
