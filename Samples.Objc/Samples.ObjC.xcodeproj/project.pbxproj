@@ -135,8 +135,8 @@
 		06936DBD260A7F330099E314 /* AddItemViewController */ = {
 			isa = PBXGroup;
 			children = (
-				06936DBE260A7F330099E314 /* AddItemViewController.m */,
 				06936DBF260A7F330099E314 /* AddItemViewController.h */,
+				06936DBE260A7F330099E314 /* AddItemViewController.m */,
 				06936DC0260A7F330099E314 /* Views */,
 			);
 			path = AddItemViewController;
@@ -145,9 +145,9 @@
 		06936DC0260A7F330099E314 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				06936DC3260A7F330099E314 /* TextFieldCell.h */,
 				06936DC1260A7F330099E314 /* TextFieldCell.m */,
 				06936DC2260A7F330099E314 /* QuantityView.h */,
-				06936DC3260A7F330099E314 /* TextFieldCell.h */,
 				06936DC4260A7F330099E314 /* QuantityView.m */,
 			);
 			path = Views;
@@ -156,8 +156,8 @@
 		06936DC5260A7F330099E314 /* CheckoutViewController */ = {
 			isa = PBXGroup;
 			children = (
-				06936DC6260A7F330099E314 /* CheckoutViewController.m */,
 				06936DC7260A7F330099E314 /* CheckoutViewController.h */,
+				06936DC6260A7F330099E314 /* CheckoutViewController.m */,
 				06936DC8260A7F330099E314 /* Views */,
 			);
 			path = CheckoutViewController;
@@ -166,12 +166,12 @@
 		06936DC8260A7F330099E314 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				06936DCC260A7F330099E314 /* TotalCell.h */,
 				06936DC9260A7F330099E314 /* TotalCell.m */,
 				06936DCA260A7F330099E314 /* ItemCell.h */,
-				06936DCB260A7F330099E314 /* AddItemCell.h */,
-				06936DCC260A7F330099E314 /* TotalCell.h */,
-				06936DCD260A7F330099E314 /* AddItemCell.m */,
 				06936DCE260A7F330099E314 /* ItemCell.m */,
+				06936DCB260A7F330099E314 /* AddItemCell.h */,
+				06936DCD260A7F330099E314 /* AddItemCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -191,10 +191,10 @@
 		06936DD6260A7F330099E314 /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
-				06936DD7260A7F330099E314 /* CreateOrderEndpoint.m */,
 				06936DD8260A7F330099E314 /* FetchAccessTokenEndpoint.h */,
-				06936DD9260A7F330099E314 /* CreateOrderEndpoint.h */,
 				06936DDA260A7F330099E314 /* FetchAccessTokenEndpoint.m */,
+				06936DD9260A7F330099E314 /* CreateOrderEndpoint.h */,
+				06936DD7260A7F330099E314 /* CreateOrderEndpoint.m */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -202,10 +202,10 @@
 		06936DDB260A7F330099E314 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
-				06936DDC260A7F330099E314 /* CreateOrderResponse.m */,
 				06936DDD260A7F330099E314 /* AccessTokenResponse.h */,
-				06936DDE260A7F330099E314 /* CreateOrderResponse.h */,
 				06936DDF260A7F330099E314 /* AccessTokenResponse.m */,
+				06936DDE260A7F330099E314 /* CreateOrderResponse.h */,
+				06936DDC260A7F330099E314 /* CreateOrderResponse.m */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -213,10 +213,10 @@
 		06936DE0260A7F330099E314 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				06936DE1260A7F330099E314 /* CreateOrderRequest.m */,
 				06936DE2260A7F330099E314 /* FetchAccessTokenRequest.h */,
-				06936DE3260A7F330099E314 /* CreateOrderRequest.h */,
 				06936DE4260A7F330099E314 /* FetchAccessTokenRequest.m */,
+				06936DE3260A7F330099E314 /* CreateOrderRequest.h */,
+				06936DE1260A7F330099E314 /* CreateOrderRequest.m */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
