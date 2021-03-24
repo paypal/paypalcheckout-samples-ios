@@ -12,7 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AccessTokenResponse : NSObject
 
+@property (nonatomic) NSArray *scopes;
 @property (nonatomic) NSString *accessToken;
+@property (nonatomic) NSString *appId;
+@property (nonatomic) NSString  * _Nullable tokenType;
+@property (nonatomic) NSInteger expiresIn;
+@property (nonatomic) NSString *nonce;
+
 - (id)initWithData:(NSData *)data;
 
 @end

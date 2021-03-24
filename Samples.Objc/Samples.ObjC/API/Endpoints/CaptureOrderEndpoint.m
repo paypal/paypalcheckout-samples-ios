@@ -1,26 +1,26 @@
 //
-//  FetchAccessTokenEndpoint.m
+//  CaptureOrderEndpoint.m
 //  PayPalCheckout-Samples-iOS-Objc
 //
-//  Created by Haider Khan on 5/18/20.
+//  Created by Haider Khan on 5/29/20.
 //  Copyright © 2020 PayPal. All rights reserved.
 //
 
-#import "FetchAccessTokenEndpoint.h"
+#import "CaptureOrderEndpoint.h"
 
-@implementation FetchAccessTokenEndpoint
+@implementation CaptureOrderEndpoint
 
+/// Not needed as `href` in CaptureOrderRequest has our path.
 - (NSString *)path {
-  return @"auth/token";
+  return @"";
 }
 
 - (NSString *)method {
   return @"POST";
 }
 
-- (NSURLRequest *)urlRequestFor:(FetchAccessTokenRequest *)request {
-  NSString *baseUrlString = [[PayPalAPI shared] nodeAppBaseURL];
-  NSString *fullPath = [NSString stringWithFormat:@"%@%@", baseUrlString, [self path]];
+- (NSURLRequest *)urlRequestFor:(CaptureOrderRequest *)request {
+  NSString *fullPath = request.captureLink.href;
   NSURL *url = [NSURL URLWithString:fullPath];
   
   if (!url) {
@@ -30,8 +30,9 @@
   NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
   NSMutableURLRequest *mutableRequest = [urlRequest mutableCopy];
   [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+  NSString *accessToken = [[PayPalAPI shared] accessToken];
+  [mutableRequest addValue:[NSString stringWithFormat:@"Bearer %@", accessToken] forHTTPHeaderField:@"Authorization"];
   [mutableRequest setHTTPMethod:[self method]];
-  [mutableRequest setHTTPBody:[request jsonData]];
   return mutableRequest;
 }
 

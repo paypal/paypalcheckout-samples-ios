@@ -20,12 +20,27 @@
                                         error:&error];
     if (error == nil) {
       if ([dictionaryFromData valueForKey:@"id"]) {
-        NSString *orderId = [dictionaryFromData valueForKey:@"id"];
-        self.orderId = orderId;
+        NSString *id = [dictionaryFromData valueForKey:@"id"];
+        self.id = id;
+      }
+      if ([dictionaryFromData valueForKey:@"links"]) {
+        NSArray *linkDictionaries = [dictionaryFromData valueForKey:@"links"];
+        NSMutableArray *links = [NSMutableArray new];
+        for (NSDictionary *dictionary in linkDictionaries) {
+          Link *link = [[Link alloc] initWithDictionary:dictionary];
+          [links addObject:link];
+        }
+        self.links = links;
+      }
+      if ([dictionaryFromData valueForKey:@"status"]) {
+        NSString *orderStatus = [dictionaryFromData valueForKey:@"status"];
+        self.orderStatus = orderStatus;
       }
     }
     else {
-      self.orderId = @"";
+      self.id = @"";
+      self.links = @[];
+      self.orderStatus = nil;
     }
   }
   return self;
