@@ -1,20 +1,21 @@
 //
-//  FetchAccessTokenRequest.h
+//  CaptureOrderRequest.h
 //  PayPalCheckout-Samples-iOS-Objc
 //
-//  Created by Haider Khan on 5/18/20.
+//  Created by Haider Khan on 5/29/20.
 //  Copyright © 2020 PayPal. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "Link.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FetchAccessTokenRequest : NSObject
+@interface CaptureOrderRequest : NSObject
 
-@property (nonatomic) NSString *clientId;
+@property (nonatomic) Link *captureLink;
 
-- (id)initWith:(NSString *)clientId;
+- (id)initWith:(Link *)captureLink;
 - (NSDictionary *)properties;
 - (NSData *)jsonData;
 

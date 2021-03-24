@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  ViewController.h
 //  PayPalCheckout-Samples-iOS-Objc
 //
 //  Created by Haider Khan on 5/23/20.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface ViewController : UIViewController
 
 
 @end

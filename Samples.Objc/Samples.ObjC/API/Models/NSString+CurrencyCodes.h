@@ -1,5 +1,5 @@
 //
-//  CreateOrderEndpoint.h
+//  NSString+CurrencyCodes_EnumParser.h
 //  PayPalCheckout-Samples-iOS-Objc
 //
 //  Created by Haider Khan on 5/19/20.
@@ -7,14 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PayPalAPI.h"
-#import "CreateOrderRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CreateOrderEndpoint : NSObject <Endpoint>
+typedef NSString *CurrencyCodes NS_TYPED_EXTENSIBLE_ENUM;
+static CurrencyCodes const USD = @"USD";
 
-- (NSURLRequest *)urlRequestFor:(CreateOrderRequest *)request;
+@interface NSString (EnumParser)
+
+- (CurrencyCodes)parseCurrencyCode;
 
 @end
 
