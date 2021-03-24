@@ -33,17 +33,10 @@
   [self setupUI];
   [self setupTableView];
   [self setupConstraints];
+  [self setupPayPalCheckoutCallbacks];
 }
 
-- (void)tapCheckout {
-  if (self.items.count == 0) {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Can't checkout" message:@"Please add at least 1 item" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_){}];
-    [alert addAction:action];
-    [self presentViewController:alert animated:true completion:^{}];
-    return;
-  }
-  
+- (void)setupPayPalCheckoutCallbacks {
   [PPCheckout setOnApproveCallback:^(PPCApproval *approval) {
     if ([approval.data.intent isEqualToString:@"AUTHORIZE"]) {
       [approval.actions authorizeOnComplete:^(PPCAuthorizeActionSuccess *success, NSError *error) {
@@ -73,8 +66,29 @@
   }];
   
   [PPCheckout setOnErrorCallback:^(PPCErrorInfo *errorInfo) {
-    NSLog(@"Checkout failed with error: %@", errorInfo.error.localizedDescription);
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Checkout failed"
+                                                                   message:[NSString stringWithFormat:@"Error: %@", errorInfo.error.localizedDescription]
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction *_){}];
+    [alert addAction:action];
+    [self presentViewController:alert animated:true completion:^{}];
   }];
+}
+
+- (void)tapCheckout {
+  if (self.items.count == 0) {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Can't checkout"
+                                                                   message:@"Please add at least 1 item"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction *_){}];
+    [alert addAction:action];
+    [self presentViewController:alert animated:true completion:^{}];
+    return;
+  }
 
   [self startCheckout];
 }
