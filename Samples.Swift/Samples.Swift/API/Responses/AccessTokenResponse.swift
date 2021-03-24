@@ -7,14 +7,10 @@
 
 import Foundation
 
-class AccessTokenResponse: NSObject {
+struct AccessTokenResponse: Codable {
   let accessToken: String
 
-  init(data: Data) {
-    let dictionaryFromData = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
-
-    let accessToken = dictionaryFromData?["access_token"] as? String
-    self.accessToken = accessToken ?? ""
+  enum CodingKeys: String, CodingKey {
+    case accessToken = "access_token"
   }
-
 }

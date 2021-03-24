@@ -15,9 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let config: Config = {
       let config = Config(
-        clientID: "AeIKTLwecf4k2U8GsxKUzKdR3Tm2R7yT-tg6hVzx9GlpdBRFVEpI4xIdg1x1c1QZ5g2gy5RyyO4gFZeV", // replace with ENV file or blank
+        clientID: PayPal.clientId,
         universalLink: "",
-        uriScheme: "paypalcheckoutiosswiftsample://paypalpay", // replace with ENV file or blank
+        uriScheme: PayPal.uriScheme,
         environment: .sandbox
       )
       return config

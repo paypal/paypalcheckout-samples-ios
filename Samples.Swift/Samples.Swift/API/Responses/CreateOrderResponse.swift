@@ -7,13 +7,6 @@
 
 import Foundation
 
-class CreateOrderResponse: NSObject {
-  let orderId: String
-
-  init(data: Data) {
-    let dictionaryFromData = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
-
-    let orderId = dictionaryFromData?["id"] as? String
-    self.orderId = orderId ?? ""
-  }
+struct CreateOrderResponse: Codable {
+  let id: String
 }

@@ -55,7 +55,7 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
     Checkout with a cart created and let the SDK handle
       passing in the order ID
     */
-      Checkout.start { action in
+      Checkout.start(createOrder: { action in
         action.create(order: order) { orderId in
           if orderId == nil {
             print("There was an error with the format of your order object")
@@ -64,39 +64,44 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
             print("Order created with order ID \(String(describing: orderId))")
           }
         }
-      }
+      })
 
     /**
     Request an ECToken/orderID/payToken with PayPal Orders API,
     then checkout with `ECToken`/`orderID`/`payToken`
      */
     case 1:
-      Checkout.start { action in
-        // add in Haider's server side functionality
-        let clientId: String = "AeIKTLwecf4k2U8GsxKUzKdR3Tm2R7yT-tg6hVzx9GlpdBRFVEpI4xIdg1x1c1QZ5g2gy5RyyO4gFZeV"
+      Checkout.start(createOrder: { action in
+        let tokenRequest = AccessTokenRequest(clientId: PayPal.clientId)
 
-        let tokenRequest = FetchAccessTokenRequest.init(clientId: clientId)
+        PayPal.shared.request(on: .fetchAccessToken(tokenRequest)) { data, error in
 
-        self.fetchAccessToken(request: tokenRequest) { data, error in
-          if data == nil {
-            print("Fetch access token failed with no data.")
+          guard
+            let data = data,
+            let tokenResponse = try? PayPal.jsonDecoder.decode(AccessTokenResponse.self, from: data)
+          else {
+            print("Fetch access token failed with no data")
+            return
           }
 
-          let tokenResponse = AccessTokenResponse(data: data!)
-          let createOrderRequest = CreateOrderRequest.init(order: order, accessToken: tokenResponse.accessToken)
+          PayPal.shared.setAccessToken(tokenResponse.accessToken)
 
-          self.createOrder(request: createOrderRequest) { data, error in
-            if data == nil {
+          PayPal.shared.request(on: .createOrder(order)) {
+            data, error in
+            guard
+              let data = data,
+              let createOrderResponse = try? PayPal.jsonDecoder.decode(CreateOrderResponse.self, from: data)
+            else {
               print("Create order failed with no data")
+              return
             }
 
-            let orderResponse = CreateOrderResponse(data: data!)
-            action.set(orderId: orderResponse.orderId)
+            action.set(orderId: createOrderResponse.id)
           }
         }
-      }
+      })
     case 2:
-      // TODO: implement payment buttons once merged
+      // TODO: implement payment buttons logic
     break
 
     default:
@@ -331,38 +336,6 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
       total += totalUnitPrice + totalTaxPrice
     }
     return String(format: "%.2f", total)
-  }
-
-  func fetchAccessToken(
-    request: FetchAccessTokenRequest,
-    completion: @escaping (Data?, Error?) -> Void
-  ) {
-    let fetchAccessTokenEndpoint = FetchAccessTokenEndpoint()
-    let urlRequest = fetchAccessTokenEndpoint.urlRequestFor(request: request)
-
-    URLSession.shared.dataTask(with: urlRequest) { data, _, error in
-      if error != nil {
-        completion(nil, error)
-        return
-      }
-      completion(data, nil)
-    }.resume()
-  }
-
-  func createOrder(
-    request: CreateOrderRequest,
-    completion: @escaping (Data?, Error?) -> Void
-  ) {
-    let createOrderEndpoint = CreateOrderEndpoint()
-    let urlRequest = createOrderEndpoint.urlRequestFor(request: request)
-
-    URLSession.shared.dataTask(with: urlRequest) { data, _, error in
-      if error != nil {
-        completion(nil, error)
-        return
-      }
-      completion(data, nil)
-    }.resume()
   }
 
   // MARK: AddItemViewControllerDelegate
