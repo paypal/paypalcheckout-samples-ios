@@ -6,11 +6,16 @@
 //
 
 #import "FetchAccessTokenEndpoint.h"
+#import "PayPalAPI.h"
 
 @implementation FetchAccessTokenEndpoint
 
+- (NSString *)path {
+  return @"auth/token";
+}
+
 - (NSURLRequest *)urlRequestFor:(FetchAccessTokenRequest *)request {
-  NSString *urlString = @"https://api.sandbox.paypal.com/v1/oauth2/token";
+  NSString *urlString = [NSString stringWithFormat:@"%@%@", [PayPalAPI.shared nodeAppBaseURL], [self path]];
   NSURL *url = [NSURL URLWithString:urlString];
   
   if (!url) {

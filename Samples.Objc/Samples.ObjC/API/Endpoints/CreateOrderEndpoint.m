@@ -6,11 +6,16 @@
 //
 
 #import "CreateOrderEndpoint.h"
+#import "PayPalAPI.h"
 
 @implementation CreateOrderEndpoint
 
+- (NSString *)path {
+  return @"checkout/orders";
+}
+
 - (NSURLRequest *)urlRequestFor:(CreateOrderRequest *)request {
-  NSString *urlString = @"https://api.sandbox.paypal.com/v2/checkout/orders";
+  NSString *urlString = [NSString stringWithFormat:@"%@%@", [PayPalAPI.shared baseURLv2], [self path]];
   NSURL *url = [NSURL URLWithString:urlString];
   
   if (!url) {

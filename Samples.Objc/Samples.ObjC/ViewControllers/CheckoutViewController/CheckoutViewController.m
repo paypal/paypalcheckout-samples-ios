@@ -22,7 +22,6 @@
 @property (nonatomic) UISegmentedControl *segmentedControl;
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UIButton *checkoutButton;
-@property (nonatomic) PPCPaymentButton *paypalButton;
 @property (nonatomic) NSMutableArray<PPCPurchaseUnitItem *> *items;
 @end
 
@@ -126,10 +125,6 @@
                             onApprove:nil onCancel:nil onError:nil];
       break;
     }
-    case 2: {
-      // Checkout with PPCPaymentButton
-      break;
-    }
     default:
       break;
   }
@@ -185,7 +180,7 @@
 - (void)setupUI {
   self.view.backgroundColor = [UIColor whiteColor];
   
-  NSArray *options = @[@"Order", @"ECToken", @"PaymentButton"];
+  NSArray *options = @[@"Order", @"ECToken"];
   self.segmentedControl = [[UISegmentedControl alloc] initWithItems:options];
   [self.segmentedControl addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
   self.segmentedControl.selectedSegmentIndex = 0;
