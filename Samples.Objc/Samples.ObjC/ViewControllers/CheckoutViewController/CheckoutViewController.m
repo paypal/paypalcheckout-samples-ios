@@ -66,14 +66,7 @@
   }];
   
   [PPCheckout setOnErrorCallback:^(PPCErrorInfo *errorInfo) {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Checkout failed"
-                                                                   message:[NSString stringWithFormat:@"Error: %@", errorInfo.error.localizedDescription]
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK"
-                                                     style:UIAlertActionStyleDefault
-                                                   handler:^(UIAlertAction *_){}];
-    [alert addAction:action];
-    [self presentViewController:alert animated:true completion:^{}];
+    NSLog(@"Checkout failed with error: %@", errorInfo.error.localizedDescription);
   }];
 }
 
