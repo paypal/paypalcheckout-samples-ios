@@ -60,8 +60,14 @@
       @"value": purchaseUnit.amount.breakdown.itemTotal.value
     };
     
+    NSDictionary *breakdownTaxTotalDictionary = @{
+      @"currency_code": @"USD",
+      @"value": purchaseUnit.amount.breakdown.taxTotal.value
+    };
+    
     NSDictionary *breakdownDictionary = @{
-      @"item_total": breakdownItemTotalDictionary
+      @"item_total": breakdownItemTotalDictionary,
+      @"tax_total": breakdownTaxTotalDictionary
     };
     
     NSDictionary *purchaseUnitAmountDictionary = @{

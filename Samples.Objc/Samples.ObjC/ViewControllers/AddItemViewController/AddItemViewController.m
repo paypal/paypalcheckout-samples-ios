@@ -12,6 +12,7 @@
 @interface AddItemViewController ()
 @property (nonatomic) NSString *itemName;
 @property (nonatomic) NSString *itemPrice;
+@property (nonatomic) NSString *itemTax;
 @property (nonatomic) NSString *titleText;
 @property (nonatomic) NSString *buttonTitle;
 @property (nonatomic) UIView *containerView;
@@ -37,6 +38,7 @@
   self = [super init];
   self.itemName = item.name;
   self.itemPrice = item.unitAmount.value;
+  self.itemTax = item.tax.value;
   self.titleText = @"Edit item";
   self.buttonTitle = @"Save";
   return self;
@@ -87,7 +89,7 @@
 - (void)setButtonEnabled {
   if ([self.itemName isEqualToString:@""] || [self.itemPrice isEqualToString:@""]) {
     [self.saveButton setUserInteractionEnabled:false];
-    self.saveButton.backgroundColor = [UIColor systemGray5Color];
+    self.saveButton.backgroundColor = [UIColor systemGrayColor];
   } else {
     [self.saveButton setUserInteractionEnabled:true];
     self.saveButton.backgroundColor = [UIColor systemBlueColor];
@@ -98,7 +100,7 @@
   PPCPurchaseUnitItem *item = [[PPCPurchaseUnitItem alloc] initWithName:self.itemName
                                                              unitAmount:[[PPCUnitAmount alloc] initWithCurrencyCode:PPCCurrencyCodeUsd value:self.itemPrice]
                                                                quantity:[NSString stringWithFormat: @"%ld", (long)self.quantityView.quantity]
-                                                                    tax:nil
+                                                                    tax:[[PPCPurchaseUnitTax alloc] initWithCurrencyCode:PPCCurrencyCodeUsd value:self.itemTax]
                                                         itemDescription:nil
                                                                     sku:nil
                                                                category:PPCPurchaseUnitCategoryPhysicalGoods];
@@ -149,7 +151,7 @@
   [self.containerViewBottom setActive:true];
   [[self.containerView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor] setActive:true];
   [[self.containerView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor] setActive:true];
-  [[self.containerView.heightAnchor constraintEqualToConstant:320] setActive:true];
+  [[self.containerView.heightAnchor constraintEqualToConstant:368] setActive:true];
   
   [[self.titleLabel.centerXAnchor constraintEqualToAnchor:self.containerView.centerXAnchor] setActive:true];
   [[self.titleLabel.topAnchor constraintEqualToAnchor:self.containerView.topAnchor constant:16] setActive:true];
@@ -182,7 +184,13 @@
     }
     case 1:
     {
-      TextFieldCell *cell = [[TextFieldCell alloc] initWithTitle:@"Item price" andPlaceholder:@"Enter item price" andText:self.itemPrice andKeyboardType:UIKeyboardTypeDecimalPad];
+      TextFieldCell *cell = [[TextFieldCell alloc] initWithTitle:@"Price" andPlaceholder:@"Enter price" andText:self.itemPrice andKeyboardType:UIKeyboardTypeDecimalPad];
+      cell.delegate = self;
+      return cell;
+    }
+    case 2:
+    {
+      TextFieldCell *cell = [[TextFieldCell alloc] initWithTitle:@"Tax" andPlaceholder:@"Enter tax" andText:self.itemTax andKeyboardType:UIKeyboardTypeDecimalPad];
       cell.delegate = self;
       return cell;
     }
@@ -199,7 +207,7 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 2;
+  return 3;
 }
 
 // MARK: - TextFieldCellDelegate
@@ -211,6 +219,9 @@
       break;
     case 1:
       self.itemPrice = text;
+      break;
+    case 2:
+      self.itemTax = text;
       break;
     default:
       break;

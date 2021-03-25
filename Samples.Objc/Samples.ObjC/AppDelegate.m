@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate.h"
+#import "PayPalAPI.h"
 @import PayPalCheckout;
 
 @interface AppDelegate ()
@@ -15,9 +16,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  PPCheckoutConfig *config = [[PPCheckoutConfig alloc] initWithClientID:@"AeUWafOzgKsxilA4_2Cfzvu3czynOUcgQ2K-DxQryfQ1lb7pY6K35ILU-KRH27XXrPZ7Wcc-CyBZhnav"
+  PPCheckoutConfig *config = [[PPCheckoutConfig alloc] initWithClientID:[PayPalAPI.shared clientId]
                                                           universalLink:@""
-                                                              uriScheme:@"aaa://aaa"
+                                                              uriScheme:[PayPalAPI.shared uriScheme]
                                                             createOrder:nil
                                                               onApprove:nil
                                                                onCancel:nil

@@ -26,7 +26,7 @@
 
 - (void)setupUI {
   self.minusButton = [[UIButton alloc] init];
-  self.minusButton.backgroundColor = [UIColor systemGray3Color];
+  self.minusButton.backgroundColor = [UIColor systemBlueColor];
   self.minusButton.tintColor = [UIColor whiteColor];
   [self.minusButton setTitle:@"-" forState:UIControlStateNormal];
   [self.minusButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
@@ -35,7 +35,7 @@
   self.minusButton.layer.cornerRadius = 8;
   
   self.plusButton = [[UIButton alloc] init];
-  self.plusButton.backgroundColor = [UIColor systemGray3Color];
+  self.plusButton.backgroundColor = [UIColor systemBlueColor];
   self.plusButton.tintColor = [UIColor whiteColor];
   [self.plusButton setTitle:@"+" forState:UIControlStateNormal];
   [self.plusButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16]];

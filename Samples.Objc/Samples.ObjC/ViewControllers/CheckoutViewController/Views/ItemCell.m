@@ -12,6 +12,7 @@
 @property (nonatomic) UIStackView *stackView;
 @property (nonatomic) UILabel *nameLabel;
 @property (nonatomic) UILabel *priceLabel;
+@property (nonatomic) UILabel *taxLabel;
 
 @end
 
@@ -46,6 +47,11 @@
   self.priceLabel.text = [NSString stringWithFormat:@"Price: $%.2lf", [item.quantity doubleValue] * [item.unitAmount.value doubleValue]];
   [self.priceLabel sizeToFit];
   
+  self.taxLabel = [[UILabel alloc] init];
+  self.taxLabel.textColor = [UIColor blackColor];
+  self.taxLabel.font = [UIFont systemFontOfSize:12];
+  self.taxLabel.text = [NSString stringWithFormat:@"Tax: $%.2lf", [item.quantity doubleValue] * [item.tax.value doubleValue]];
+  
   self.stackView = [[UIStackView alloc] init];
   self.stackView.axis = UILayoutConstraintAxisVertical;
   self.stackView.distribution = UIStackViewDistributionEqualSpacing;
@@ -53,6 +59,7 @@
   self.stackView.spacing = 8;
   [self.stackView addArrangedSubview:self.nameLabel];
   [self.stackView addArrangedSubview:self.priceLabel];
+  [self.stackView addArrangedSubview:self.taxLabel];
 
   self.stackView.translatesAutoresizingMaskIntoConstraints = false;
 

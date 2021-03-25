@@ -139,13 +139,16 @@
 
 - (PPCOrderRequest*)getOrder {
   NSString *total = [self getTotal];
+  NSString *itemTotal = [self getItemTotal];
+  NSString *taxTotal = [self getTaxTotal];
   PPCPurchaseUnit *purchaseUnit = [[PPCPurchaseUnit alloc] initWithAmount:[[PPCPurchaseUnitAmount alloc] initWithCurrencyCode:PPCCurrencyCodeUsd
                                                                                                                         value:total
                                                                                                                     breakdown:[[PPCPurchaseUnitBreakdown alloc] initWithItemTotal:[[PPCUnitAmount alloc] initWithCurrencyCode:PPCCurrencyCodeUsd
-                                                                                                                                                                                                                        value:total]
+                                                                                                                                                                                                                        value:itemTotal]
                                                                                                                                                                          shipping:nil
                                                                                                                                                                          handling:nil
-                                                                                                                                                                         taxTotal:nil
+                                                                                                                                                                         taxTotal:[[PPCUnitAmount alloc] initWithCurrencyCode:PPCCurrencyCodeUsd
+                                                                                                                                                                                                                        value:taxTotal]
                                                                                                                                                                         insurance:nil
                                                                                                                                                                  shippingDiscount:nil
                                                                                                                                                                          discount:nil]]
@@ -176,7 +179,7 @@
   PPCPurchaseUnitItem *item = [[PPCPurchaseUnitItem alloc] initWithName:@"Sample item"
                                                              unitAmount:[[PPCUnitAmount alloc] initWithCurrencyCode:PPCCurrencyCodeUsd value:@"5.99"]
                                                                quantity:@"1"
-                                                                    tax:nil
+                                                                    tax:[[PPCPurchaseUnitTax alloc] initWithCurrencyCode:PPCCurrencyCodeUsd value:@"0.59"]
                                                         itemDescription:nil
                                                                     sku:nil
                                                                category:PPCPurchaseUnitCategoryPhysicalGoods];
@@ -250,8 +253,29 @@
   double total = 0;
   for (PPCPurchaseUnitItem* item in self.items) {
     double price = [item.unitAmount.value doubleValue];
+    double tax = [item.tax.value doubleValue];
+    double quantity = [item.quantity doubleValue];
+    total += (price + tax) * quantity;
+  }
+  return [[NSNumber numberWithDouble:total] stringValue];
+}
+
+- (NSString *)getItemTotal {
+  double total = 0;
+  for (PPCPurchaseUnitItem* item in self.items) {
+    double price = [item.unitAmount.value doubleValue];
     double quantity = [item.quantity doubleValue];
     total += price * quantity;
+  }
+  return [[NSNumber numberWithDouble:total] stringValue];
+}
+
+- (NSString *)getTaxTotal {
+  double total = 0;
+  for (PPCPurchaseUnitItem* item in self.items) {
+    double tax = [item.tax.value doubleValue];
+    double quantity = [item.quantity doubleValue];
+    total += tax * quantity;
   }
   return [[NSNumber numberWithDouble:total] stringValue];
 }
@@ -282,7 +306,7 @@
       return cell;
     }
   } else {
-    TotalCell *cell = [[TotalCell alloc] initWithTotal:[self getTotal]];
+    TotalCell *cell = [[TotalCell alloc] initWithTotal:[self getTotal] subtotal:[self getItemTotal] tax:[self getTaxTotal]];
     return cell;
   }
 }

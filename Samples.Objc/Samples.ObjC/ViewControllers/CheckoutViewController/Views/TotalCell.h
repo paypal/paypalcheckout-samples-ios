@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TotalCell : UITableViewCell
-- (instancetype)initWithTotal:(NSString *)total;
+- (instancetype)initWithTotal:(NSString *)total subtotal:(NSString *)subtotal tax:(NSString *)tax;
 @end
 
 NS_ASSUME_NONNULL_END
