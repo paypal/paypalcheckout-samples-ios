@@ -21,6 +21,7 @@
 @property (nonatomic) QuantityView *quantityView;
 @property (nonatomic) UIButton *saveButton;
 @property (nonatomic) NSLayoutConstraint *containerViewBottom;
+@property (nonatomic) NSLayoutConstraint *saveButtonBottom;
 @end
 
 @implementation AddItemViewController
@@ -29,6 +30,7 @@
   self = [super init];
   self.itemName = @"";
   self.itemPrice = @"";
+  self.itemTax = @"";
   self.titleText = @"Add to cart";
   self.buttonTitle = @"Add";
   return self;
@@ -59,6 +61,7 @@
 
 - (void)keyboardWillHide:(NSNotification *)notification {
   self.containerViewBottom.constant = 0;
+  self.saveButtonBottom.constant = -16;
   [UIView animateWithDuration:0.2 animations:^{
     [self.view layoutIfNeeded];
   }];
@@ -67,6 +70,7 @@
 - (void)keyboardWillShow:(NSNotification *)notification {
   if (notification.userInfo[UIKeyboardFrameEndUserInfoKey]) {
     self.containerViewBottom.constant = -[notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+    self.saveButtonBottom.constant = -16 - [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
     [UIView animateWithDuration:0.2 animations:^{
       [self.view layoutIfNeeded];
     }];
@@ -87,9 +91,9 @@
 }
 
 - (void)setButtonEnabled {
-  if ([self.itemName isEqualToString:@""] || [self.itemPrice isEqualToString:@""]) {
+  if ([self.itemName isEqualToString:@""] || [self.itemPrice isEqualToString:@""] || [self.itemTax isEqualToString:@""]) {
     [self.saveButton setUserInteractionEnabled:false];
-    self.saveButton.backgroundColor = [UIColor systemGrayColor];
+    self.saveButton.backgroundColor = [[UIColor systemBlueColor] colorWithAlphaComponent:0.5];
   } else {
     [self.saveButton setUserInteractionEnabled:true];
     self.saveButton.backgroundColor = [UIColor systemBlueColor];
@@ -141,7 +145,7 @@
   [self.containerView addSubview:self.titleLabel];
   [self.containerView addSubview:self.tableView];
   [self.containerView addSubview:self.quantityView];
-  [self.containerView addSubview: self.saveButton];
+  [self.view addSubview: self.saveButton];
   
   [self setButtonEnabled];
 }
@@ -149,9 +153,9 @@
 - (void)setupConstraints {
   self.containerViewBottom = [self.containerView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor];
   [self.containerViewBottom setActive:true];
-  [[self.containerView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor] setActive:true];
-  [[self.containerView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor] setActive:true];
-  [[self.containerView.heightAnchor constraintEqualToConstant:368] setActive:true];
+  [[self.containerView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor] setActive:true];
+  [[self.containerView.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor] setActive:true];
+  [[self.containerView.heightAnchor constraintEqualToConstant:360] setActive:true];
   
   [[self.titleLabel.centerXAnchor constraintEqualToAnchor:self.containerView.centerXAnchor] setActive:true];
   [[self.titleLabel.topAnchor constraintEqualToAnchor:self.containerView.topAnchor constant:16] setActive:true];
@@ -167,8 +171,9 @@
   [[self.quantityView.trailingAnchor constraintEqualToAnchor:self.saveButton.leadingAnchor constant:-16] setActive:true];
   [[self.quantityView.centerYAnchor constraintEqualToAnchor:self.saveButton.centerYAnchor] setActive:true];
   
+  self.saveButtonBottom = [self.saveButton.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-16];
   [[self.saveButton.trailingAnchor constraintEqualToAnchor:self.containerView.trailingAnchor constant:-16] setActive:true];
-  [[self.saveButton.bottomAnchor constraintEqualToAnchor:self.containerView.bottomAnchor constant:-16] setActive:true];
+  [self.saveButtonBottom setActive:true];
   [[self.saveButton.heightAnchor constraintEqualToConstant:40] setActive:true];
 }
 

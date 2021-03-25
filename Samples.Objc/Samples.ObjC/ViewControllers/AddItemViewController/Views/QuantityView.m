@@ -26,13 +26,13 @@
 
 - (void)setupUI {
   self.minusButton = [[UIButton alloc] init];
-  self.minusButton.backgroundColor = [UIColor systemBlueColor];
   self.minusButton.tintColor = [UIColor whiteColor];
   [self.minusButton setTitle:@"-" forState:UIControlStateNormal];
   [self.minusButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
   [self.minusButton addTarget:self action:@selector(tapMinus) forControlEvents:UIControlEventTouchUpInside];
   self.minusButton.translatesAutoresizingMaskIntoConstraints = false;
   self.minusButton.layer.cornerRadius = 8;
+  [self setupMinusButtonColor];
   
   self.plusButton = [[UIButton alloc] init];
   self.plusButton.backgroundColor = [UIColor systemBlueColor];
@@ -75,16 +75,26 @@
   [[self.stackView.trailingAnchor constraintEqualToAnchor:self.trailingAnchor] setActive:true];
 }
 
+- (void)setupMinusButtonColor {
+  if (self.quantity > 1) {
+    self.minusButton.backgroundColor = [UIColor systemBlueColor];
+  } else {
+    self.minusButton.backgroundColor = [[UIColor systemBlueColor] colorWithAlphaComponent:0.5];
+  }
+}
+
 - (void)tapMinus {
   if (self.quantity > 1) {
     self.quantity -= 1;
     [self setQuantityText];
+    [self setupMinusButtonColor];
   }
 }
 
 - (void)tapPlus {
   self.quantity += 1;
   [self setQuantityText];
+  [self setupMinusButtonColor];
 }
 
 - (void)setQuantityText {

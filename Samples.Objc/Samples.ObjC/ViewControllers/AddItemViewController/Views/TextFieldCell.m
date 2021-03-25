@@ -41,12 +41,6 @@
   [self.titleLabel sizeToFit];
   self.titleLabel.translatesAutoresizingMaskIntoConstraints = false;
   
-  UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 35.0f)];
-  toolbar.barStyle = UIBarStyleDefault;
-  UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-  UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneTyping)];
-  [toolbar setItems:[NSArray arrayWithObjects:flexibleSpace, barButtonItem, nil]];
-  
   self.textField = [[UITextField alloc] init];
   self.textField.textColor = [UIColor blackColor];
   self.textField.font = [UIFont systemFontOfSize:16];
@@ -54,7 +48,16 @@
   self.textField.text = text;
   self.textField.keyboardType = type;
   self.textField.returnKeyType = UIReturnKeyDone;
-  self.textField.inputAccessoryView = toolbar;
+  
+  if (type != UIKeyboardTypeDefault) {
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 35)];
+    toolbar.barStyle = UIBarStyleDefault;
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneTyping)];
+    [toolbar setItems:[NSArray arrayWithObjects:flexibleSpace, barButtonItem, nil]];
+    self.textField.inputAccessoryView = toolbar;
+  }
+  
   self.textField.translatesAutoresizingMaskIntoConstraints = false;
   self.textField.delegate = self;
 

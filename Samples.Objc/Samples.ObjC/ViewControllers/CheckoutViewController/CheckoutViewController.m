@@ -227,7 +227,7 @@
   
   [[self.checkoutButton.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:16] setActive:true];
   [[self.checkoutButton.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-16] setActive:true];
-  [[self.checkoutButton.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-16] setActive:true];
+  [[self.checkoutButton.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-16] setActive:true];
   [[self.checkoutButton.heightAnchor constraintEqualToConstant:40] setActive:true];
 }
 
