@@ -6,4 +6,14 @@
 //  Copyright © 2021 PayPal. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension String{
+   func convertDoubleToCurrency() -> String{
+    guard let amount = Double(self) else { return "" }
+       let numberFormatter = NumberFormatter()
+       numberFormatter.numberStyle = .currency
+       numberFormatter.locale = Locale(identifier: "en_US")
+    return numberFormatter.string(from: NSNumber(value: amount)) ?? ""
+   }
+}
