@@ -92,21 +92,19 @@
   switch (self.segmentedControl.selectedSegmentIndex) {
     case 0: {
       // Checkout with order
-      [PPCheckout startWithExperience:PPCExperienceNative
-             presentingViewController:self
-                          createOrder:^(PPCCreateOrderAction *action) {
+      [PPCheckout startWithPresentingViewController:self
+                                        createOrder:^(PPCCreateOrderAction *action) {
         [action createWithOrder:order completion:^(NSString *orderId) {
           NSLog(@"Order created with orderId: %@", orderId);
         }];
       }
-                            onApprove:nil onCancel:nil onError:nil];
+                                          onApprove:nil onCancel:nil onError:nil];
       break;
     }
     case 1: {
       // Request an ECToken/orderID/payToken with PayPal Orders API, then checkout with ECToken/orderID/payToken
-      [PPCheckout startWithExperience:PPCExperienceNative
-             presentingViewController:self
-                          createOrder:^(PPCCreateOrderAction *action) {
+      [PPCheckout startWithPresentingViewController:self
+                                        createOrder:^(PPCCreateOrderAction *action) {
         NSString *clientId = [PayPalAPI.shared clientId];
         FetchAccessTokenRequest *tokenRequest = [[FetchAccessTokenRequest alloc] initWith:clientId];
         [PayPalAPI.shared fetchAccessToken:tokenRequest completion:^(NSData *data, NSError *error) {
@@ -129,7 +127,7 @@
           }];
         }];
       }
-                            onApprove:nil onCancel:nil onError:nil];
+                                          onApprove:nil onCancel:nil onError:nil];
       break;
     }
     default:
