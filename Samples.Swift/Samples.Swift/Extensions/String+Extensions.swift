@@ -9,11 +9,12 @@
 import UIKit
 
 extension String{
-   func convertDoubleToCurrency() -> String{
+  func convertDoubleToCurrency(withQuantity quantity: String) -> String{
     guard let amount = Double(self) else { return "" }
+    guard let quantity = Double(quantity) else { return "" }
        let numberFormatter = NumberFormatter()
        numberFormatter.numberStyle = .currency
        numberFormatter.locale = Locale(identifier: "en_US")
-    return numberFormatter.string(from: NSNumber(value: amount)) ?? ""
+    return numberFormatter.string(from: NSNumber(value: amount * quantity)) ?? ""
    }
 }
