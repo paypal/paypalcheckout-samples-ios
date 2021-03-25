@@ -26,8 +26,8 @@ class PayPal {
   }()
 
   // MARK: - Attributes
-  static let clientId: String = "replace_with_your_client_id"
-  static let uriScheme: String = "replace_with_your_uri_scheme"
+  static let clientId: String = "<your_client_id>"
+  static let returnUrl: String = "<redirect_uri>"
   private static let nodeAppBaseURL: String = "http://localhost:3000/"
   private static let baseURLv2: String = "https://api.sandbox.paypal.com/v2/"
 

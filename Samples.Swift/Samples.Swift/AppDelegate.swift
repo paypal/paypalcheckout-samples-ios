@@ -14,12 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
     let config: Config = {
-      let config = Config(
-        clientID: PayPal.clientId,
-        universalLink: "",
-        uriScheme: PayPal.uriScheme,
-        environment: .sandbox
-      )
+      let config = Config(clientID: PayPal.clientId, returnUrl: PayPal.returnUrl)
       return config
     }()
 

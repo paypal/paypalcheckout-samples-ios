@@ -129,11 +129,11 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
         breakdown: PurchaseUnit.Breakdown(
           itemTotal: UnitAmount(
             currencyCode: .usd,
-            value: String(self.getItem())
+            value: String(self.getItemTotal())
           ),
           taxTotal: UnitAmount(
             currencyCode: .usd,
-            value: String(self.getTax())
+            value: String(self.getTaxTotal())
           )
         )
       ),
@@ -296,7 +296,7 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
     }
   }
 
-  func getItem() -> String {
+  func getItemTotal() -> String {
     var total: Double = 0
 
     for item in items {
@@ -309,7 +309,7 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
     return String(format: "%.2f", total)
   }
 
-  func getTax() -> String {
+  func getTaxTotal() -> String {
     var total: Double = 0
 
     for item in items {
@@ -391,7 +391,7 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
       guard
         let cell = tableView.dequeueReusableCell(withIdentifier: "TotalCell", for: indexPath) as? TotalCell
         else { return UITableViewCell() }
-      cell.setupUIWithTotal(withTotal: "$\(getTotal())")
+      cell.setupUIWithTotal(withSubtotal: "$\(getItemTotal())", withTax: "$\(getTaxTotal())", withTotal: "$\(getTotal())")
       return cell
     }
   }

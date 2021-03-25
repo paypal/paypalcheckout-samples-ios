@@ -11,12 +11,14 @@ import PayPalCheckout
 class ItemCell: UITableViewCell {
   let nameLabel = UILabel()
   let priceLabel = UILabel()
+  let taxLabel = UILabel()
 
   lazy var stackView: UIStackView = {
     let stackView = UIStackView(
       arrangedSubviews: [
         nameLabel,
-        priceLabel
+        priceLabel,
+        taxLabel
       ]
     )
     stackView.axis = .vertical
@@ -49,14 +51,18 @@ class ItemCell: UITableViewCell {
   func setupUIWithItem(withItem item: PurchaseUnit.Item) {
     nameLabel.textColor = .black
     nameLabel.font = .systemFont(ofSize: 16)
-    nameLabel.text = item.name
+    nameLabel.text = "\(item.quantity) x \(item.name)"
     nameLabel.sizeToFit()
 
     priceLabel.textColor = .black
     priceLabel.font = .systemFont(ofSize: 12)
-    let unitAmount = Double(item.unitAmount.value)
-    priceLabel.text = "Unit price: $\(String(format: "%.2f", unitAmount!)) USD"
+    priceLabel.text = "Price: \(item.unitAmount.value.convertDoubleToCurrency())"
     priceLabel.sizeToFit()
+
+    taxLabel.textColor = .black
+    taxLabel.font = .systemFont(ofSize: 12)
+    taxLabel.text = "Tax: \(item.tax?.value.convertDoubleToCurrency() ?? "")"
+    taxLabel.sizeToFit()
   }
 
   func setupConstraints() {
