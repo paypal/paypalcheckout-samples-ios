@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		117AAB0E247B066100A63B34 /* PayPalCheckout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 117AAB07247B059700A63B34 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		890D7BD8B53AB2D362A9785E /* Pods_Samples_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1BCA3368243D27008CE0725 /* Pods_Samples_Swift.framework */; };
 		BE21914A260CF5BA00ECE484 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE219149260CF5BA00ECE484 /* String+Extensions.swift */; };
+		BE21914D260D0D5B00ECE484 /* PayPalCheckout in Frameworks */ = {isa = PBXBuildFile; productRef = BE21914C260D0D5B00ECE484 /* PayPalCheckout */; };
 		BE7CF047260B7B6500288176 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7CF046260B7B6500288176 /* AppDelegate.swift */; };
 		BE7CF049260B7CB700288176 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7CF048260B7CB700288176 /* SceneDelegate.swift */; };
 		BE7CF04C260B7D4900288176 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7CF04B260B7D4900288176 /* UIViewController+Extensions.swift */; };
@@ -74,6 +75,7 @@
 			files = (
 				117AAB0D247B066100A63B34 /* PayPalCheckout.framework in Frameworks */,
 				890D7BD8B53AB2D362A9785E /* Pods_Samples_Swift.framework in Frameworks */,
+				BE21914D260D0D5B00ECE484 /* PayPalCheckout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +88,6 @@
 				3B5F5E0596B3A4A2C957C92E /* Pods-Samples.Swift.debug.xcconfig */,
 				3EA6358D496E4E499C773DEA /* Pods-Samples.Swift.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -240,6 +241,9 @@
 			dependencies = (
 			);
 			name = Samples.Swift;
+			packageProductDependencies = (
+				BE21914C260D0D5B00ECE484 /* PayPalCheckout */,
+			);
 			productName = "PayPalCheckout-Samples-iOS-Swift";
 			productReference = 117AAA9F2479FB4900A63B34 /* Samples.Swift.app */;
 			productType = "com.apple.product-type.application";
@@ -268,6 +272,9 @@
 				Base,
 			);
 			mainGroup = 117AAA962479FB4800A63B34;
+			packageReferences = (
+				BE21914B260D0D5B00ECE484 /* XCRemoteSwiftPackageReference "paypalcheckout-ios" */,
+			);
 			productRefGroup = 117AAAA02479FB4900A63B34 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -551,6 +558,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BE21914B260D0D5B00ECE484 /* XCRemoteSwiftPackageReference "paypalcheckout-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/paypal/paypalcheckout-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.40.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BE21914C260D0D5B00ECE484 /* PayPalCheckout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE21914B260D0D5B00ECE484 /* XCRemoteSwiftPackageReference "paypalcheckout-ios" */;
+			productName = PayPalCheckout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 117AAA972479FB4800A63B34 /* Project object */;
 }
