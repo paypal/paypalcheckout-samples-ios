@@ -215,7 +215,7 @@
 }
 
 - (void)setupConstraints {
-  [[self.segmentedControl.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:40] setActive:true];
+  [[self.segmentedControl.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:16] setActive:true];
   [[self.segmentedControl.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:16] setActive:true];
   [[self.segmentedControl.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-16] setActive:true];
   [[self.segmentedControl.heightAnchor constraintEqualToConstant:32] setActive:true];
