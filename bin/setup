@@ -4,6 +4,8 @@
 
 zsh_enabled=false;
 use_docker_enabled=false;
+use_carthage=false;
+use_cocoapods=false;
 nvm_remote_script_location=https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh;
 
 # Determine if we are using bash or zsh 
@@ -26,12 +28,24 @@ for arg in "$@"; do
     "--use-docker") 
       use_docker_enabled=true;
       set -- "$@" "-d" ;;
+    "--carthage")
+      use_carthage=true;;
+    "--cocoapods")
+      use_cocoapods=true;;
   esac
 done
 
 # Checks to see if we have the option --use-docker enabled
 function useDocker() {
   [ "$use_docker_enabled" = true ];
+}
+
+function useCarthage() {
+  [ "$use_carthage" = true ];
+}
+
+function useCocoapods() {
+  [ "$use_cocoapods" = true ];
 }
 
 # Execute remote script
@@ -147,10 +161,21 @@ fi
 
 echo '🔶 Setting up Carthage...\n'
 
-# 1. Setup Carthage 
-carthage update 
+# 1. Install dependency
+if useCocoapods; then
 
-echo '✅ Carthage Setup Completed\n'
+  pod install
+
+  echo '✅ Cocoapods Setup Completed\n'
+
+else
+
+  carthage update
+
+  echo '✅ Carthage Setup Completed\n'
+
+fi
+
 echo '🔶 Opening workspace...\n'
 
 # 2. Open Workspace
