@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   PPCheckoutConfig *config = [[PPCheckoutConfig alloc] initWithClientID:[PayPalAPI.shared clientId]
-                                                              returnUrl:@"<redirect_uri>"
+                                                              returnUrl:@"<return_url>"
                                                             createOrder:nil
                                                               onApprove:nil
                                                                onCancel:nil

@@ -3,7 +3,7 @@
 # If they give us the input on the command line use it
 clientId="${1-}"
 clientSecret="${2-}"
-redirectUri="${3-}"
+returnUrl="${3-}"
 
 ## Gather our input
 
@@ -29,13 +29,13 @@ if [[ "${clientSecret}" = "" ]]; then
   fi
 fi
 
-# Read redirect uri if provided 
-if [[ "${redirectUri}" = "" ]]; then 
-  printf "Please enter your \x1b[1mclient redirect uri\x1b[0m: "
-  read redirectUri
+# Read return url if provided 
+if [[ "${returnUrl}" = "" ]]; then 
+  printf "Please enter your \x1b[1mclient return url\x1b[0m: "
+  read returnUrl
 
-  if [[ "${redirectUri}" = "" ]]; then 
-    printf "\nCanceling; we need a redirect_uri from you"
+  if [[ "${returnUrl}" = "" ]]; then 
+    printf "\nCanceling; we need a return_url from you"
     exit 1
   fi 
 fi
@@ -46,13 +46,13 @@ function STATUS() {
 }
 
 # Check to see if we have enough parameters
-if [[ "${clientId}" = "" ]] || [[ "${clientSecret}" = "" ]] || [[ "${redirectUri}" = "" ]]; then
-  printf "Usage: setids <client_id> <client_secret> <redirect_uri>\n"
+if [[ "${clientId}" = "" ]] || [[ "${clientSecret}" = "" ]] || [[ "${returnUrl}" = "" ]]; then
+  printf "Usage: setids <client_id> <client_secret> <return_url>\n"
   exit 1
 fi
 
 # Let's get started
-printf "\nChecking for places where your client ids, secrets, and redirect uri are used\n\n"
+printf "\nChecking for places where your client ids, secrets, and return url are used\n\n"
 
 # Check to see if have a .env file and if not, create one
 printf "[    ] Check for an existing .env file"
@@ -75,12 +75,12 @@ printf "[    ] Updating swift files for CLIENT_ID..."
 find . -name "*.swift" -print0 | eval $sedString
 STATUS 32 done
 
-sedString=$(echo "xargs -0 sed -i '' 's,<redirect_uri>,${redirectUri},g'")
+sedString=$(echo "xargs -0 sed -i '' 's,<return_url>,${returnUrl},g'")
 
-printf "[    ] Updating objective-c files for redirect_uri..."
+printf "[    ] Updating objective-c files for return_url..."
 find . -name "*.m" -print0 | eval $sedString
 STATUS 32 done 
 
-printf "[    ] Updating swift files for redirect_uri..."
+printf "[    ] Updating swift files for return_url..."
 find . -name "*.swift" -print0 | eval $sedString
 STATUS 32 done
