@@ -178,7 +178,7 @@ if useCocoapods; then
 
   echo '✅ Cocoapods Setup Completed\n'
 
-else
+elif useCarthage; then
 
   echo '🔶 Setting up Carthage...\n'
 
