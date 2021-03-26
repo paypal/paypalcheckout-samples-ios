@@ -119,9 +119,9 @@ if ! exists brew; then
 fi
 
 if useCocoapods; then
-  if ! exists cocoapods; then
+  if ! exists pod; then
     printf 'Cocoapods not installed.\n'
-    promptInstall cocoapods
+    promptInstall pod
   fi
 else
   if ! exists carthage; then 

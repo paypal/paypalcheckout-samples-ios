@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06936DB9260A7DD50099E314 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB8260A7DD50099E314 /* PayPalCheckout.framework */; };
-		06936DBA260A7DD50099E314 /* PayPalCheckout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB8260A7DD50099E314 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		117AAAA32479FB4900A63B34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAA22479FB4900A63B34 /* AppDelegate.swift */; };
 		117AAAA52479FB4900A63B34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAA42479FB4900A63B34 /* SceneDelegate.swift */; };
 		117AAAA72479FB4900A63B34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAA62479FB4900A63B34 /* ViewController.swift */; };
@@ -23,20 +21,6 @@
 		117AAAC52479FBF100A63B34 /* CreateOrder.Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAC42479FBF100A63B34 /* CreateOrder.Response.swift */; };
 		11DF7A272481B1A7003B1AC2 /* CaptureOrder.Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DF7A262481B1A7003B1AC2 /* CaptureOrder.Request.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		117AAB01247B029D00A63B34 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				06936DBA260A7DD50099E314 /* PayPalCheckout.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		06936DB8260A7DD50099E314 /* PayPalCheckout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalCheckout.framework; path = ../Carthage/Build/iOS/PayPalCheckout.framework; sourceTree = "<group>"; };
@@ -62,7 +46,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06936DB9260A7DD50099E314 /* PayPalCheckout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +140,6 @@
 				117AAA9B2479FB4900A63B34 /* Sources */,
 				117AAA9C2479FB4900A63B34 /* Frameworks */,
 				117AAA9D2479FB4900A63B34 /* Resources */,
-				117AAB01247B029D00A63B34 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06936DB5260A7DC80099E314 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB4260A7DC80099E314 /* PayPalCheckout.framework */; };
-		06936DB6260A7DC80099E314 /* PayPalCheckout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB4260A7DC80099E314 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		06936DE7260A7F330099E314 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DBB260A7F320099E314 /* main.m */; };
 		06936DE8260A7F330099E314 /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DBE260A7F330099E314 /* AddItemViewController.m */; };
 		06936DE9260A7F330099E314 /* AddItemViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 06936DBF260A7F330099E314 /* AddItemViewController.h */; };
@@ -46,20 +44,6 @@
 		117AAAC92479FDBA00A63B34 /* PayPalAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAC82479FDBA00A63B34 /* PayPalAPI.m */; };
 		117AAAF1247A007800A63B34 /* PayPalAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAC72479FDBA00A63B34 /* PayPalAPI.h */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		117AABAD247B20F300A63B34 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				06936DB6260A7DC80099E314 /* PayPalCheckout.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		06936DB4260A7DC80099E314 /* PayPalCheckout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalCheckout.framework; path = ../Carthage/Build/iOS/PayPalCheckout.framework; sourceTree = "<group>"; };
@@ -108,7 +92,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06936DB5260A7DC80099E314 /* PayPalCheckout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +276,6 @@
 				117AAA762479FAE600A63B34 /* Sources */,
 				117AAA772479FAE600A63B34 /* Frameworks */,
 				117AAA782479FAE600A63B34 /* Resources */,
-				117AABAD247B20F300A63B34 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
