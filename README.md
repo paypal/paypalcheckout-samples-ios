@@ -13,8 +13,8 @@ This is a sample repository showcasing how to integrate the Native Checkout expe
     - [NVM](#nvm)
     - [Docker](#docker)
 3. [Setup](#setup)
-    - [Set Client ID / Client Secret / Return URL](#set-client-id---client-secret---return-url)
-    - [Setup Dependencies](#setup-dependencies)
+    - [Set Client ID / Client Secret / Return URL](#1-set-client-id--client-secret--return-url)
+    - [Setup Dependencies](#2-setup-dependencies)
 4. [Troubleshooting](#troubleshooting)
     - [NVM Issues](#nvm-issues)
 <!-- /TOC -->
