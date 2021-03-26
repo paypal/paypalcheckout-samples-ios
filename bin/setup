@@ -159,16 +159,18 @@ else
   fi
 fi
 
-echo '🔶 Setting up Carthage...\n'
-
 # 1. Install dependency
 if useCocoapods; then
+
+  echo '🔶 Setting up Cocoapods...\n'
 
   pod install
 
   echo '✅ Cocoapods Setup Completed\n'
 
 else
+
+  echo '🔶 Setting up Carthage...\n'
 
   carthage update
 
