@@ -3,6 +3,7 @@
 //  PayPalNativeCheckoutObjC
 //
 //  Created by Nguyen, The Nhat Minh on 3/9/21.
+//  Copyright © 2020 PayPal. All rights reserved.
 //
 
 #import "TextFieldCell.h"

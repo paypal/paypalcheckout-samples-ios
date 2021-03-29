@@ -2,7 +2,8 @@
 //  AppDelegate.h
 //  PayPalNativeCheckoutObjC
 //
-//  Created by Nguyen, The Nhat Minh on 3/8/21.
+//  Created by Haider Khan on 5/23/20.
+//  Copyright © 2020 PayPal. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
