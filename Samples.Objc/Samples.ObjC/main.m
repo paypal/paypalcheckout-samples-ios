@@ -1,8 +1,8 @@
 //
 //  main.m
-//  PayPalNativeCheckoutObjC
+//  PayPalCheckout-Samples-iOS-Objc
 //
-//  Created by Nguyen, The Nhat Minh on 3/8/21.
+//  Created by Haider Khan on 5/23/20.
 //  Copyright © 2020 PayPal. All rights reserved.
 //
 
