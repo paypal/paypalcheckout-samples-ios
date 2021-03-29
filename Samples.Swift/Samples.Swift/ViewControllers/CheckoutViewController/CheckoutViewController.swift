@@ -100,7 +100,6 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
           }
         }
       })
-    break
 
     default:
       break
