@@ -10,7 +10,7 @@
 
 @implementation CreateOrderRequest
 
-- (id)initWithOrder:(PPCOrderRequest*)order andAccessToken:(NSString*)token {
+- (id)initWithOrder:(PPCOrderRequest*)order accessToken:(NSString*)token {
   self = [super init];
   if (self) {
     self.order = order;
@@ -21,7 +21,7 @@
 
 - (NSDictionary *)properties {
   NSString *intentString = @"";
-  if (intentString == PPCOrderIntentCapture) {
+  if (self.order.intent == PPCOrderIntentCapture) {
     intentString = @"CAPTURE";
   } else {
     intentString = @"AUTHORIZE";

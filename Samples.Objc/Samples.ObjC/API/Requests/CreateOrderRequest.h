@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSString *accessToken;
 - (NSDictionary *)requestHeader;
 - (NSData *)requestBody;
-- (id)initWithOrder:(PPCOrderRequest*)order andAccessToken:(NSString*)token;
+- (id)initWithOrder:(PPCOrderRequest*)order accessToken:(NSString*)token;
 
 @end
 

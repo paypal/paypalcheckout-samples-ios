@@ -115,7 +115,7 @@
           }
           
           AccessTokenResponse *tokenResponse = [[AccessTokenResponse alloc] initWithData:data];
-          CreateOrderRequest *createOrderRequest = [[CreateOrderRequest alloc] initWithOrder:order andAccessToken:tokenResponse.accessToken];
+          CreateOrderRequest *createOrderRequest = [[CreateOrderRequest alloc] initWithOrder:order accessToken:tokenResponse.accessToken];
           
           [PayPalAPI.shared createOrder:createOrderRequest completion:^(NSData *data, NSError *error) {
             if (data == nil) {
