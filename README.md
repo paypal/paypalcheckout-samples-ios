@@ -17,6 +17,7 @@ This is a sample repository showcasing how to integrate the Native Checkout expe
     - [Setup Dependencies](#2-setup-dependencies)
 4. [Troubleshooting](#troubleshooting)
     - [NVM Issues](#nvm-issues)
+5. [Reference](#reference)
 <!-- /TOC -->
 
 ## Quick Setup
@@ -172,3 +173,7 @@ rm -rf ~/.npm
 ```
 
 Then rerun the `./bin/setup` script to install `nvm`.
+
+## Reference
+- [iOS Native Checkout SDK repo](https://github.com/paypal/paypalcheckout-ios)
+- [iOS Native Checkout Reference docs](https://paypal.github.io/mobile-checkout-docs/ios/reference/)
