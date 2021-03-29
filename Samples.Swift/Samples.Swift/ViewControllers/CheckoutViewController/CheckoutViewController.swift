@@ -107,18 +107,6 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
   }
 
   func getOrder() -> OrderRequest {
-    var itemsList = [PurchaseUnit.Item]()
-
-    for item in items {
-      let item = PurchaseUnit.Item(
-        name: item.name,
-        unitAmount: UnitAmount(currencyCode: .usd, value: item.unitAmount.value),
-        quantity: item.quantity,
-        tax: PurchaseUnit.Tax(currencyCode: .usd, value: String(item.tax?.value ?? ""))
-      )
-      itemsList.append(item)
-    }
-
     let purchaseUnit: PurchaseUnit = PurchaseUnit(
       amount: PurchaseUnit.Amount(
         currencyCode: .usd,
@@ -134,7 +122,7 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
           )
         )
       ),
-      items: itemsList
+      items: items
     )
 
 
@@ -239,22 +227,10 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
     case "AUTHORIZE":
       approval.actions.authorize { success, error in
         if let error = error {
-          print("Authorize Action Error Response: \(error.localizedDescription)")
-
-          let resultViewController = ResultViewController()
-          resultViewController.resultLabel.text = "Error 😕"
-          resultViewController.messageLabel.text = "Your order failed with \(error.localizedDescription)"
-          resultViewController.modalPresentationStyle = .fullScreen
-          self.present(resultViewController, animated: true)
+          self.errorResultAction(errorMessage: error.localizedDescription)
         }
         else if let success = success {
-          print("Successful Response Data: \(success.data.orderData)")
-
-          let resultViewController = ResultViewController()
-          resultViewController.resultLabel.text = "Success 😎"
-          resultViewController.messageLabel.text = "Your order number is \(success.data.id)"
-          resultViewController.modalPresentationStyle = .fullScreen
-          self.present(resultViewController, animated: true)
+          self.successResultAction(orderData: success.data.orderData, orderId: success.data.id)
         }
         else {
           print("Unhandled State: No Error and No Success Response")
@@ -264,21 +240,10 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
     case "CAPTURE", "SALE":
       approval.actions.capture { success, error in
         if let error = error {
-          print("Capture Action Error Response: \(error.localizedDescription)")
-
-          let resultViewController = ResultViewController()
-          resultViewController.resultLabel.text = "Error 😕"
-          resultViewController.messageLabel.text = "Your order failed with \(error.localizedDescription)"
-          resultViewController.modalPresentationStyle = .fullScreen
-          self.present(resultViewController, animated: true)
+          self.errorResultAction(errorMessage: error.localizedDescription)
         }
         else if let success = success {
-          print("Successful Response Data: \(success.data.orderData)")
-          let resultViewController = ResultViewController()
-          resultViewController.resultLabel.text = "Success 😎"
-          resultViewController.messageLabel.text = "Your order number is \(success.data.id)"
-          resultViewController.modalPresentationStyle = .fullScreen
-          self.present(resultViewController, animated: true)
+          self.successResultAction(orderData: success.data.orderData, orderId: success.data.id)
         }
         else {
           print("Unhandled State: No Error and No Success Response")
@@ -288,6 +253,28 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
     default:
       break
     }
+  }
+
+  func successResultAction(orderData: [String: Any], orderId: String) {
+    print("Successful Response Data: \(orderData)")
+
+    let resultViewController = ResultViewController()
+    resultViewController.resultLabel.text = "Success 😎"
+    resultViewController.messageLabel.text = "Your order number is \(orderId)"
+    resultViewController.modalPresentationStyle = .fullScreen
+
+    self.present(resultViewController, animated: true)
+  }
+
+  func errorResultAction(errorMessage: String) {
+      print("Capture Action Error Response: \(errorMessage)")
+
+      let resultViewController = ResultViewController()
+      resultViewController.resultLabel.text = "Error 😕"
+      resultViewController.messageLabel.text = "Your order failed with \(errorMessage)"
+      resultViewController.modalPresentationStyle = .fullScreen
+
+    self.present(resultViewController, animated: true)
   }
 
   func getItemTotal() -> String {
