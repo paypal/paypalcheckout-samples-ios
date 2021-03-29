@@ -100,8 +100,6 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
           }
         }
       })
-    case 2:
-      // TODO: implement payment buttons logic
     break
 
     default:
@@ -176,9 +174,9 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
 
   func setupUI() {
     view.backgroundColor = .white
-    let checkoutFlowOptions = ["Order", "ECToken", "Payment Button"]
+    let checkoutFlowOptions = ["Order", "ECToken"]
     checkoutFlowOption = UISegmentedControl(items: checkoutFlowOptions)
-    checkoutButton.setTitle("Checkout with Cart", for: .normal)
+    checkoutButton.setTitle("Checkout with Order", for: .normal)
 
     checkoutFlowOption.addTarget(
       self,
@@ -226,14 +224,11 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
     switch sender.selectedSegmentIndex {
     case 0:
       checkoutButton.isHidden = false
-      checkoutButton.setTitle("Checkout with Cart", for: .normal)
+      checkoutButton.setTitle("Checkout with Order", for: .normal)
 
     case 1:
       checkoutButton.isHidden = false
       checkoutButton.setTitle("Checkout with ECToken", for: .normal)
-
-    case 2:
-      checkoutButton.isHidden = true
 
     default:
       break
@@ -425,6 +420,7 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
         addItemViewController.delegate = self
         addItemViewController.index = indexPath.row
         present(addItemViewController, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
       }
       else {
         let addItemViewController = AddItemViewController(item: items[indexPath.row])
@@ -434,6 +430,7 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
         addItemViewController.index = indexPath.row
 
         present(addItemViewController, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
       }
     }
   }
@@ -455,9 +452,6 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
       } completion: { (Bool) in
         tableView.reloadData()
       }
-    }
-    else {
-
     }
   }
 }
