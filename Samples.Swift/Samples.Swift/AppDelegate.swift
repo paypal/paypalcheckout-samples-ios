@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
     let config: Config = {
-      let config = Config(clientID: PayPal.clientId, returnUrl: PayPal.returnUrl)
+      let config = Config(clientID: PayPal.clientId, returnUrl: PayPal.returnUrl, environment: .sandbox)
       return config
     }()
 
