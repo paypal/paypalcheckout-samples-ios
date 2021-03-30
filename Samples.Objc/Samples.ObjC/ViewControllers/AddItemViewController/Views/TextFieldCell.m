@@ -61,6 +61,7 @@
   
   [self.textField addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
   self.textField.translatesAutoresizingMaskIntoConstraints = false;
+  self.textField.delegate = self;
 
   [self.contentView addSubview:self.titleLabel];
   [self.contentView addSubview:self.textField];
@@ -82,5 +83,14 @@
   [[self.textField.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor constant:16] setActive:true];
   [[self.textField.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor constant:-16] setActive:true];
   [[self.textField.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor constant:-16] setActive:true];
+}
+
+// - MARK: UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  if (textField == self.textField) {
+    [textField resignFirstResponder];
+    return false;
+  }
+  return true;
 }
 @end

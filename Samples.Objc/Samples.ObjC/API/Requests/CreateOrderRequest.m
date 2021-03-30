@@ -68,6 +68,12 @@
         }];
       }
 
+      if (itemTotalDictionary) {
+        breakdownDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
+          @"item_total": itemTotalDictionary,
+        }];
+      }
+
       NSMutableDictionary *taxDictionary = nil;
       if (purchaseUnit.amount.breakdown.taxTotal) {
         taxDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
@@ -75,13 +81,15 @@
             @"value": purchaseUnit.amount.breakdown.taxTotal.value
         }];
       }
-
-      breakdownDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
-        @"item_total": itemTotalDictionary,
-      }];
       
       if (taxDictionary) {
-        [breakdownDictionary setValue:taxDictionary forKey:@"tax_total"];
+        if (breakdownDictionary) {
+          [breakdownDictionary setValue:taxDictionary forKey:@"tax_total"];
+        } else {
+          breakdownDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
+            @"tax_total": taxDictionary,
+          }];
+        }
       }
     }
         
