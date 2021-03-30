@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol TextFieldCellDelegate <NSObject>
-- (void)cell:(UITableViewCell *)cell textFieldDidEndEditing:(NSString *)text;
+- (void)cell:(UITableViewCell *)cell textDidChange:(NSString *)text;
 @end
 
 @interface TextFieldCell : UITableViewCell<UITextFieldDelegate>

@@ -14,6 +14,7 @@
 @property (nonatomic) NSString *itemName;
 @property (nonatomic) NSString *itemPrice;
 @property (nonatomic) NSString *itemTax;
+@property (nonatomic) NSString *itemQuantity;
 @property (nonatomic) NSString *titleText;
 @property (nonatomic) NSString *buttonTitle;
 @property (nonatomic) UIView *containerView;
@@ -32,6 +33,7 @@
   self.itemName = @"";
   self.itemPrice = @"";
   self.itemTax = @"";
+  self.itemQuantity = @"1";
   self.titleText = @"Add to cart";
   self.buttonTitle = @"Add";
   return self;
@@ -42,6 +44,7 @@
   self.itemName = item.name;
   self.itemPrice = item.unitAmount.value;
   self.itemTax = item.tax.value;
+  self.itemQuantity = item.quantity;
   self.titleText = @"Edit item";
   self.buttonTitle = @"Save";
   return self;
@@ -130,7 +133,7 @@
   self.tableView.alwaysBounceVertical = false;
   self.tableView.translatesAutoresizingMaskIntoConstraints = false;
   
-  self.quantityView = [[QuantityView alloc] initWithQuantity:1];
+  self.quantityView = [[QuantityView alloc] initWithQuantity:[self.itemQuantity integerValue]];
   self.quantityView.translatesAutoresizingMaskIntoConstraints = false;
   
   self.saveButton = [[UIButton alloc] init];
@@ -217,7 +220,7 @@
 }
 
 // MARK: - TextFieldCellDelegate
-- (void)cell:(UITableViewCell *)cell textFieldDidEndEditing:(NSString *)text {
+- (void)cell:(UITableViewCell *)cell textDidChange:(NSString *)text {
   NSInteger row = [self.tableView indexPathForCell:cell].row;
   switch (row) {
     case 0:

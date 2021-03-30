@@ -59,11 +59,15 @@
     self.textField.inputAccessoryView = toolbar;
   }
   
+  [self.textField addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
   self.textField.translatesAutoresizingMaskIntoConstraints = false;
-  self.textField.delegate = self;
 
   [self.contentView addSubview:self.titleLabel];
   [self.contentView addSubview:self.textField];
+}
+
+- (void)textFieldDidChange {
+  [self.delegate cell:self textDidChange:self.textField.text];
 }
 
 - (void)doneTyping {
@@ -78,18 +82,5 @@
   [[self.textField.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor constant:16] setActive:true];
   [[self.textField.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor constant:-16] setActive:true];
   [[self.textField.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor constant:-16] setActive:true];
-}
-
-// MARK: - UITextFieldDelegate
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-  [self.delegate cell:self textFieldDidEndEditing:self.textField.text];
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  if (textField == self.textField) {
-    [textField resignFirstResponder];
-    return false;
-  }
-  return true;
 }
 @end
