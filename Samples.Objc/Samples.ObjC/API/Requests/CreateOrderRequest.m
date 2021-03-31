@@ -102,9 +102,9 @@
       [purchaseUnitAmountDictionary setValue:breakdownDictionary forKey:@"breakdown"];
     }
     
-    NSDictionary *purchaseUnitDictionary = @{
+    NSMutableDictionary *purchaseUnitDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
       @"amount": purchaseUnitAmountDictionary,
-    };
+    }];
     
     if ([itemDictionaries count] != 0) {
       [purchaseUnitDictionary setValue:itemDictionaries forKey:@"items"];
