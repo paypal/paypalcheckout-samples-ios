@@ -10,8 +10,8 @@ import UIKit
 
 extension String {
   func convertDoubleToCurrency(withQuantity quantity: String) -> String? {
-    guard let amount = Double(self) else { return "" }
-    guard let quantity = Double(quantity) else { return "" }
+    guard let amount = Double(self), let quantity = Double(quantity) else { return nil
+    }
 
     let numberFormatter = NumberFormatter()
     numberFormatter.numberStyle = .currency
