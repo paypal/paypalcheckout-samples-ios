@@ -3,7 +3,7 @@
 //  paypalcheckout-iOS-swift-sample
 //
 //  Created by Jax DesMarais-Leder on 3/9/21.
-// Copyright © 2021 PayPal. All rights reserved.
+//  Copyright © 2021 PayPal. All rights reserved.
 //
 
 import PayPalCheckout

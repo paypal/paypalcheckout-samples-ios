@@ -3,7 +3,7 @@
 //  paypalcheckout-iOS-swift-sample
 //
 //  Created by Jax DesMarais-Leder on 3/10/21.
-// Copyright © 2021 PayPal. All rights reserved.
+//  Copyright © 2021 PayPal. All rights reserved.
 //
 
 import UIKit
@@ -57,7 +57,7 @@ class ItemCell: UITableViewCell {
 
     priceLabel.textColor = .black
     priceLabel.font = .systemFont(ofSize: 12)
-    priceLabel.text = "Price: \(item.unitAmount.value.convertDoubleToCurrency(withQuantity: item.quantity))"
+    priceLabel.text = "Price: \(item.unitAmount.value.convertDoubleToCurrency(withQuantity: item.quantity) ?? "")"
     priceLabel.sizeToFit()
 
     taxLabel.textColor = .black

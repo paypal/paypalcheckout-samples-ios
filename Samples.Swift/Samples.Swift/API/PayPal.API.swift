@@ -56,13 +56,7 @@ class PayPal {
     }
 
     var method: String {
-      switch self {
-      case .fetchAccessToken:
-        return "POST"
-
-      case .createOrder:
-        return "POST"
-      }
+      return "POST"
     }
 
     var urlRequest: URLRequest? {
