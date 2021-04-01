@@ -1,1 +1,1 @@
-binary "https://github.com/paypal/paypalcheckout-ios/raw/main/Carthage/PayPalCheckout.json" ~> 0.40.0
+binary "https://github.com/paypal/paypalcheckout-ios/raw/main/Carthage/PayPalCheckout.json" ~> 0.42.0
