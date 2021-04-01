@@ -10,20 +10,20 @@ import UIKit
 
 extension UIViewController {
 
-  func textField(
+  func newTextField(
     placeholder: String? = nil,
     defaultValue: String? = nil,
     clearButton: UITextField.ViewMode = .never
   ) -> UITextField {
-    let result = UITextField()
-    result.translatesAutoresizingMaskIntoConstraints = false
-    result.borderStyle = .roundedRect
-    result.placeholder = placeholder
-    result.text = defaultValue
-    result.clearButtonMode = clearButton
+    let textField = UITextField()
+    textField.translatesAutoresizingMaskIntoConstraints = false
+    textField.borderStyle = .roundedRect
+    textField.placeholder = placeholder
+    textField.text = defaultValue
+    textField.clearButtonMode = clearButton
     if let textDelegate = self as? UITextFieldDelegate {
-      result.delegate = textDelegate
+      textField.delegate = textDelegate
     }
-    return result
+    return textField
   }
 }

@@ -27,9 +27,10 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
   @objc
   func tapCheckout() {
     if items.count == 0 {
-      let ac = UIAlertController(title: "Cannot checkout", message: "Please add at least 1 item to the cart", preferredStyle: .alert)
-      ac.addAction(UIAlertAction(title: "Ok", style: .default))
-      self.present(ac, animated: true)
+      let alertController = UIAlertController(title: "Cannot checkout", message: "Please add at least 1 item to the cart", preferredStyle: .alert)
+      alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+      self.present(alertController, animated: true)
+      return
     }
 
     Checkout.setOnApproveCallback { approval in
@@ -54,7 +55,7 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
     case 0:
     /**
     Checkout with a cart created and let the SDK handle
-      passing in the order ID
+    passing in the order ID
     */
       Checkout.start(createOrder: { action in
         action.create(order: order) { orderId in

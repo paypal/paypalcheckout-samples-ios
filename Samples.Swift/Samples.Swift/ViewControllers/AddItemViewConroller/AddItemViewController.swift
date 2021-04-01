@@ -9,6 +9,10 @@
 import PayPalCheckout
 import UIKit
 
+protocol AddItemViewControllerDelegate {
+  func didTapSaveWithItem(item: PurchaseUnit.Item, at index: Int)
+}
+
 class AddItemViewController: UIViewController {
 
   var delegate: AddItemViewControllerDelegate?
@@ -31,28 +35,28 @@ class AddItemViewController: UIViewController {
   }()
 
   lazy var nameField: UITextField = {
-    let nameField = textField(
+    let nameField = newTextField(
       placeholder: "Item name"
     )
     return nameField
   }()
 
   lazy var amountField: UITextField = {
-    let amountField = textField(
+    let amountField = newTextField(
       placeholder: "Amount"
     )
     return amountField
   }()
 
   lazy var quantityField: UITextField = {
-    let quantityField = textField(
+    let quantityField = newTextField(
       placeholder: "Quantity"
     )
     return quantityField
   }()
 
   lazy var taxAmountField: UITextField = {
-    let taxAmountField = textField(
+    let taxAmountField = newTextField(
       placeholder: "Tax amount"
     )
     return taxAmountField
@@ -169,12 +173,12 @@ class AddItemViewController: UIViewController {
 
     popupBox.translatesAutoresizingMaskIntoConstraints = false
     stackView.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate(constraints())
+    NSLayoutConstraint.activate(getConstraints())
   }
 
   // MARK: - Constraints
 
-  private func constraints() -> [NSLayoutConstraint] {
+  private func getConstraints() -> [NSLayoutConstraint] {
     [
       popupBox.heightAnchor.constraint(equalToConstant: 300),
       popupBox.widthAnchor.constraint(equalToConstant: 300),
@@ -187,8 +191,4 @@ class AddItemViewController: UIViewController {
       stackView.trailingAnchor.constraint(equalTo: popupBox.trailingAnchor),
     ]
   }
-}
-
-protocol AddItemViewControllerDelegate {
-  func didTapSaveWithItem(item: PurchaseUnit.Item, at index: Int)
 }
