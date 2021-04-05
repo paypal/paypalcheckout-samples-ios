@@ -20,7 +20,7 @@
 }
 
 - (NSDictionary *)properties {
-  NSString *intentString = @"";
+  NSString *intentString;
   if (self.order.intent == PPCOrderIntentCapture) {
     intentString = @"CAPTURE";
   } else {
