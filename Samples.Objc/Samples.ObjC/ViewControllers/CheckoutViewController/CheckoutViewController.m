@@ -140,17 +140,25 @@
   NSString *total = [self getTotal];
   NSString *itemTotal = [self getItemTotal];
   NSString *taxTotal = [self getTaxTotal];
-  PPCPurchaseUnit *purchaseUnit = [[PPCPurchaseUnit alloc] initWithAmount:[[PPCPurchaseUnitAmount alloc] initWithCurrencyCode:PPCCurrencyCodeUsd
-                                                                                                                        value:total
-                                                                                                                    breakdown:[[PPCPurchaseUnitBreakdown alloc] initWithItemTotal:[[PPCUnitAmount alloc] initWithCurrencyCode:PPCCurrencyCodeUsd
-                                                                                                                                                                                                                        value:itemTotal]
-                                                                                                                                                                         shipping:nil
-                                                                                                                                                                         handling:nil
-                                                                                                                                                                         taxTotal:[[PPCUnitAmount alloc] initWithCurrencyCode:PPCCurrencyCodeUsd
-                                                                                                                                                                                                                        value:taxTotal]
-                                                                                                                                                                        insurance:nil
-                                                                                                                                                                 shippingDiscount:nil
-                                                                                                                                                                         discount:nil]]
+
+  PPCUnitAmount *itemTotalUnitAmount = [[PPCUnitAmount alloc] initWithCurrencyCode:PPCCurrencyCodeUsd
+                                                                             value:itemTotal];
+  PPCUnitAmount *taxTotalUnitAmount = [[PPCUnitAmount alloc] initWithCurrencyCode:PPCCurrencyCodeUsd
+                                                                            value:taxTotal];
+
+  PPCPurchaseUnitBreakdown *purchaseUnitBreakdown = [[PPCPurchaseUnitBreakdown alloc] initWithItemTotal:itemTotalUnitAmount
+                                                                                               shipping:nil
+                                                                                               handling:nil
+                                                                                               taxTotal:taxTotalUnitAmount
+                                                                                              insurance:nil
+                                                                                       shippingDiscount:nil
+                                                                                               discount:nil];
+
+  PPCPurchaseUnitAmount *purchaseUnitAmount = [[PPCPurchaseUnitAmount alloc] initWithCurrencyCode:PPCCurrencyCodeUsd
+                                                                                            value:total
+                                                                                        breakdown:purchaseUnitBreakdown];
+  
+  PPCPurchaseUnit *purchaseUnit = [[PPCPurchaseUnit alloc] initWithAmount:purchaseUnitAmount
                                                               referenceId:nil
                                                                     payee:nil
                                                        paymentInstruction:nil
@@ -160,9 +168,9 @@
                                                            softDescriptor:nil
                                                                     items:self.items
                                                                  shipping:nil];
-  NSArray<PPCPurchaseUnit *> *purchaseUnits = @[purchaseUnit];
+
   PPCOrderRequest *order = [[PPCOrderRequest alloc] initWithIntent:PPCOrderIntentAuthorize
-                                                     purchaseUnits:purchaseUnits
+                                                     purchaseUnits:@[purchaseUnit]
                                                              payer:nil
                                                 applicationContext:nil];
   return order;
