@@ -12,12 +12,15 @@ import PayPalCheckout
 class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
 
   let tableView = UITableView()
-  let checkoutButton = UIButton()
+  var checkoutButton = UIButton()
+  let paypalButton = PayPalButton(size: .expanded)
   var checkoutFlowOption = UISegmentedControl()
   var items = [PurchaseUnit.Item]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    paypalButton.isHidden = true
+
     setupSampleItem()
     setupUI()
     setupTableView()
@@ -103,6 +106,21 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
         }
       })
 
+    /**
+    Checkout with payment buttons
+    */
+    case 2:
+      Checkout.setCreateOrderCallback { action in
+        action.create(order: order) { orderId in
+          if orderId == nil {
+            print("There was an error with the format of your order object")
+          }
+          else {
+            print("Order created with order ID \(String(describing: orderId))")
+          }
+        }
+      }
+
     default:
       break
     }
@@ -163,7 +181,7 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
 
   func setupUI() {
     view.backgroundColor = .white
-    let checkoutFlowOptions = ["Order", "ECToken"]
+    let checkoutFlowOptions = ["Order", "ECToken", "Payment Button"]
     checkoutFlowOption = UISegmentedControl(items: checkoutFlowOptions)
     checkoutButton.setTitle("Checkout with Order", for: .normal)
 
@@ -185,9 +203,13 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
     checkoutButton.addTarget(self, action: #selector(tapCheckout), for: .touchUpInside)
     checkoutButton.translatesAutoresizingMaskIntoConstraints = false
 
+    paypalButton.addTarget(self, action: #selector(tapCheckout), for: .touchUpInside)
+    paypalButton.translatesAutoresizingMaskIntoConstraints = false
+
     view.addSubview(checkoutFlowOption)
     view.addSubview(tableView)
     view.addSubview(checkoutButton)
+    view.addSubview(paypalButton)
   }
 
   func setupConstraints() {
@@ -206,6 +228,11 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
     checkoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
     checkoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
     checkoutButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+
+    paypalButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+    paypalButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+    paypalButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
+    paypalButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
   }
 
   @objc
@@ -213,11 +240,17 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
     switch sender.selectedSegmentIndex {
     case 0:
       checkoutButton.isHidden = false
+      paypalButton.isHidden = true
       checkoutButton.setTitle("Checkout with Order", for: .normal)
 
     case 1:
       checkoutButton.isHidden = false
+      paypalButton.isHidden = true
       checkoutButton.setTitle("Checkout with ECToken", for: .normal)
+
+    case 2:
+      checkoutButton.isHidden = true
+      paypalButton.isHidden = false
 
     default:
       break
