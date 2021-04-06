@@ -20,98 +20,8 @@
 }
 
 - (NSDictionary *)properties {
-  NSString *intentString;
-  if (self.order.intent == PPCOrderIntentCapture) {
-    intentString = @"CAPTURE";
-  } else {
-    intentString = @"AUTHORIZE";
-  }
-
-  NSMutableArray *purchaseUnitDictionaries = [NSMutableArray new];
-  for (PPCPurchaseUnit *purchaseUnit in self.order.purchaseUnits) {
-    
-    NSMutableArray *itemDictionaries = [NSMutableArray new];
-    
-    if (purchaseUnit.items) {
-      for (PPCPurchaseUnitItem *item in purchaseUnit.items) {
-        
-        NSDictionary *itemUnitAmountDictionary = @{
-          @"currency_code": @"USD",
-          @"value": item.unitAmount.value
-        };
-        
-        NSString *itemCategoryString = nil;
-        if (item.category == PPCPurchaseUnitCategoryDigitalGoods) {
-          itemCategoryString = @"DIGITAL_GOODS";
-        } else {
-          itemCategoryString = @"PHYSICAL_GOODS";
-        }
-        
-        NSDictionary *itemDictionary = @{
-          @"name": item.name,
-          @"unit_amount": itemUnitAmountDictionary,
-          @"quantity": item.quantity,
-          @"category": itemCategoryString
-        };
-        
-        [itemDictionaries addObject:itemDictionary];
-      }
-    }
-
-    NSMutableDictionary *breakdownDictionary = nil;
-    if (purchaseUnit.amount.breakdown) {
-      NSMutableDictionary *itemTotalDictionary = nil;
-      if (purchaseUnit.amount.breakdown.itemTotal) {
-        itemTotalDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
-          @"currency_code": @"USD",
-          @"value": purchaseUnit.amount.breakdown.itemTotal.value
-        }];
-      }
-
-      if (itemTotalDictionary) {
-        breakdownDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
-          @"item_total": itemTotalDictionary,
-        }];
-      }
-
-      NSMutableDictionary *taxDictionary = nil;
-      if (purchaseUnit.amount.breakdown.taxTotal) {
-        taxDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
-            @"currency_code": @"USD",
-            @"value": purchaseUnit.amount.breakdown.taxTotal.value
-        }];
-      }
-      
-      if (taxDictionary) {
-        if (breakdownDictionary) {
-          [breakdownDictionary setValue:taxDictionary forKey:@"tax_total"];
-        } else {
-          breakdownDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
-            @"tax_total": taxDictionary,
-          }];
-        }
-      }
-    }
-        
-    NSMutableDictionary *purchaseUnitAmountDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
-      @"currency_code": @"USD",
-      @"value": purchaseUnit.amount.value,
-    }];
-
-    if (breakdownDictionary) {
-      [purchaseUnitAmountDictionary setValue:breakdownDictionary forKey:@"breakdown"];
-    }
-    
-    NSMutableDictionary *purchaseUnitDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
-      @"amount": purchaseUnitAmountDictionary,
-    }];
-    
-    if ([itemDictionaries count] != 0) {
-      [purchaseUnitDictionary setValue:itemDictionaries forKey:@"items"];
-    }
-
-    [purchaseUnitDictionaries addObject:purchaseUnitDictionary];
-  }
+  NSString *intentString = [self intentStringFromIntent:self.order.intent];
+  NSArray *purchaseUnitDictionaries = [self purchaseUnitDictionariesFromPurchaseUnits:self.order.purchaseUnits];
 
   return @{
     @"intent": intentString,
@@ -133,6 +43,133 @@
                       options:0
                       error:&error];
   return jsonData;
+}
+
+// MARK: - Utility
+- (NSString *)intentStringFromIntent:(PPCOrderIntent)intent {
+  if (intent == PPCOrderIntentCapture) {
+    return @"CAPTURE";
+  } else {
+    return @"AUTHORIZE";
+  }
+}
+
+- (NSArray *)purchaseUnitDictionariesFromPurchaseUnits:(NSArray<PPCPurchaseUnit *> *)purchaseUnits {
+  NSMutableArray *purchaseUnitDictionaries = [NSMutableArray new];
+
+  for (PPCPurchaseUnit *purchaseUnit in purchaseUnits) {
+    NSArray *itemDictionaries = [self itemDictionariesFromItems:purchaseUnit.items];
+    NSDictionary *breakdownDictionary = [self breakdownDictionaryFromBreakdown:purchaseUnit.amount.breakdown];
+    NSDictionary *purchaseUnitAmountDictionary = [self purchaseUnitAmountDictionaryFromBreakdownDictionary:breakdownDictionary value:purchaseUnit.amount.value];
+    NSDictionary *purchaseUnitDictionary = [self purchaseUnitDictionaryFromPurchaseUnitAmountDictionary:purchaseUnitAmountDictionary itemDictionaries:itemDictionaries];
+
+    [purchaseUnitDictionaries addObject:purchaseUnitDictionary];
+  }
+
+  return purchaseUnitDictionaries;
+}
+
+- (NSArray *)itemDictionariesFromItems:(NSArray<PPCPurchaseUnitItem *> *  _Nullable)items {
+  NSMutableArray *itemDictionaries = nil;
+
+  if (items) {
+    itemDictionaries = [NSMutableArray new];
+
+    for (PPCPurchaseUnitItem *item in items) {
+      NSDictionary *itemDictionary = [self itemDictionaryFromItem:item];
+      [itemDictionaries addObject:itemDictionary];
+    }
+  }
+
+  return itemDictionaries;
+}
+
+- (NSDictionary *)itemDictionaryFromItem:(PPCPurchaseUnitItem *)item {
+  NSDictionary *itemUnitAmountDictionary = @{
+    @"currency_code": @"USD",
+    @"value": item.unitAmount.value
+  };
+  
+  NSString *itemCategoryString = nil;
+  if (item.category == PPCPurchaseUnitCategoryDigitalGoods) {
+    itemCategoryString = @"DIGITAL_GOODS";
+  } else {
+    itemCategoryString = @"PHYSICAL_GOODS";
+  }
+  
+  NSDictionary *itemDictionary = @{
+    @"name": item.name,
+    @"unit_amount": itemUnitAmountDictionary,
+    @"quantity": item.quantity,
+    @"category": itemCategoryString
+  };
+
+  return itemDictionary;
+}
+
+- (NSDictionary *)breakdownDictionaryFromBreakdown:(PPCPurchaseUnitBreakdown * _Nullable)breakdown {
+  NSMutableDictionary *breakdownDictionary = nil;
+
+  if (breakdown) {
+    NSMutableDictionary *itemTotalDictionary = nil;
+    if (breakdown.itemTotal) {
+      itemTotalDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
+        @"currency_code": @"USD",
+        @"value": breakdown.itemTotal.value
+      }];
+    }
+
+    if (itemTotalDictionary) {
+      breakdownDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
+        @"item_total": itemTotalDictionary,
+      }];
+    }
+
+    NSMutableDictionary *taxDictionary = nil;
+    if (breakdown.taxTotal) {
+      taxDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
+          @"currency_code": @"USD",
+          @"value": breakdown.taxTotal.value
+      }];
+    }
+    
+    if (taxDictionary) {
+      if (breakdownDictionary) {
+        [breakdownDictionary setValue:taxDictionary forKey:@"tax_total"];
+      } else {
+        breakdownDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
+          @"tax_total": taxDictionary,
+        }];
+      }
+    }
+  }
+
+  return breakdownDictionary;
+}
+
+- (NSDictionary *)purchaseUnitAmountDictionaryFromBreakdownDictionary:(NSDictionary * _Nullable)breakdownDictionary value:(NSString *)value {
+  NSMutableDictionary *purchaseUnitAmountDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
+    @"currency_code": @"USD",
+    @"value": value,
+  }];
+
+  if (breakdownDictionary) {
+    [purchaseUnitAmountDictionary setValue:breakdownDictionary forKey:@"breakdown"];
+  }
+
+  return purchaseUnitAmountDictionary;
+}
+
+- (NSDictionary *)purchaseUnitDictionaryFromPurchaseUnitAmountDictionary:(NSDictionary *)purchaseUnitAmountDictionary itemDictionaries:(NSArray * _Nullable)itemDictionaries {
+  NSMutableDictionary *purchaseUnitDictionary = [[NSMutableDictionary alloc] initWithDictionary:@{
+    @"amount": purchaseUnitAmountDictionary,
+  }];
+  
+  if (itemDictionaries) {
+    [purchaseUnitDictionary setValue:itemDictionaries forKey:@"items"];
+  }
+
+  return purchaseUnitDictionary;
 }
 
 @end
