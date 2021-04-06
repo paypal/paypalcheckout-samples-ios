@@ -23,17 +23,6 @@
   return self;
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 - (void)setupUIWithTitle:(NSString *)title andPlaceholder:(NSString *)placeHolder andText:(NSString *)text andKeyboardType:(UIKeyboardType)type {
   self.titleLabel = [[UILabel alloc] init];
   self.titleLabel.textColor = [UIColor blackColor];
@@ -78,6 +67,7 @@
 - (void)setupConstraints {
   [[self.titleLabel.topAnchor constraintEqualToAnchor:self.contentView.topAnchor constant:16] setActive:true];
   [[self.titleLabel.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor constant:16] setActive:true];
+  [[self.titleLabel.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor constant:-16] setActive:true];
   [[self.titleLabel.bottomAnchor constraintEqualToAnchor:self.textField.topAnchor constant:-8] setActive:true];
   
   [[self.textField.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor constant:16] setActive:true];
@@ -87,10 +77,7 @@
 
 // - MARK: UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  if (textField == self.textField) {
-    [textField resignFirstResponder];
-    return false;
-  }
+  [textField resignFirstResponder];
   return true;
 }
 @end

@@ -27,14 +27,6 @@
   return self;
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-}
-
 - (void)setupUIWithTotal:(NSString *)total subtotal:(NSString *)subtotal tax:(NSString *)tax {
   self.subtotalLabel = [[UILabel alloc] init];
   self.subtotalLabel.textColor = [UIColor blackColor];

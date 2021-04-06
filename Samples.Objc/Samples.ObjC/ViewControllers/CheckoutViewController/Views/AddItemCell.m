@@ -24,14 +24,6 @@
   return self;
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-}
-
 - (void)setupUI {
   self.addItemLabel = [[UILabel alloc] init];
   self.addItemLabel.textColor = [UIColor systemBlueColor];

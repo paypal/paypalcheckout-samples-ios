@@ -30,7 +30,7 @@
   self.minusButton.tintColor = [UIColor whiteColor];
   [self.minusButton setTitle:@"-" forState:UIControlStateNormal];
   [self.minusButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
-  [self.minusButton addTarget:self action:@selector(tapMinus) forControlEvents:UIControlEventTouchUpInside];
+  [self.minusButton addTarget:self action:@selector(didTapMinus) forControlEvents:UIControlEventTouchUpInside];
   self.minusButton.translatesAutoresizingMaskIntoConstraints = false;
   self.minusButton.layer.cornerRadius = 8;
   [self setupMinusButtonColor];
@@ -40,7 +40,7 @@
   self.plusButton.tintColor = [UIColor whiteColor];
   [self.plusButton setTitle:@"+" forState:UIControlStateNormal];
   [self.plusButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
-  [self.plusButton addTarget:self action:@selector(tapPlus) forControlEvents:UIControlEventTouchUpInside];
+  [self.plusButton addTarget:self action:@selector(didTapPlus) forControlEvents:UIControlEventTouchUpInside];
   self.plusButton.translatesAutoresizingMaskIntoConstraints = false;
   self.plusButton.layer.cornerRadius = 8;
   
@@ -84,7 +84,7 @@
   }
 }
 
-- (void)tapMinus {
+- (void)didTapMinus {
   if (self.quantity > 1) {
     self.quantity -= 1;
     [self setQuantityText];
@@ -92,7 +92,7 @@
   }
 }
 
-- (void)tapPlus {
+- (void)didTapPlus {
   self.quantity += 1;
   [self setQuantityText];
   [self setupMinusButtonColor];

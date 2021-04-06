@@ -88,7 +88,7 @@
 }
 
 - (void)startCheckout {
-  PPCOrderRequest *order = [self getOrder];
+  PPCOrderRequest *order = [self createNewOrder];
   
   switch (self.segmentedControl.selectedSegmentIndex) {
     case 0: {
@@ -136,7 +136,7 @@
   }
 }
 
-- (PPCOrderRequest*)getOrder {
+- (PPCOrderRequest*)createNewOrder {
   NSString *total = [self getTotal];
   NSString *itemTotal = [self getItemTotal];
   NSString *taxTotal = [self getTaxTotal];
@@ -311,14 +311,10 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  if (indexPath.section == 0) {
-    if (indexPath.row >= self.items.count) {
-      return 48;
-    }
-    return UITableViewAutomaticDimension;
-  } else {
-    return UITableViewAutomaticDimension;
+  if (indexPath.section == 0 && indexPath.row >= self.items.count) {
+    return 48;
   }
+  return UITableViewAutomaticDimension;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -346,10 +342,7 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-  if (indexPath.section == 0 && indexPath.row < self.items.count) {
-    return true;
-  }
-  return false;
+  return indexPath.section == 0 && indexPath.row < self.items.count;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {

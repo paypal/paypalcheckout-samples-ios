@@ -27,31 +27,15 @@
   return self;
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-}
-
 - (void)setupUIWithItem:(PPCPurchaseUnitItem *)item andQuantity:(NSString *)quantity {
-  self.nameLabel = [[UILabel alloc] init];
-  self.nameLabel.textColor = [UIColor blackColor];
-  self.nameLabel.font = [UIFont systemFontOfSize:16];
-  self.nameLabel.text = [NSString stringWithFormat:@"%@ x %@", quantity, item.name];
-  [self.nameLabel sizeToFit];
-  
-  self.priceLabel = [[UILabel alloc] init];
-  self.priceLabel.textColor = [UIColor blackColor];
-  self.priceLabel.font = [UIFont systemFontOfSize:12];
-  self.priceLabel.text = [NSString stringWithFormat:@"Price: $%.2lf", [item.quantity doubleValue] * [item.unitAmount.value doubleValue]];
-  [self.priceLabel sizeToFit];
-  
-  self.taxLabel = [[UILabel alloc] init];
-  self.taxLabel.textColor = [UIColor blackColor];
-  self.taxLabel.font = [UIFont systemFontOfSize:12];
-  self.taxLabel.text = [NSString stringWithFormat:@"Tax: $%.2lf", [item.quantity doubleValue] * [item.tax.value doubleValue]];
+  self.nameLabel = [self createLabelWithText:[NSString stringWithFormat:@"%@ x %@", quantity, item.name]
+                                    fontSize:16];
+
+  self.priceLabel = [self createLabelWithText:[NSString stringWithFormat:@"Price: $%.2lf", [item.quantity doubleValue] * [item.unitAmount.value doubleValue]]
+                                     fontSize:12];
+
+  self.taxLabel = [self createLabelWithText:[NSString stringWithFormat:@"Tax: $%.2lf", [item.quantity doubleValue] * [item.tax.value doubleValue]]
+                                   fontSize:12];
   
   self.stackView = [[UIStackView alloc] init];
   self.stackView.axis = UILayoutConstraintAxisVertical;
@@ -77,6 +61,15 @@
 - (NSString *)getTotalPriceOfItem:(PPCPurchaseUnitItem *)item {
   NSNumber *total = [NSNumber numberWithDouble:[item.quantity doubleValue] * [item.unitAmount.value doubleValue]];
   return [total stringValue];
+}
+
+- (UILabel *)createLabelWithText:(NSString *)text fontSize:(NSInteger)fontSize {
+  UILabel *label = [[UILabel alloc] init];
+  label.textColor = [UIColor blackColor];
+  label.font = [UIFont systemFontOfSize:fontSize];
+  label.text = text;
+  [label sizeToFit];
+  return label;
 }
 
 @end
