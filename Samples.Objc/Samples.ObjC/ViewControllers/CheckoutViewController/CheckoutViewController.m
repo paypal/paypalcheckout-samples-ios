@@ -119,7 +119,7 @@
 
 /// createOrder callback:
 /// This will be called when PayPalCheckout starts creating an order
-/// createOrder callback: Use this if you want to create an order an get an order ID with PayPal Orders API by yourself
+/// Use this if you want to create an order an get an order ID with PayPal Orders API by yourself
 - (void)createOrderCallbackSetOrderIDWithAction:(PPCCreateOrderAction *)action {
   PPCOrderRequest *order = [self createNewOrder];
   
