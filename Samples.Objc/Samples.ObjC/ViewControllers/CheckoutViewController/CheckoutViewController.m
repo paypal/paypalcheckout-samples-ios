@@ -28,112 +28,43 @@
 
 @implementation CheckoutViewController
 
+// MARK: - Lifecycle
+
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self setupSampleItem];
   [self setupUI];
   [self setupTableView];
   [self setupConstraints];
-  [self setupPayPalCheckoutCallbacks];
 }
 
-- (void)setupPayPalCheckoutCallbacks {
-  [PPCheckout setOnApproveCallback:^(PPCApproval *approval) {
-    if ([approval.data.intent isEqualToString:@"AUTHORIZE"]) {
-      [approval.actions authorizeOnComplete:^(PPCAuthorizeActionSuccess *success, NSError *error) {
-        if (error) {
-          NSLog(@"Fail to authorize order with error %@", error.localizedDescription);
-        } else if (success) {
-          NSLog(@"Authorize order successfully");
-        } else {
-          NSLog(@"Authorize order: No error and no success response");
-        }
-      }];
-    } else if ([approval.data.intent isEqualToString:@"CAPTURE"] || [approval.data.intent isEqualToString:@"SALE"]) {
-      [approval.actions captureOnComplete:^(PPCCaptureActionSuccess *success, NSError *error) {
-        if (error) {
-          NSLog(@"Fail to capture order with error %@", error.localizedDescription);
-        } else if (success) {
-          NSLog(@"Capture order successfully");
-        } else {
-          NSLog(@"Capture order: No error and no success response");
-        }
-      }];
-    }
-  }];
-  
-  [PPCheckout setOnCancelCallback:^{
-    NSLog(@"Checkout cancelled");
-  }];
-  
-  [PPCheckout setOnErrorCallback:^(PPCErrorInfo *errorInfo) {
-    NSLog(@"Checkout failed with error: %@", errorInfo.error.localizedDescription);
-  }];
-}
-
-- (void)tapCheckout {
-  if (self.items.count == 0) {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Can't checkout"
-                                                                   message:@"Please add at least 1 item"
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK"
-                                                     style:UIAlertActionStyleDefault
-                                                   handler:^(UIAlertAction *_){}];
-    [alert addAction:action];
-    [self presentViewController:alert animated:true completion:^{}];
-    return;
-  }
-
-  [self startCheckout];
-}
+// MARK: - PayPalCheckout
 
 - (void)startCheckout {
-  PPCOrderRequest *order = [self createNewOrder];
-  
-  switch (self.segmentedControl.selectedSegmentIndex) {
-    case 0: {
-      // Checkout with order
-      [PPCheckout startWithPresentingViewController:self
-                                        createOrder:^(PPCCreateOrderAction *action) {
-        [action createWithOrder:order completion:^(NSString *orderId) {
-          NSLog(@"Order created with orderId: %@", orderId);
-        }];
-      }
-                                          onApprove:nil onCancel:nil onError:nil];
-      break;
+  [PPCheckout startWithPresentingViewController:self
+                                    createOrder:^(PPCCreateOrderAction *action) {
+    switch (self.segmentedControl.selectedSegmentIndex) {
+      case 0:
+        // Checkout with order
+        [self createOrderCallbackCreateOrderWithAction:action];
+        break;
+      case 1:
+        // Checkout with orderID/ECToken/payToken
+        [self createOrderCallbackSetOrderIDWithAction:action];
+        break;
+      default:
+        break;
     }
-    case 1: {
-      // Request an ECToken/orderID/payToken with PayPal Orders API, then checkout with ECToken/orderID/payToken
-      [PPCheckout startWithPresentingViewController:self
-                                        createOrder:^(PPCCreateOrderAction *action) {
-        NSString *clientId = [PayPalAPI.shared clientId];
-        FetchAccessTokenRequest *tokenRequest = [[FetchAccessTokenRequest alloc] initWith:clientId];
-        [PayPalAPI.shared fetchAccessToken:tokenRequest completion:^(NSData *data, NSError *error) {
-          if (data == nil) {
-            NSLog(@"Fetch access token failed with no data.");
-            return;
-          }
-          
-          AccessTokenResponse *tokenResponse = [[AccessTokenResponse alloc] initWithData:data];
-          CreateOrderRequest *createOrderRequest = [[CreateOrderRequest alloc] initWithOrder:order accessToken:tokenResponse.accessToken];
-          
-          [PayPalAPI.shared createOrder:createOrderRequest completion:^(NSData *data, NSError *error) {
-            if (data == nil) {
-              NSLog(@"Create order failed with no data.");
-              return;
-            }
-            
-            CreateOrderResponse *orderResponse = [[CreateOrderResponse alloc] initWithData:data];
-            [action setWithOrderId:orderResponse.orderId];
-          }];
-        }];
-      }
-                                          onApprove:nil onCancel:nil onError:nil];
-      break;
-    }
-    default:
-      break;
   }
+                                      onApprove:^(PPCApproval *approval) {
+    [self onApproveCallbackWithApproval:approval];
+  }
+                                       onCancel:^{
+    [self onCancelCallback];
+  }
+                                        onError:^(PPCErrorInfo *errorInfo) {
+    [self onErrorCallbackWithErrorInfo:errorInfo];
+  }];
 }
 
 - (PPCOrderRequest*)createNewOrder {
@@ -176,22 +107,86 @@
   return order;
 }
 
+/// createOrder callback:
+/// This will be called when PayPalCheckout starts creating an order
+/// Use this if you want PayPalCheckout to create an order and get an order ID for you internally via PayPal Orders API
+- (void)createOrderCallbackCreateOrderWithAction:(PPCCreateOrderAction *)action {
+  PPCOrderRequest *order = [self createNewOrder];
+  [action createWithOrder:order completion:^(NSString *orderId) {
+    NSLog(@"Order created with orderId: %@", orderId);
+  }];
+}
+
+/// createOrder callback:
+/// This will be called when PayPalCheckout starts creating an order
+/// createOrder callback: Use this if you want to create an order an get an order ID with PayPal Orders API by yourself
+- (void)createOrderCallbackSetOrderIDWithAction:(PPCCreateOrderAction *)action {
+  PPCOrderRequest *order = [self createNewOrder];
+  
+  NSString *clientId = [PayPalAPI.shared clientId];
+  FetchAccessTokenRequest *tokenRequest = [[FetchAccessTokenRequest alloc] initWith:clientId];
+  [PayPalAPI.shared fetchAccessToken:tokenRequest completion:^(NSData *data, NSError *error) {
+    if (data == nil) {
+      NSLog(@"Fetch access token failed with no data.");
+      return;
+    }
+    
+    AccessTokenResponse *tokenResponse = [[AccessTokenResponse alloc] initWithData:data];
+    CreateOrderRequest *createOrderRequest = [[CreateOrderRequest alloc] initWithOrder:order accessToken:tokenResponse.accessToken];
+    
+    [PayPalAPI.shared createOrder:createOrderRequest completion:^(NSData *data, NSError *error) {
+      if (data == nil) {
+        NSLog(@"Create order failed with no data.");
+        return;
+      }
+      
+      CreateOrderResponse *orderResponse = [[CreateOrderResponse alloc] initWithData:data];
+      [action setWithOrderId:orderResponse.orderId];
+    }];
+  }];
+}
+
+/// onApprove callback: This will be called when checkout with PayPalCheckout is completed, you will need to handle authorizing or capturing the funds in this callback
+- (void)onApproveCallbackWithApproval:(PPCApproval *)approval {
+  if ([approval.data.intent isEqualToString:@"AUTHORIZE"]) {
+    [approval.actions authorizeOnComplete:^(PPCAuthorizeActionSuccess *success, NSError *error) {
+      if (error) {
+        NSLog(@"Fail to authorize order with error %@", error.localizedDescription);
+      } else if (success) {
+        NSLog(@"Authorize order successfully");
+      } else {
+        NSLog(@"Authorize order: No error and no success response");
+      }
+    }];
+  } else if ([approval.data.intent isEqualToString:@"CAPTURE"] || [approval.data.intent isEqualToString:@"SALE"]) {
+    [approval.actions captureOnComplete:^(PPCCaptureActionSuccess *success, NSError *error) {
+      if (error) {
+        NSLog(@"Fail to capture order with error %@", error.localizedDescription);
+      } else if (success) {
+        NSLog(@"Capture order successfully");
+      } else {
+        NSLog(@"Capture order: No error and no success response");
+      }
+    }];
+  }
+}
+
+/// onCancel callback: This will be called when users cancel checkout
+- (void)onCancelCallback {
+  NSLog(@"Checkout cancelled");
+}
+
+/// onError callback: This will be call when an error occurs in the checkout session
+- (void)onErrorCallbackWithErrorInfo:(PPCErrorInfo *)errorInfo {
+  NSLog(@"Checkout failed with error: %@", errorInfo.error.localizedDescription);
+}
+
+// MARK: - UI
+
 - (void)setupTableView {
   [self.tableView registerClass:[AddItemCell class] forCellReuseIdentifier:@"AddItemCell"];
   self.tableView.delegate = self;
   self.tableView.dataSource = self;
-}
-
-- (void)setupSampleItem {
-  PPCPurchaseUnitItem *item = [[PPCPurchaseUnitItem alloc] initWithName:@"Sample item"
-                                                             unitAmount:[[PPCUnitAmount alloc] initWithCurrencyCode:PPCCurrencyCodeUsd value:@"5.99"]
-                                                               quantity:@"1"
-                                                                    tax:[[PPCPurchaseUnitTax alloc] initWithCurrencyCode:PPCCurrencyCodeUsd value:@"0.59"]
-                                                        itemDescription:nil
-                                                                    sku:nil
-                                                               category:PPCPurchaseUnitCategoryPhysicalGoods];
-  self.items = [[NSMutableArray alloc] init];
-  [self.items addObject:item];
 }
 
 - (void)setupUI {
@@ -254,6 +249,36 @@
     default:
       break;
   }
+}
+
+- (void)tapCheckout {
+  if (self.items.count == 0) {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Can't checkout"
+                                                                   message:@"Please add at least 1 item"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction *_){}];
+    [alert addAction:action];
+    [self presentViewController:alert animated:true completion:^{}];
+    return;
+  }
+
+  [self startCheckout];
+}
+
+// MARK: - Utility
+
+- (void)setupSampleItem {
+  PPCPurchaseUnitItem *item = [[PPCPurchaseUnitItem alloc] initWithName:@"Sample item"
+                                                             unitAmount:[[PPCUnitAmount alloc] initWithCurrencyCode:PPCCurrencyCodeUsd value:@"5.99"]
+                                                               quantity:@"1"
+                                                                    tax:[[PPCPurchaseUnitTax alloc] initWithCurrencyCode:PPCCurrencyCodeUsd value:@"0.59"]
+                                                        itemDescription:nil
+                                                                    sku:nil
+                                                               category:PPCPurchaseUnitCategoryPhysicalGoods];
+  self.items = [[NSMutableArray alloc] init];
+  [self.items addObject:item];
 }
 
 - (NSString *)getTotal {
