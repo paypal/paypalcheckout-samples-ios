@@ -7,6 +7,7 @@
 //
 
 #import "ItemCell.h"
+#import "UIViewController+Extension.h"
 
 @interface ItemCell ()
 
@@ -28,14 +29,17 @@
 }
 
 - (void)setupUIWithItem:(PPCPurchaseUnitItem *)item andQuantity:(NSString *)quantity {
-  self.nameLabel = [self createLabelWithText:[NSString stringWithFormat:@"%@ x %@", quantity, item.name]
-                                    fontSize:16];
+  self.nameLabel = [UIViewController labelWithText:[NSString stringWithFormat:@"%@ x %@", quantity, item.name]
+                                              font:[UIFont systemFontOfSize:16]
+                                             color:[UIColor blackColor]];
 
-  self.priceLabel = [self createLabelWithText:[NSString stringWithFormat:@"Price: $%.2lf", [item.quantity doubleValue] * [item.unitAmount.value doubleValue]]
-                                     fontSize:12];
+  self.priceLabel = [UIViewController labelWithText:[NSString stringWithFormat:@"Price: $%.2lf", [item.quantity doubleValue] * [item.unitAmount.value doubleValue]]
+                                               font:[UIFont systemFontOfSize:12]
+                                              color:[UIColor blackColor]];
 
-  self.taxLabel = [self createLabelWithText:[NSString stringWithFormat:@"Tax: $%.2lf", [item.quantity doubleValue] * [item.tax.value doubleValue]]
-                                   fontSize:12];
+  self.taxLabel = [UIViewController labelWithText:[NSString stringWithFormat:@"Tax: $%.2lf", [item.quantity doubleValue] * [item.tax.value doubleValue]]
+                                             font:[UIFont systemFontOfSize:12]
+                                            color:[UIColor blackColor]];
   
   self.stackView = [[UIStackView alloc] init];
   self.stackView.axis = UILayoutConstraintAxisVertical;
@@ -61,15 +65,6 @@
 - (NSString *)getTotalPriceOfItem:(PPCPurchaseUnitItem *)item {
   NSNumber *total = [NSNumber numberWithDouble:[item.quantity doubleValue] * [item.unitAmount.value doubleValue]];
   return [total stringValue];
-}
-
-- (UILabel *)createLabelWithText:(NSString *)text fontSize:(NSInteger)fontSize {
-  UILabel *label = [[UILabel alloc] init];
-  label.textColor = [UIColor blackColor];
-  label.font = [UIFont systemFontOfSize:fontSize];
-  label.text = text;
-  [label sizeToFit];
-  return label;
 }
 
 @end

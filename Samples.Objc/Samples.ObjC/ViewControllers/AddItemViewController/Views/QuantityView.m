@@ -7,6 +7,7 @@
 //
 
 #import "QuantityView.h"
+#import "UIViewController+Extension.h"
 
 @interface QuantityView ()
 @property (nonatomic) UIStackView *stackView;
@@ -26,28 +27,17 @@
 }
 
 - (void)setupUI {
-  self.minusButton = [[UIButton alloc] init];
-  self.minusButton.tintColor = [UIColor whiteColor];
-  [self.minusButton setTitle:@"-" forState:UIControlStateNormal];
-  [self.minusButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
+  self.minusButton = [UIViewController buttonWithColor:[UIColor systemBlueColor] textColor:[UIColor whiteColor] title:@"-" font:[UIFont boldSystemFontOfSize:16]];
   [self.minusButton addTarget:self action:@selector(didTapMinus) forControlEvents:UIControlEventTouchUpInside];
   self.minusButton.translatesAutoresizingMaskIntoConstraints = false;
-  self.minusButton.layer.cornerRadius = 8;
   [self setupMinusButtonColor];
-  
-  self.plusButton = [[UIButton alloc] init];
-  self.plusButton.backgroundColor = [UIColor systemBlueColor];
-  self.plusButton.tintColor = [UIColor whiteColor];
-  [self.plusButton setTitle:@"+" forState:UIControlStateNormal];
-  [self.plusButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
+
+  self.plusButton = [UIViewController buttonWithColor:[UIColor systemBlueColor] textColor:[UIColor whiteColor] title:@"+" font:[UIFont boldSystemFontOfSize:16]];
   [self.plusButton addTarget:self action:@selector(didTapPlus) forControlEvents:UIControlEventTouchUpInside];
   self.plusButton.translatesAutoresizingMaskIntoConstraints = false;
-  self.plusButton.layer.cornerRadius = 8;
-  
-  self.quantityLabel = [[UILabel alloc] init];
-  self.quantityLabel.font = [UIFont systemFontOfSize:16];
+
+  self.quantityLabel = [UIViewController labelWithText:@"" font:[UIFont systemFontOfSize:16] color:[UIColor blackColor]];
   self.quantityLabel.textAlignment = NSTextAlignmentCenter;
-  [self.quantityLabel sizeToFit];
   [self setQuantityText];
   self.quantityLabel.translatesAutoresizingMaskIntoConstraints = false;
   

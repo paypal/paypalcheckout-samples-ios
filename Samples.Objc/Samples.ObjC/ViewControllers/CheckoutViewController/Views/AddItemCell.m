@@ -7,6 +7,7 @@
 //
 
 #import "AddItemCell.h"
+#import "UIViewController+Extension.h"
 
 @interface AddItemCell ()
 
@@ -25,11 +26,7 @@
 }
 
 - (void)setupUI {
-  self.addItemLabel = [[UILabel alloc] init];
-  self.addItemLabel.textColor = [UIColor systemBlueColor];
-  self.addItemLabel.font = [UIFont systemFontOfSize:16];
-  self.addItemLabel.text = @"Add item";
-  [self.addItemLabel sizeToFit];
+  self.addItemLabel = [UIViewController labelWithText:@"Add item" font:[UIFont systemFontOfSize:16] color:[UIColor systemBlueColor]];
   self.addItemLabel.translatesAutoresizingMaskIntoConstraints = false;
   
   [self.contentView addSubview:self.addItemLabel];

@@ -7,6 +7,7 @@
 //
 
 #import "TotalCell.h"
+#import "UIViewController+Extension.h"
 
 @interface TotalCell ()
 
@@ -28,23 +29,15 @@
 }
 
 - (void)setupUIWithTotal:(NSString *)total subtotal:(NSString *)subtotal tax:(NSString *)tax {
-  self.subtotalLabel = [[UILabel alloc] init];
-  self.subtotalLabel.textColor = [UIColor blackColor];
-  self.subtotalLabel.font = [UIFont systemFontOfSize:14];
-  self.subtotalLabel.text = [NSString stringWithFormat:@"Subtotal: $%.2lf", [subtotal doubleValue]];
-  [self.subtotalLabel sizeToFit];
-  
-  self.taxLabel = [[UILabel alloc] init];
-  self.taxLabel.textColor = [UIColor blackColor];
-  self.taxLabel.font = [UIFont systemFontOfSize:14];
-  self.taxLabel.text = [NSString stringWithFormat:@"Tax: $%.2lf", [tax doubleValue]];
-  [self.taxLabel sizeToFit];
-  
-  self.totalLabel = [[UILabel alloc] init];
-  self.totalLabel.textColor = [UIColor blackColor];
-  self.totalLabel.font = [UIFont boldSystemFontOfSize:16];
-  self.totalLabel.text = [NSString stringWithFormat:@"Total: $%.2lf", [total doubleValue]];
-  [self.totalLabel sizeToFit];
+  self.subtotalLabel = [UIViewController labelWithText:[NSString stringWithFormat:@"Subtotal: $%.2lf", [subtotal doubleValue]]
+                                                  font:[UIFont systemFontOfSize:14]
+                                                 color:[UIColor blackColor]];
+  self.taxLabel = [UIViewController labelWithText:[NSString stringWithFormat:@"Tax: $%.2lf", [tax doubleValue]]
+                                             font:[UIFont systemFontOfSize:14]
+                                            color:[UIColor blackColor]];
+  self.totalLabel = [UIViewController labelWithText:[NSString stringWithFormat:@"Total: $%.2lf", [total doubleValue]]
+                                               font:[UIFont boldSystemFontOfSize:16]
+                                              color:[UIColor blackColor]];
   
   self.stackView = [[UIStackView alloc] init];
   self.stackView.axis = UILayoutConstraintAxisVertical;

@@ -16,6 +16,7 @@
 #import "CreateOrderEndpoint.h"
 #import "AccessTokenResponse.h"
 #import "CreateOrderResponse.h"
+#import "UIViewController+Extension.h"
 #import "PayPalAPI.h"
 @import PayPalCheckout;
 
@@ -201,16 +202,11 @@
   
   self.tableView = [[UITableView alloc] init];
   self.tableView.translatesAutoresizingMaskIntoConstraints = false;
-  
-  self.checkoutButton = [[UIButton alloc] init];
-  self.checkoutButton.layer.cornerRadius = 8;
-  self.checkoutButton.backgroundColor = [UIColor systemBlueColor];
-  self.checkoutButton.tintColor = [UIColor whiteColor];
-  [self.checkoutButton setTitle:@"Checkout with order" forState:UIControlStateNormal];
-  [self.checkoutButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
+
+  self.checkoutButton = [UIViewController buttonWithColor:[UIColor systemBlueColor] textColor:[UIColor whiteColor] title:@"Checkout with order" font:[UIFont boldSystemFontOfSize:16]];
   [self.checkoutButton addTarget:self action:@selector(didTapCheckout) forControlEvents:UIControlEventTouchUpInside];
   self.checkoutButton.translatesAutoresizingMaskIntoConstraints = false;
-    
+
   [self.view addSubview:self.segmentedControl];
   [self.view addSubview:self.tableView];
   [self.view addSubview: self.checkoutButton];

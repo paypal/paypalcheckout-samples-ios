@@ -7,6 +7,7 @@
 //
 
 #import "TextFieldCell.h"
+#import "UIViewController+Extension.h"
 
 @interface TextFieldCell ()
 @property (nonatomic) UILabel *titleLabel;
@@ -24,11 +25,7 @@
 }
 
 - (void)setupUIWithTitle:(NSString *)title andPlaceholder:(NSString *)placeHolder andText:(NSString *)text andKeyboardType:(UIKeyboardType)type {
-  self.titleLabel = [[UILabel alloc] init];
-  self.titleLabel.textColor = [UIColor blackColor];
-  self.titleLabel.font = [UIFont systemFontOfSize:12];
-  self.titleLabel.text = title;
-  [self.titleLabel sizeToFit];
+  self.titleLabel = [UIViewController labelWithText:title font:[UIFont systemFontOfSize:12] color:[UIColor blackColor]];
   self.titleLabel.translatesAutoresizingMaskIntoConstraints = false;
   
   self.textField = [[UITextField alloc] init];

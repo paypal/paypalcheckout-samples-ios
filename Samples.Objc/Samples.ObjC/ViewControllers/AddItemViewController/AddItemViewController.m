@@ -9,6 +9,7 @@
 #import "AddItemViewController.h"
 #import "TextFieldCell.h"
 #import "QuantityView.h"
+#import "UIViewController+Extension.h"
 
 @interface AddItemViewController ()
 @property (nonatomic) NSString *itemName;
@@ -123,10 +124,7 @@
   self.containerView.backgroundColor = [UIColor whiteColor];
   self.containerView.translatesAutoresizingMaskIntoConstraints = false;
   
-  self.titleLabel = [[UILabel alloc] init];
-  self.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-  self.titleLabel.text = self.titleText;
-  [self.titleLabel sizeToFit];
+  self.titleLabel = [UIViewController labelWithText:self.titleText font:[UIFont boldSystemFontOfSize:16] color:[UIColor blackColor]];
   self.titleLabel.translatesAutoresizingMaskIntoConstraints = false;
   
   self.tableView = [[UITableView alloc] init];
@@ -135,13 +133,8 @@
   
   self.quantityView = [[QuantityView alloc] initWithQuantity:[self.itemQuantity integerValue]];
   self.quantityView.translatesAutoresizingMaskIntoConstraints = false;
-  
-  self.saveButton = [[UIButton alloc] init];
-  self.saveButton.layer.cornerRadius = 8;
-  self.saveButton.backgroundColor = [UIColor systemBlueColor];
-  self.saveButton.tintColor = [UIColor whiteColor];
-  [self.saveButton.titleLabel setFont:[UIFont systemFontOfSize:16]];
-  [self.saveButton setTitle:self.buttonTitle forState:UIControlStateNormal];
+
+  self.saveButton = [UIViewController buttonWithColor:[UIColor systemBlueColor] textColor:[UIColor whiteColor] title:self.buttonTitle font:[UIFont systemFontOfSize:16]];
   [self.saveButton addTarget:self action:@selector(didTapSave) forControlEvents:UIControlEventTouchUpInside];
   self.saveButton.translatesAutoresizingMaskIntoConstraints = false;
   

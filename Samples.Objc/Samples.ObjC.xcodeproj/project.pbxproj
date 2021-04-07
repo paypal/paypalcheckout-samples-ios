@@ -43,6 +43,7 @@
 		06936E09260A7F330099E314 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DE6260A7F330099E314 /* SceneDelegate.m */; };
 		06D715F426127D0400B611B7 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB4260A7DC80099E314 /* PayPalCheckout.framework */; };
 		06D715F526127D0400B611B7 /* PayPalCheckout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB4260A7DC80099E314 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		06FFBAA7261E0617003FC893 /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FFBAA6261E0617003FC893 /* UIViewController+Extension.m */; };
 		117AAAC92479FDBA00A63B34 /* PayPalAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAC82479FDBA00A63B34 /* PayPalAPI.m */; };
 		117AAAF1247A007800A63B34 /* PayPalAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAC72479FDBA00A63B34 /* PayPalAPI.h */; };
 /* End PBXBuildFile section */
@@ -98,6 +99,8 @@
 		06936DE4260A7F330099E314 /* FetchAccessTokenRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchAccessTokenRequest.m; sourceTree = "<group>"; };
 		06936DE5260A7F330099E314 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		06936DE6260A7F330099E314 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		06FFBAA5261E0608003FC893 /* UIViewController+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extension.h"; sourceTree = "<group>"; };
+		06FFBAA6261E0617003FC893 /* UIViewController+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extension.m"; sourceTree = "<group>"; };
 		117AAA7A2479FAE600A63B34 /* Samples.ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samples.ObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		117AAAC72479FDBA00A63B34 /* PayPalAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayPalAPI.h; sourceTree = "<group>"; };
 		117AAAC82479FDBA00A63B34 /* PayPalAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayPalAPI.m; sourceTree = "<group>"; };
@@ -221,6 +224,15 @@
 			path = Requests;
 			sourceTree = "<group>";
 		};
+		06FFBAA4261E058F003FC893 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				06FFBAA5261E0608003FC893 /* UIViewController+Extension.h */,
+				06FFBAA6261E0617003FC893 /* UIViewController+Extension.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		117AAA712479FAE600A63B34 = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +253,7 @@
 		117AAA7C2479FAE600A63B34 /* Samples.ObjC */ = {
 			isa = PBXGroup;
 			children = (
+				06FFBAA4261E058F003FC893 /* Extensions */,
 				06936DD5260A7F330099E314 /* API */,
 				06936DBC260A7F330099E314 /* ViewControllers */,
 				06936DD4260A7F330099E314 /* AppDelegate.h */,
@@ -366,6 +379,7 @@
 				06936DF0260A7F330099E314 /* TotalCell.m in Sources */,
 				06936DED260A7F330099E314 /* QuantityView.m in Sources */,
 				06936DF4260A7F330099E314 /* AddItemCell.m in Sources */,
+				06FFBAA7261E0617003FC893 /* UIViewController+Extension.m in Sources */,
 				06936E08260A7F330099E314 /* AppDelegate.m in Sources */,
 				06936E03260A7F330099E314 /* AccessTokenResponse.m in Sources */,
 				06936DE7260A7F330099E314 /* main.m in Sources */,
