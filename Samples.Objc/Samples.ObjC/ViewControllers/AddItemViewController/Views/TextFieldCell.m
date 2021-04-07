@@ -77,7 +77,6 @@
 
 // - MARK: UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  [textField resignFirstResponder];
-  return true;
+  return [textField resignFirstResponder];
 }
 @end

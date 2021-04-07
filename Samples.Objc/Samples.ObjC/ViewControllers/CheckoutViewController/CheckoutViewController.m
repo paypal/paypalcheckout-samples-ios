@@ -41,8 +41,9 @@
 // MARK: - PayPalCheckout
 
 - (void)startCheckout {
-  [PPCheckout startWithPresentingViewController:self
-                                    createOrder:^(PPCCreateOrderAction *action) {
+  [PPCheckout
+  startWithPresentingViewController:self
+  createOrder:^(PPCCreateOrderAction *action) {
     switch (self.segmentedControl.selectedSegmentIndex) {
       case 0:
         // Checkout with order
@@ -56,13 +57,13 @@
         break;
     }
   }
-                                      onApprove:^(PPCApproval *approval) {
+  onApprove:^(PPCApproval *approval) {
     [self onApproveCallbackWithApproval:approval];
   }
-                                       onCancel:^{
+  onCancel:^{
     [self onCancelCallback];
   }
-                                        onError:^(PPCErrorInfo *errorInfo) {
+  onError:^(PPCErrorInfo *errorInfo) {
     [self onErrorCallbackWithErrorInfo:errorInfo];
   }];
 }
@@ -207,7 +208,7 @@
   self.checkoutButton.tintColor = [UIColor whiteColor];
   [self.checkoutButton setTitle:@"Checkout with order" forState:UIControlStateNormal];
   [self.checkoutButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
-  [self.checkoutButton addTarget:self action:@selector(tapCheckout) forControlEvents:UIControlEventTouchUpInside];
+  [self.checkoutButton addTarget:self action:@selector(didTapCheckout) forControlEvents:UIControlEventTouchUpInside];
   self.checkoutButton.translatesAutoresizingMaskIntoConstraints = false;
     
   [self.view addSubview:self.segmentedControl];
@@ -251,7 +252,7 @@
   }
 }
 
-- (void)tapCheckout {
+- (void)didTapCheckout {
   if (self.items.count == 0) {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Can't checkout"
                                                                    message:@"Please add at least 1 item"
