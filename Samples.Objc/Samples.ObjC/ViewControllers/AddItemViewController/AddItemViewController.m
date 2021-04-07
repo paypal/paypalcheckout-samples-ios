@@ -104,7 +104,7 @@
   }
 }
 
-- (void)tapSave {
+- (void)didTapSave {
   PPCPurchaseUnitItem *item = [[PPCPurchaseUnitItem alloc] initWithName:self.itemName
                                                              unitAmount:[[PPCUnitAmount alloc] initWithCurrencyCode:PPCCurrencyCodeUsd value:self.itemPrice]
                                                                quantity:[NSString stringWithFormat: @"%ld", (long)self.quantityView.quantity]
@@ -142,7 +142,7 @@
   self.saveButton.tintColor = [UIColor whiteColor];
   [self.saveButton.titleLabel setFont:[UIFont systemFontOfSize:16]];
   [self.saveButton setTitle:self.buttonTitle forState:UIControlStateNormal];
-  [self.saveButton addTarget:self action:@selector(tapSave) forControlEvents:UIControlEventTouchUpInside];
+  [self.saveButton addTarget:self action:@selector(didTapSave) forControlEvents:UIControlEventTouchUpInside];
   self.saveButton.translatesAutoresizingMaskIntoConstraints = false;
   
   [self.view addSubview:self.containerView];
