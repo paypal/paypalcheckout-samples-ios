@@ -83,10 +83,7 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
     let order = createNewOrder()
 
     switch self.checkoutFlowOption.selectedSegmentIndex {
-    /**
-     Checkout with a cart created and let the SDK handle
-     passing in the order ID
-     */
+    /// Checkout with a cart created and let the SDK handle passing in the order ID
     case 0:
       Checkout.start(
         createOrder: { action in
@@ -110,54 +107,50 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
         }
       )
 
-        /**
-        Request an ECToken/orderID/payToken with PayPal Orders API,
-        then checkout with `ECToken`/`orderID`/`payToken`
-         */
-        case 1:
-          Checkout.start(createOrder: { action in
-            let tokenRequest = AccessTokenRequest(clientId: PayPal.clientId)
+    /// Request an ECToken/orderID/payToken with PayPal Orders API,
+    /// then checkout with `ECToken`/`orderID`/`payToken`
+    case 1:
+      Checkout.start(createOrder: { action in
+        let tokenRequest = AccessTokenRequest(clientId: PayPal.clientId)
 
-            PayPal.shared.request(on: .fetchAccessToken(tokenRequest)) { data, error in
+        PayPal.shared.request(on: .fetchAccessToken(tokenRequest)) { data, error in
 
-              guard
-                let data = data,
-                let tokenResponse = try? PayPal.jsonDecoder.decode(AccessTokenResponse.self, from: data)
-              else {
-                print("Fetch access token failed with no data")
-                return
-              }
-
-              PayPal.shared.setAccessToken(tokenResponse.accessToken)
-
-              PayPal.shared.request(on: .createOrder(order)) {
-                data, error in
-                guard
-                  let data = data,
-                  let createOrderResponse = try? PayPal.jsonDecoder.decode(CreateOrderResponse.self, from: data)
-                else {
-                  print("Create order failed with no data")
-                  return
-                }
-
-                action.set(orderId: createOrderResponse.id)
-              }
-            }
-          },
-          onApprove: { approval in
-            self.processOrderActions(with: approval)
-          },
-          onCancel: {
-            print("Checkout cancelled")
-          },
-          onError: { errorInfo in
-            print("Checkout failed with error info \(errorInfo.error.localizedDescription)")
+          guard
+            let data = data,
+            let tokenResponse = try? PayPal.jsonDecoder.decode(AccessTokenResponse.self, from: data)
+          else {
+            print("Fetch access token failed with no data")
+            return
           }
-        )
 
-    /**
-     Checkout with payment buttons
-     */
+          PayPal.shared.setAccessToken(tokenResponse.accessToken)
+
+          PayPal.shared.request(on: .createOrder(order)) {
+            data, error in
+            guard
+              let data = data,
+              let createOrderResponse = try? PayPal.jsonDecoder.decode(CreateOrderResponse.self, from: data)
+            else {
+              print("Create order failed with no data")
+              return
+            }
+
+            action.set(orderId: createOrderResponse.id)
+          }
+        }
+      },
+      onApprove: { approval in
+        self.processOrderActions(with: approval)
+      },
+      onCancel: {
+        print("Checkout cancelled")
+      },
+      onError: { errorInfo in
+        print("Checkout failed with error info \(errorInfo.error.localizedDescription)")
+      }
+      )
+
+    /// Checkout with payment buttons
     case 2:
       Checkout.setCreateOrderCallback { action in
         action.create(order: order) { orderId in
