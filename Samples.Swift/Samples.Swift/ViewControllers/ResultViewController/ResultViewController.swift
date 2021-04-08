@@ -10,10 +10,7 @@ import UIKit
 
 class ResultViewController: UIViewController {
 
-  let resultView: UIView = {
-    let view = UIView()
-    return view
-  }()
+  let resultView = UIView()
 
   lazy var resultLabel: UILabel = {
     let label = UILabel()
@@ -69,7 +66,6 @@ class ResultViewController: UIViewController {
     view.backgroundColor = .white
 
     configure()
-    setupConstraints()
   }
 
   @objc
@@ -83,19 +79,23 @@ class ResultViewController: UIViewController {
 
     resultView.translatesAutoresizingMaskIntoConstraints = false
     stackView.translatesAutoresizingMaskIntoConstraints = false
+
+    NSLayoutConstraint.activate(getConstraints())
   }
 
   // MARK: - Constraints
 
-  private func setupConstraints() {
-    resultView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-    resultView.widthAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-    resultView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-    resultView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+  func getConstraints() -> [NSLayoutConstraint] {
+    [
+      resultView.heightAnchor.constraint(equalTo: view.heightAnchor),
+      resultView.widthAnchor.constraint(equalTo: view.heightAnchor),
+      resultView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      resultView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
-    stackView.centerXAnchor.constraint(equalTo: resultView.centerXAnchor).isActive = true
-    stackView.centerYAnchor.constraint(equalTo: resultView.centerYAnchor).isActive = true
-    stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-    stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+      stackView.centerXAnchor.constraint(equalTo: resultView.centerXAnchor),
+      stackView.centerYAnchor.constraint(equalTo: resultView.centerYAnchor),
+      stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+      stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+    ]
   }
 }

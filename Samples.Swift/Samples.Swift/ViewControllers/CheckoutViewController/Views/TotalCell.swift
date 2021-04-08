@@ -35,19 +35,11 @@ class TotalCell: UITableViewCell {
 
     stackView.translatesAutoresizingMaskIntoConstraints = false
     contentView.addSubview(stackView)
-    setupConstraints()
+    NSLayoutConstraint.activate(getConstraints())
   }
 
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
-  }
-
-  override func awakeFromNib() {
-    super.awakeFromNib()
-  }
-
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
   }
 
   func setupUIWithTotal(withSubtotal subtotal: String, withTax tax: String, withTotal total: String) {
@@ -67,10 +59,12 @@ class TotalCell: UITableViewCell {
     totalLabel.sizeToFit()
   }
 
-  func setupConstraints() {
-    stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16).isActive = true
-    stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16).isActive = true
-    stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
-    stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
+  func getConstraints() -> [NSLayoutConstraint] {
+    [
+      stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+      stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+      stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+      stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+    ]
   }
 }

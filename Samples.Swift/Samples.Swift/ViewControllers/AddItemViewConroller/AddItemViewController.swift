@@ -18,7 +18,7 @@ class AddItemViewController: UIViewController {
   var delegate: AddItemViewControllerDelegate?
   var index: Int?
 
-  let popupBox: UIView = {
+  lazy var popupBox: UIView = {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
     view.backgroundColor = .white
@@ -74,12 +74,6 @@ class AddItemViewController: UIViewController {
     return button
   }()
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    view.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
-    configure()
-  }
-
   lazy var stackView: UIStackView = {
     let stackView = UIStackView(
       arrangedSubviews: [
@@ -104,6 +98,12 @@ class AddItemViewController: UIViewController {
     return stackView
   }()
 
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+    configure()
+  }
+
   init() {
     super.init(nibName: nil, bundle: nil)
     self.nameField.text = ""
@@ -115,9 +115,7 @@ class AddItemViewController: UIViewController {
     addItemButton.setTitle("Add", for: .normal)
   }
 
-  init(
-    item: PurchaseUnit.Item
-  ) {
+  init(item: PurchaseUnit.Item) {
     super.init(nibName: nil, bundle: nil)
     self.nameField.text = item.name
     self.amountField.text = item.unitAmount.value
@@ -134,7 +132,7 @@ class AddItemViewController: UIViewController {
 
   @objc
   func addItemTapped() {
-    if nameField.text == "" || amountField.text == "" || quantityField.text == "" || taxAmountField.text == "" {
+    if nameField.isEmpty || amountField.isEmpty || quantityField.isEmpty || taxAmountField.isEmpty {
       let ac = UIAlertController(title: "Cannot add item", message: "Please ensure all item fields are filled out", preferredStyle: .alert)
       ac.addAction(UIAlertAction(title: "Ok", style: .default))
       self.present(ac, animated: true)
@@ -160,8 +158,7 @@ class AddItemViewController: UIViewController {
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     super.touchesBegan(touches, with: event)
 
-    let touch = touches.first
-    guard let location = touch?.location(in: self.view) else { return }
+    guard let location = touches.first?.location(in: self.view) else { return }
     if !popupBox.frame.contains(location) {
       dismiss(animated: true)
     }

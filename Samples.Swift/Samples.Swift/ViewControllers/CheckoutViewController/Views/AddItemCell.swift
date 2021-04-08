@@ -24,23 +24,17 @@ class AddItemCell: UITableViewCell {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
     contentView.addSubview(addItemLabel)
-    setupConstraints()
+    NSLayoutConstraint.activate(getConstraints())
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-  override func awakeFromNib() {
-    super.awakeFromNib()
-  }
-
-  override func setSelected(_ selected: Bool, animated: Bool) {
-      super.setSelected(selected, animated: animated)
-  }
-
-  func setupConstraints() {
-    addItemLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-    addItemLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+  func getConstraints() -> [NSLayoutConstraint] {
+    [
+      addItemLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+      addItemLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+    ]
   }
 }

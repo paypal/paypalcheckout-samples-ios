@@ -11,20 +11,60 @@ import PayPalCheckout
 
 class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
 
-  let tableView = UITableView()
-  var checkoutButton = UIButton()
-  let paypalButton = PayPalButton(size: .expanded)
-  var checkoutFlowOption = UISegmentedControl()
   var items = [PurchaseUnit.Item]()
+
+  lazy var tableView: UITableView = {
+    let tableView = UITableView()
+    tableView.register(AddItemCell.self, forCellReuseIdentifier: "AddItemCell")
+    tableView.register(ItemCell.self, forCellReuseIdentifier: "ItemCell")
+    tableView.register(TotalCell.self, forCellReuseIdentifier: "TotalCell")
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.translatesAutoresizingMaskIntoConstraints = false
+    return tableView
+  }()
+
+  lazy var checkoutButton: UIButton = {
+    let checkoutButton = UIButton()
+    checkoutButton.setTitle("Checkout with Order", for: .normal)
+    checkoutButton.layer.cornerRadius = 8
+    checkoutButton.backgroundColor = .systemBlue
+    checkoutButton.tintColor = .white
+    checkoutButton.titleLabel?.font = .boldSystemFont(ofSize: 16)
+    checkoutButton.addTarget(self, action: #selector(tapCheckout), for: .touchUpInside)
+    checkoutButton.translatesAutoresizingMaskIntoConstraints = false
+    return checkoutButton
+  }()
+
+  lazy var paypalButton: PayPalButton = {
+    let paypalButton = PayPalButton(size: .expanded)
+    paypalButton.addTarget(self, action: #selector(tapCheckout), for: .touchUpInside)
+    paypalButton.translatesAutoresizingMaskIntoConstraints = false
+    return paypalButton
+  }()
+
+  lazy var checkoutFlowOption: UISegmentedControl = {
+    let checkoutFlowOptions = ["Order", "ECToken", "Payment Button"]
+    let checkoutFlowOption = UISegmentedControl(items: checkoutFlowOptions)
+
+    checkoutFlowOption.addTarget(
+      self,
+      action: #selector(checkoutFlowOptionChanged),
+      for: .valueChanged
+    )
+
+    checkoutFlowOption.selectedSegmentIndex = 0
+    checkoutFlowOption.translatesAutoresizingMaskIntoConstraints = false
+    return checkoutFlowOption
+  }()
+
 
   override func viewDidLoad() {
     super.viewDidLoad()
     paypalButton.isHidden = true
 
     setupSampleItem()
-    setupUI()
-    setupTableView()
-    setupConstraints()
+    configure()
   }
 
   @objc
@@ -36,79 +76,88 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
       return
     }
 
-    Checkout.setOnApproveCallback { approval in
-      self.processOrderActions(with: approval)
-    }
-
-    Checkout.setOnCancelCallback {
-      print("Checkout cancelled")
-    }
-
-    Checkout.setOnErrorCallback { errorInfo in
-      print("Checkout failed with error info \(errorInfo.error.localizedDescription)")
-    }
-
     startNativeCheckout()
   }
 
   func startNativeCheckout() {
-    let order = getOrder()
+    let order = createNewOrder()
 
-    switch checkoutFlowOption.selectedSegmentIndex {
-    case 0:
+    switch self.checkoutFlowOption.selectedSegmentIndex {
     /**
-    Checkout with a cart created and let the SDK handle
-    passing in the order ID
-    */
-      Checkout.start(createOrder: { action in
-        action.create(order: order) { orderId in
-          if orderId == nil {
-            print("There was an error with the format of your order object")
-          }
-          else {
-            print("Order created with order ID \(String(describing: orderId))")
-          }
-        }
-      })
-
-    /**
-    Request an ECToken/orderID/payToken with PayPal Orders API,
-    then checkout with `ECToken`/`orderID`/`payToken`
+     Checkout with a cart created and let the SDK handle
+     passing in the order ID
      */
-    case 1:
-      Checkout.start(createOrder: { action in
-        let tokenRequest = AccessTokenRequest(clientId: PayPal.clientId)
-
-        PayPal.shared.request(on: .fetchAccessToken(tokenRequest)) { data, error in
-
-          guard
-            let data = data,
-            let tokenResponse = try? PayPal.jsonDecoder.decode(AccessTokenResponse.self, from: data)
-          else {
-            print("Fetch access token failed with no data")
-            return
-          }
-
-          PayPal.shared.setAccessToken(tokenResponse.accessToken)
-
-          PayPal.shared.request(on: .createOrder(order)) {
-            data, error in
-            guard
-              let data = data,
-              let createOrderResponse = try? PayPal.jsonDecoder.decode(CreateOrderResponse.self, from: data)
-            else {
-              print("Create order failed with no data")
-              return
+    case 0:
+      Checkout.start(
+        createOrder: { action in
+          action.create(order: order) { orderId in
+            if orderId == nil {
+              print("There was an error with the format of your order object")
             }
-
-            action.set(orderId: createOrderResponse.id)
+            else {
+              print("Order created with order ID \(String(describing: orderId))")
+            }
           }
+        },
+        onApprove: { approval in
+          self.processOrderActions(with: approval)
+        },
+        onCancel: {
+          print("Checkout cancelled")
+        },
+        onError: { errorInfo in
+          print("Checkout failed with error info \(errorInfo.error.localizedDescription)")
         }
-      })
+      )
+
+        /**
+        Request an ECToken/orderID/payToken with PayPal Orders API,
+        then checkout with `ECToken`/`orderID`/`payToken`
+         */
+        case 1:
+          Checkout.start(createOrder: { action in
+            let tokenRequest = AccessTokenRequest(clientId: PayPal.clientId)
+
+            PayPal.shared.request(on: .fetchAccessToken(tokenRequest)) { data, error in
+
+              guard
+                let data = data,
+                let tokenResponse = try? PayPal.jsonDecoder.decode(AccessTokenResponse.self, from: data)
+              else {
+                print("Fetch access token failed with no data")
+                return
+              }
+
+              PayPal.shared.setAccessToken(tokenResponse.accessToken)
+
+              PayPal.shared.request(on: .createOrder(order)) {
+                data, error in
+                guard
+                  let data = data,
+                  let createOrderResponse = try? PayPal.jsonDecoder.decode(CreateOrderResponse.self, from: data)
+                else {
+                  print("Create order failed with no data")
+                  return
+                }
+
+                action.set(orderId: createOrderResponse.id)
+              }
+            }
+          },
+          onApprove: { approval in
+            self.processOrderActions(with: approval)
+          },
+          onCancel: {
+            print("Checkout cancelled")
+          },
+          onError: { errorInfo in
+            print("Checkout failed with error info \(errorInfo.error.localizedDescription)")
+          }
+        )
 
     /**
-    Checkout with payment buttons
-    */
+     Checkout with payment buttons
+     */
     case 2:
       Checkout.setCreateOrderCallback { action in
         action.create(order: order) { orderId in
@@ -121,12 +170,24 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
         }
       }
 
+      Checkout.setOnApproveCallback { approval in
+        self.processOrderActions(with: approval)
+      }
+
+      Checkout.setOnCancelCallback {
+        print("Checkout cancelled")
+      }
+
+      Checkout.setOnErrorCallback { errorInfo in
+        print("Checkout failed with error info \(errorInfo.error.localizedDescription)")
+      }
+
     default:
       break
     }
   }
 
-  func getOrder() -> OrderRequest {
+  func createNewOrder() -> OrderRequest {
     let purchaseUnit: PurchaseUnit = PurchaseUnit(
       amount: PurchaseUnit.Amount(
         currencyCode: .usd,
@@ -154,15 +215,6 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
     return order
   }
 
-  func setupTableView() {
-    tableView.register(AddItemCell.self, forCellReuseIdentifier: "AddItemCell")
-    tableView.register(ItemCell.self, forCellReuseIdentifier: "ItemCell")
-    tableView.register(TotalCell.self, forCellReuseIdentifier: "TotalCell")
-
-    tableView.delegate = self
-    tableView.dataSource = self
-  }
-
   func setupSampleItem() {
     let item: PurchaseUnit.Item = PurchaseUnit.Item(
       name: "Sample item",
@@ -179,60 +231,39 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
     items.append(item)
   }
 
-  func setupUI() {
+  func configure() {
     view.backgroundColor = .white
-    let checkoutFlowOptions = ["Order", "ECToken", "Payment Button"]
-    checkoutFlowOption = UISegmentedControl(items: checkoutFlowOptions)
-    checkoutButton.setTitle("Checkout with Order", for: .normal)
-
-    checkoutFlowOption.addTarget(
-      self,
-      action: #selector(checkoutFlowOptionChanged),
-      for: .valueChanged
-    )
-
-    checkoutFlowOption.selectedSegmentIndex = 0
-    checkoutFlowOption.translatesAutoresizingMaskIntoConstraints = false
-
-    tableView.translatesAutoresizingMaskIntoConstraints = false
-
-    checkoutButton.layer.cornerRadius = 8
-    checkoutButton.backgroundColor = .systemBlue
-    checkoutButton.tintColor = .white
-    checkoutButton.titleLabel?.font = .boldSystemFont(ofSize: 16)
-    checkoutButton.addTarget(self, action: #selector(tapCheckout), for: .touchUpInside)
-    checkoutButton.translatesAutoresizingMaskIntoConstraints = false
-
-    paypalButton.addTarget(self, action: #selector(tapCheckout), for: .touchUpInside)
-    paypalButton.translatesAutoresizingMaskIntoConstraints = false
 
     view.addSubview(checkoutFlowOption)
     view.addSubview(tableView)
     view.addSubview(checkoutButton)
     view.addSubview(paypalButton)
+
+    NSLayoutConstraint.activate(getConstraints())
   }
 
-  func setupConstraints() {
-    checkoutFlowOption.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-    checkoutFlowOption.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-    checkoutFlowOption.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-    checkoutFlowOption.heightAnchor.constraint(equalToConstant: 32).isActive = true
-    checkoutFlowOption.bottomAnchor.constraint(equalTo: tableView.topAnchor, constant: -24).isActive = true
+  func getConstraints() -> [NSLayoutConstraint] {
+    [
+      checkoutFlowOption.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+      checkoutFlowOption.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+      checkoutFlowOption.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+      checkoutFlowOption.heightAnchor.constraint(equalToConstant: 32),
+      checkoutFlowOption.bottomAnchor.constraint(equalTo: tableView.topAnchor, constant: -24),
 
+      tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      tableView.bottomAnchor.constraint(equalTo: checkoutButton.topAnchor, constant: 20),
 
-    tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-    tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-    tableView.bottomAnchor.constraint(equalTo: checkoutButton.topAnchor, constant: 20).isActive = true
+      checkoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+      checkoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+      checkoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+      checkoutButton.heightAnchor.constraint(equalToConstant: 40),
 
-    checkoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-    checkoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-    checkoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
-    checkoutButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-
-    paypalButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-    paypalButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-    paypalButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
-    paypalButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+      paypalButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+      paypalButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+      paypalButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+      paypalButton.heightAnchor.constraint(equalToConstant: 40),
+    ]
   }
 
   @objc
@@ -313,44 +344,33 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
   }
 
   func getItemTotal() -> String {
-    var total: Double = 0
+    let total = items.reduce(0) { (runningTotal, item) -> Double in
+       let unitAmount = Double(item.unitAmount.value) ?? 0
+       let quantity = Double(item.quantity) ?? 0
+       return runningTotal + (quantity * unitAmount)
+     }
 
-    for item in items {
-      guard let unitPrice = Double(item.unitAmount.value) else { return "" }
-      guard let quantity = Double(item.quantity) else { return "" }
-
-      let itemTotalPrice = unitPrice * quantity
-      total += itemTotalPrice
-    }
     return String(format: "%.2f", total)
   }
 
   func getTaxTotal() -> String {
-    var total: Double = 0
-
-    for item in items {
-      guard let taxPrice = Double(item.tax!.value) else { return "" }
-      guard let quantity = Double(item.quantity) else { return "" }
-
-      let totalTaxPrice = taxPrice * quantity
-      total += totalTaxPrice
+    let total = items.reduce(0) { (runningTotal, item) -> Double in
+      let taxPrice = Double(item.tax!.value) ?? 0
+      let quantity = Double(item.quantity) ?? 0
+      return runningTotal + (taxPrice * quantity)
     }
+    
     return String(format: "%.2f", total)
   }
 
   func getTotal() -> String {
-    var total: Double = 0
-
-    for item in items {
-      guard let unitPrice = Double(item.unitAmount.value) else { return "" }
-      guard let taxPrice = Double(item.tax!.value) else { return "" }
-      guard let quantity = Double(item.quantity) else { return "" }
-
-      let totalUnitPrice = unitPrice * quantity
-      let totalTaxPrice = taxPrice * quantity
-
-      total += totalUnitPrice + totalTaxPrice
+    let total = items.reduce(0) { (runningTotal, item) -> Double in
+      let unitPrice = Double(item.unitAmount.value) ?? 0
+      let taxPrice = Double(item.tax!.value) ?? 0
+      let quantity = Double(item.quantity) ?? 0
+      return runningTotal + ((unitPrice * quantity) + (taxPrice * quantity))
     }
+
     return String(format: "%.2f", total)
   }
 
@@ -383,7 +403,7 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
       return "Cart total"
 
     default:
-      return ""
+      return nil
     }
   }
 
@@ -413,56 +433,41 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    if indexPath.section == 0 {
-      if indexPath.row >= items.count {
-        return 48
-      }
-      return UITableView.automaticDimension
-    }
-    else  {
+    if indexPath.section == 0 && indexPath.row >= items.count {
+      return 48
+    } else {
       return UITableView.automaticDimension
     }
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if section == 0 {
-      return items.count + 1
-    }
-    else {
-      return 1
-    }
+    return section == 0 ? items.count + 1 : 1
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if indexPath.section == 0 {
-      if indexPath.row >= items.count {
-        let addItemViewController = AddItemViewController()
-        addItemViewController.modalPresentationStyle = .overFullScreen
-        addItemViewController.delegate = self
-        addItemViewController.index = indexPath.row
-        present(addItemViewController, animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
-      }
-      else {
-        let addItemViewController = AddItemViewController(item: items[indexPath.row])
+    guard indexPath.section == 0 else { return }
+    if indexPath.row >= items.count {
+      let addItemViewController = AddItemViewController()
+      addItemViewController.modalPresentationStyle = .overFullScreen
+      addItemViewController.delegate = self
+      addItemViewController.index = indexPath.row
+      present(addItemViewController, animated: true)
+      tableView.deselectRow(at: indexPath, animated: true)
+    }
+    else {
+      let addItemViewController = AddItemViewController(item: items[indexPath.row])
 
-        addItemViewController.modalPresentationStyle = .overFullScreen
-        addItemViewController.delegate = self
-        addItemViewController.index = indexPath.row
+      addItemViewController.modalPresentationStyle = .overFullScreen
+      addItemViewController.delegate = self
+      addItemViewController.index = indexPath.row
 
-        present(addItemViewController, animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
-      }
+      present(addItemViewController, animated: true)
+      tableView.deselectRow(at: indexPath, animated: true)
     }
   }
 
   func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-    if indexPath.section == 0 && indexPath.row < self.items.count {
-      return true
-    }
-    else {
-      return false
-    }
+    return indexPath.section == 0 && indexPath.row < self.items.count
   }
 
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
