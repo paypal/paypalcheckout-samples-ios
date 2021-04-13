@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -41,7 +41,7 @@
 		06936E07260A7F330099E314 /* FetchAccessTokenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DE4260A7F330099E314 /* FetchAccessTokenRequest.m */; };
 		06936E08260A7F330099E314 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DE5260A7F330099E314 /* AppDelegate.m */; };
 		06936E09260A7F330099E314 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DE6260A7F330099E314 /* SceneDelegate.m */; };
-		06D715F426127D0400B611B7 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB4260A7DC80099E314 /* PayPalCheckout.framework */; };
+		06D715F426127D0400B611B7 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB4260A7DC80099E314 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		06FFBAA7261E0617003FC893 /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FFBAA6261E0617003FC893 /* UIViewController+Extension.m */; };
 		117AAAC92479FDBA00A63B34 /* PayPalAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAC82479FDBA00A63B34 /* PayPalAPI.m */; };
 		117AAAF1247A007800A63B34 /* PayPalAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAC72479FDBA00A63B34 /* PayPalAPI.h */; };
@@ -291,6 +291,7 @@
 				117AAA762479FAE600A63B34 /* Sources */,
 				117AAA772479FAE600A63B34 /* Frameworks */,
 				117AAA782479FAE600A63B34 /* Resources */,
+				062A4F3C26251B690071FEAE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -345,6 +346,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		062A4F3C26251B690071FEAE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../Carthage/Build/iOS/PayPalCheckout.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -d $SRCROOT/../Pods ]; then \n  echo \"💫 Pods folder exists so skipping carthage copy...\"\nelse \n  if [ -d $SRCROOT/../Carthage ]; then \n    echo \"💫 Carthage folder exists, now copying frameworks...\"\n    /usr/local/bin/carthage copy-frameworks\n  else \n    echo \"❌ Carthage folder does not exist, did you run carthage update?\"\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		117AAA762479FAE600A63B34 /* Sources */ = {

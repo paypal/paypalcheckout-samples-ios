@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06D715F726127D0C00B611B7 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB8260A7DD50099E314 /* PayPalCheckout.framework */; };
-		06D715F826127D0C00B611B7 /* PayPalCheckout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB8260A7DD50099E314 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		06D715F726127D0C00B611B7 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB8260A7DD50099E314 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		117AAAA32479FB4900A63B34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAA22479FB4900A63B34 /* AppDelegate.swift */; };
 		117AAAA52479FB4900A63B34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAA42479FB4900A63B34 /* SceneDelegate.swift */; };
 		117AAAA72479FB4900A63B34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAA62479FB4900A63B34 /* ViewController.swift */; };
@@ -23,20 +22,6 @@
 		117AAAC52479FBF100A63B34 /* CreateOrder.Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAC42479FBF100A63B34 /* CreateOrder.Response.swift */; };
 		11DF7A272481B1A7003B1AC2 /* CaptureOrder.Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DF7A262481B1A7003B1AC2 /* CaptureOrder.Request.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		06D715F926127D0C00B611B7 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				06D715F826127D0C00B611B7 /* PayPalCheckout.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		06936DB8260A7DD50099E314 /* PayPalCheckout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalCheckout.framework; path = ../Carthage/Build/iOS/PayPalCheckout.framework; sourceTree = "<group>"; };
@@ -157,7 +142,7 @@
 				117AAA9B2479FB4900A63B34 /* Sources */,
 				117AAA9C2479FB4900A63B34 /* Frameworks */,
 				117AAA9D2479FB4900A63B34 /* Resources */,
-				06D715F926127D0C00B611B7 /* Embed Frameworks */,
+				062A4F3E26251CC60071FEAE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -213,6 +198,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		062A4F3E26251CC60071FEAE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../Carthage/Build/iOS/PayPalCheckout.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -d $SRCROOT/../Pods ]; then \n  echo \"💫 Pods folder exists so skipping carthage copy...\"\nelse \n  if [ -d $SRCROOT/../Carthage ]; then \n    echo \"💫 Carthage folder exists, now copying frameworks...\"\n    /usr/local/bin/carthage copy-frameworks\n  else \n    echo \"❌ Carthage folder does not exist, did you run carthage update?\"\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		117AAA9B2479FB4900A63B34 /* Sources */ = {
