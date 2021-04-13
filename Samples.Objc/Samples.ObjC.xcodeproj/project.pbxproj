@@ -3,101 +3,92 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		117AAA7F2479FAE600A63B34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAA7E2479FAE600A63B34 /* AppDelegate.m */; };
-		117AAA822479FAE600A63B34 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAA812479FAE600A63B34 /* SceneDelegate.m */; };
-		117AAA852479FAE600A63B34 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAA842479FAE600A63B34 /* ViewController.m */; };
-		117AAA8A2479FAE700A63B34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 117AAA892479FAE700A63B34 /* Assets.xcassets */; };
-		117AAA8D2479FAE700A63B34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 117AAA8B2479FAE700A63B34 /* LaunchScreen.storyboard */; };
-		117AAA902479FAE700A63B34 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAA8F2479FAE700A63B34 /* main.m */; };
+		06936DE7260A7F330099E314 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DBB260A7F320099E314 /* main.m */; };
+		06936DE8260A7F330099E314 /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DBE260A7F330099E314 /* AddItemViewController.m */; };
+		06936DE9260A7F330099E314 /* AddItemViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 06936DBF260A7F330099E314 /* AddItemViewController.h */; };
+		06936DEA260A7F330099E314 /* TextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DC1260A7F330099E314 /* TextFieldCell.m */; };
+		06936DEB260A7F330099E314 /* QuantityView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06936DC2260A7F330099E314 /* QuantityView.h */; };
+		06936DEC260A7F330099E314 /* TextFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 06936DC3260A7F330099E314 /* TextFieldCell.h */; };
+		06936DED260A7F330099E314 /* QuantityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DC4260A7F330099E314 /* QuantityView.m */; };
+		06936DEE260A7F330099E314 /* CheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DC6260A7F330099E314 /* CheckoutViewController.m */; };
+		06936DEF260A7F330099E314 /* CheckoutViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 06936DC7260A7F330099E314 /* CheckoutViewController.h */; };
+		06936DF0260A7F330099E314 /* TotalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DC9260A7F330099E314 /* TotalCell.m */; };
+		06936DF1260A7F330099E314 /* ItemCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 06936DCA260A7F330099E314 /* ItemCell.h */; };
+		06936DF2260A7F330099E314 /* AddItemCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 06936DCB260A7F330099E314 /* AddItemCell.h */; };
+		06936DF3260A7F330099E314 /* TotalCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 06936DCC260A7F330099E314 /* TotalCell.h */; };
+		06936DF4260A7F330099E314 /* AddItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DCD260A7F330099E314 /* AddItemCell.m */; };
+		06936DF5260A7F330099E314 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DCE260A7F330099E314 /* ItemCell.m */; };
+		06936DF6260A7F330099E314 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06936DCF260A7F330099E314 /* Assets.xcassets */; };
+		06936DF7260A7F330099E314 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06936DD0260A7F330099E314 /* Main.storyboard */; };
+		06936DF8260A7F330099E314 /* SceneDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 06936DD1260A7F330099E314 /* SceneDelegate.h */; };
+		06936DF9260A7F330099E314 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06936DD2260A7F330099E314 /* LaunchScreen.storyboard */; };
+		06936DFB260A7F330099E314 /* AppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 06936DD4260A7F330099E314 /* AppDelegate.h */; };
+		06936DFC260A7F330099E314 /* CreateOrderEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DD7260A7F330099E314 /* CreateOrderEndpoint.m */; };
+		06936DFD260A7F330099E314 /* FetchAccessTokenEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 06936DD8260A7F330099E314 /* FetchAccessTokenEndpoint.h */; };
+		06936DFE260A7F330099E314 /* CreateOrderEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 06936DD9260A7F330099E314 /* CreateOrderEndpoint.h */; };
+		06936DFF260A7F330099E314 /* FetchAccessTokenEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DDA260A7F330099E314 /* FetchAccessTokenEndpoint.m */; };
+		06936E00260A7F330099E314 /* CreateOrderResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DDC260A7F330099E314 /* CreateOrderResponse.m */; };
+		06936E01260A7F330099E314 /* AccessTokenResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 06936DDD260A7F330099E314 /* AccessTokenResponse.h */; };
+		06936E02260A7F330099E314 /* CreateOrderResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 06936DDE260A7F330099E314 /* CreateOrderResponse.h */; };
+		06936E03260A7F330099E314 /* AccessTokenResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DDF260A7F330099E314 /* AccessTokenResponse.m */; };
+		06936E04260A7F330099E314 /* CreateOrderRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DE1260A7F330099E314 /* CreateOrderRequest.m */; };
+		06936E05260A7F330099E314 /* FetchAccessTokenRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 06936DE2260A7F330099E314 /* FetchAccessTokenRequest.h */; };
+		06936E06260A7F330099E314 /* CreateOrderRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 06936DE3260A7F330099E314 /* CreateOrderRequest.h */; };
+		06936E07260A7F330099E314 /* FetchAccessTokenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DE4260A7F330099E314 /* FetchAccessTokenRequest.m */; };
+		06936E08260A7F330099E314 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DE5260A7F330099E314 /* AppDelegate.m */; };
+		06936E09260A7F330099E314 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DE6260A7F330099E314 /* SceneDelegate.m */; };
+		06D715F426127D0400B611B7 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB4260A7DC80099E314 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		06FFBAA7261E0617003FC893 /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FFBAA6261E0617003FC893 /* UIViewController+Extension.m */; };
 		117AAAC92479FDBA00A63B34 /* PayPalAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAC82479FDBA00A63B34 /* PayPalAPI.m */; };
-		117AAACD2479FDF300A63B34 /* CreateOrderEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAACC2479FDF300A63B34 /* CreateOrderEndpoint.m */; };
-		117AAAD02479FE2F00A63B34 /* FetchAccessTokenEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAACF2479FE2F00A63B34 /* FetchAccessTokenEndpoint.m */; };
-		117AAAD42479FE5B00A63B34 /* Amount.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAD32479FE5B00A63B34 /* Amount.m */; };
-		117AAAD72479FE7700A63B34 /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAD62479FE7700A63B34 /* Link.m */; };
-		117AAADA2479FE9C00A63B34 /* NSString+CurrencyCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAD92479FE9C00A63B34 /* NSString+CurrencyCodes.m */; };
-		117AAADD2479FEBF00A63B34 /* PurchaseUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAADC2479FEBF00A63B34 /* PurchaseUnit.m */; };
-		117AAAE12479FEF500A63B34 /* CreateOrderRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAE02479FEF500A63B34 /* CreateOrderRequest.m */; };
-		117AAAE42479FF1000A63B34 /* FetchAccessTokenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAE32479FF1000A63B34 /* FetchAccessTokenRequest.m */; };
-		117AAAE82479FF3900A63B34 /* AccessTokenResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAE72479FF3900A63B34 /* AccessTokenResponse.m */; };
-		117AAAEB2479FF7100A63B34 /* CreateOrderResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAEA2479FF7100A63B34 /* CreateOrderResponse.m */; };
-		117AAAED247A006300A63B34 /* CreateOrderRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAADF2479FEF500A63B34 /* CreateOrderRequest.h */; };
-		117AAAEE247A006F00A63B34 /* FetchAccessTokenRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAE22479FF1000A63B34 /* FetchAccessTokenRequest.h */; };
-		117AAAEF247A007300A63B34 /* AccessTokenResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAE62479FF3900A63B34 /* AccessTokenResponse.h */; };
-		117AAAF0247A007600A63B34 /* CreateOrderResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAE92479FF7100A63B34 /* CreateOrderResponse.h */; };
 		117AAAF1247A007800A63B34 /* PayPalAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAC72479FDBA00A63B34 /* PayPalAPI.h */; };
-		117AAAF3247A008400A63B34 /* Amount.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAD22479FE5B00A63B34 /* Amount.h */; };
-		117AAAF4247A008600A63B34 /* Link.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAD52479FE7700A63B34 /* Link.h */; };
-		117AAAF5247A008800A63B34 /* NSString+CurrencyCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAD82479FE9C00A63B34 /* NSString+CurrencyCodes.h */; };
-		117AAAF6247A008A00A63B34 /* PurchaseUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAADB2479FEBF00A63B34 /* PurchaseUnit.h */; };
-		117AAAF7247A008E00A63B34 /* CreateOrderEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAACB2479FDF300A63B34 /* CreateOrderEndpoint.h */; };
-		117AAAF8247A009000A63B34 /* FetchAccessTokenEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAACE2479FE2F00A63B34 /* FetchAccessTokenEndpoint.h */; };
-		117AABAB247B20F300A63B34 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117AABA9247B20D100A63B34 /* PayPalCheckout.framework */; };
-		117AABAC247B20F300A63B34 /* PayPalCheckout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 117AABA9247B20D100A63B34 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		119ED0B12485F950004576BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 117AAA862479FAE600A63B34 /* Main.storyboard */; };
-		11DF7A2A2481B931003B1AC2 /* CaptureOrderRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 11DF7A282481B931003B1AC2 /* CaptureOrderRequest.h */; };
-		11DF7A2B2481B931003B1AC2 /* CaptureOrderRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DF7A292481B931003B1AC2 /* CaptureOrderRequest.m */; };
-		11DF7A2E2481B9B6003B1AC2 /* CaptureOrderEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 11DF7A2C2481B9B6003B1AC2 /* CaptureOrderEndpoint.h */; };
-		11DF7A2F2481B9B6003B1AC2 /* CaptureOrderEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DF7A2D2481B9B6003B1AC2 /* CaptureOrderEndpoint.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		117AABAD247B20F300A63B34 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				117AABAC247B20F300A63B34 /* PayPalCheckout.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		06936DB4260A7DC80099E314 /* PayPalCheckout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalCheckout.framework; path = ../Carthage/Build/iOS/PayPalCheckout.framework; sourceTree = "<group>"; };
+		06936DBB260A7F320099E314 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		06936DBE260A7F330099E314 /* AddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
+		06936DBF260A7F330099E314 /* AddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
+		06936DC1260A7F330099E314 /* TextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldCell.m; sourceTree = "<group>"; };
+		06936DC2260A7F330099E314 /* QuantityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuantityView.h; sourceTree = "<group>"; };
+		06936DC3260A7F330099E314 /* TextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldCell.h; sourceTree = "<group>"; };
+		06936DC4260A7F330099E314 /* QuantityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuantityView.m; sourceTree = "<group>"; };
+		06936DC6260A7F330099E314 /* CheckoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckoutViewController.m; sourceTree = "<group>"; };
+		06936DC7260A7F330099E314 /* CheckoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckoutViewController.h; sourceTree = "<group>"; };
+		06936DC9260A7F330099E314 /* TotalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalCell.m; sourceTree = "<group>"; };
+		06936DCA260A7F330099E314 /* ItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCell.h; sourceTree = "<group>"; };
+		06936DCB260A7F330099E314 /* AddItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemCell.h; sourceTree = "<group>"; };
+		06936DCC260A7F330099E314 /* TotalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TotalCell.h; sourceTree = "<group>"; };
+		06936DCD260A7F330099E314 /* AddItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemCell.m; sourceTree = "<group>"; };
+		06936DCE260A7F330099E314 /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCell.m; sourceTree = "<group>"; };
+		06936DCF260A7F330099E314 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		06936DD0260A7F330099E314 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		06936DD1260A7F330099E314 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		06936DD2260A7F330099E314 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		06936DD3260A7F330099E314 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06936DD4260A7F330099E314 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		06936DD7260A7F330099E314 /* CreateOrderEndpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateOrderEndpoint.m; sourceTree = "<group>"; };
+		06936DD8260A7F330099E314 /* FetchAccessTokenEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchAccessTokenEndpoint.h; sourceTree = "<group>"; };
+		06936DD9260A7F330099E314 /* CreateOrderEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateOrderEndpoint.h; sourceTree = "<group>"; };
+		06936DDA260A7F330099E314 /* FetchAccessTokenEndpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchAccessTokenEndpoint.m; sourceTree = "<group>"; };
+		06936DDC260A7F330099E314 /* CreateOrderResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateOrderResponse.m; sourceTree = "<group>"; };
+		06936DDD260A7F330099E314 /* AccessTokenResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessTokenResponse.h; sourceTree = "<group>"; };
+		06936DDE260A7F330099E314 /* CreateOrderResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateOrderResponse.h; sourceTree = "<group>"; };
+		06936DDF260A7F330099E314 /* AccessTokenResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessTokenResponse.m; sourceTree = "<group>"; };
+		06936DE1260A7F330099E314 /* CreateOrderRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateOrderRequest.m; sourceTree = "<group>"; };
+		06936DE2260A7F330099E314 /* FetchAccessTokenRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchAccessTokenRequest.h; sourceTree = "<group>"; };
+		06936DE3260A7F330099E314 /* CreateOrderRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateOrderRequest.h; sourceTree = "<group>"; };
+		06936DE4260A7F330099E314 /* FetchAccessTokenRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchAccessTokenRequest.m; sourceTree = "<group>"; };
+		06936DE5260A7F330099E314 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		06936DE6260A7F330099E314 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		06FFBAA5261E0608003FC893 /* UIViewController+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extension.h"; sourceTree = "<group>"; };
+		06FFBAA6261E0617003FC893 /* UIViewController+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extension.m"; sourceTree = "<group>"; };
 		117AAA7A2479FAE600A63B34 /* Samples.ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samples.ObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		117AAA7D2479FAE600A63B34 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		117AAA7E2479FAE600A63B34 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		117AAA802479FAE600A63B34 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		117AAA812479FAE600A63B34 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		117AAA832479FAE600A63B34 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		117AAA842479FAE600A63B34 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		117AAA872479FAE600A63B34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		117AAA892479FAE700A63B34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		117AAA8C2479FAE700A63B34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		117AAA8E2479FAE700A63B34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		117AAA8F2479FAE700A63B34 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		117AAAC72479FDBA00A63B34 /* PayPalAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayPalAPI.h; sourceTree = "<group>"; };
 		117AAAC82479FDBA00A63B34 /* PayPalAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayPalAPI.m; sourceTree = "<group>"; };
-		117AAACB2479FDF300A63B34 /* CreateOrderEndpoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateOrderEndpoint.h; sourceTree = "<group>"; };
-		117AAACC2479FDF300A63B34 /* CreateOrderEndpoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateOrderEndpoint.m; sourceTree = "<group>"; };
-		117AAACE2479FE2F00A63B34 /* FetchAccessTokenEndpoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FetchAccessTokenEndpoint.h; sourceTree = "<group>"; };
-		117AAACF2479FE2F00A63B34 /* FetchAccessTokenEndpoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FetchAccessTokenEndpoint.m; sourceTree = "<group>"; };
-		117AAAD22479FE5B00A63B34 /* Amount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Amount.h; sourceTree = "<group>"; };
-		117AAAD32479FE5B00A63B34 /* Amount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Amount.m; sourceTree = "<group>"; };
-		117AAAD52479FE7700A63B34 /* Link.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Link.h; sourceTree = "<group>"; };
-		117AAAD62479FE7700A63B34 /* Link.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Link.m; sourceTree = "<group>"; };
-		117AAAD82479FE9C00A63B34 /* NSString+CurrencyCodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+CurrencyCodes.h"; sourceTree = "<group>"; };
-		117AAAD92479FE9C00A63B34 /* NSString+CurrencyCodes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+CurrencyCodes.m"; sourceTree = "<group>"; };
-		117AAADB2479FEBF00A63B34 /* PurchaseUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PurchaseUnit.h; sourceTree = "<group>"; };
-		117AAADC2479FEBF00A63B34 /* PurchaseUnit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PurchaseUnit.m; sourceTree = "<group>"; };
-		117AAADF2479FEF500A63B34 /* CreateOrderRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateOrderRequest.h; sourceTree = "<group>"; };
-		117AAAE02479FEF500A63B34 /* CreateOrderRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateOrderRequest.m; sourceTree = "<group>"; };
-		117AAAE22479FF1000A63B34 /* FetchAccessTokenRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FetchAccessTokenRequest.h; sourceTree = "<group>"; };
-		117AAAE32479FF1000A63B34 /* FetchAccessTokenRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FetchAccessTokenRequest.m; sourceTree = "<group>"; };
-		117AAAE62479FF3900A63B34 /* AccessTokenResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccessTokenResponse.h; sourceTree = "<group>"; };
-		117AAAE72479FF3900A63B34 /* AccessTokenResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccessTokenResponse.m; sourceTree = "<group>"; };
-		117AAAE92479FF7100A63B34 /* CreateOrderResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateOrderResponse.h; sourceTree = "<group>"; };
-		117AAAEA2479FF7100A63B34 /* CreateOrderResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateOrderResponse.m; sourceTree = "<group>"; };
-		117AABA9247B20D100A63B34 /* PayPalCheckout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalCheckout.framework; path = ../../Carthage/Build/iOS/PayPalCheckout.framework; sourceTree = "<group>"; };
-		11DF7A282481B931003B1AC2 /* CaptureOrderRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptureOrderRequest.h; sourceTree = "<group>"; };
-		11DF7A292481B931003B1AC2 /* CaptureOrderRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaptureOrderRequest.m; sourceTree = "<group>"; };
-		11DF7A2C2481B9B6003B1AC2 /* CaptureOrderEndpoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptureOrderEndpoint.h; sourceTree = "<group>"; };
-		11DF7A2D2481B9B6003B1AC2 /* CaptureOrderEndpoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaptureOrderEndpoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,19 +96,134 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				117AABAB247B20F300A63B34 /* PayPalCheckout.framework in Frameworks */,
+				06D715F426127D0400B611B7 /* PayPalCheckout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06936DB3260A7DC80099E314 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06936DB4260A7DC80099E314 /* PayPalCheckout.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		06936DBC260A7F330099E314 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				06936DBD260A7F330099E314 /* AddItemViewController */,
+				06936DC5260A7F330099E314 /* CheckoutViewController */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		06936DBD260A7F330099E314 /* AddItemViewController */ = {
+			isa = PBXGroup;
+			children = (
+				06936DBF260A7F330099E314 /* AddItemViewController.h */,
+				06936DBE260A7F330099E314 /* AddItemViewController.m */,
+				06936DC0260A7F330099E314 /* Views */,
+			);
+			path = AddItemViewController;
+			sourceTree = "<group>";
+		};
+		06936DC0260A7F330099E314 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				06936DC3260A7F330099E314 /* TextFieldCell.h */,
+				06936DC1260A7F330099E314 /* TextFieldCell.m */,
+				06936DC2260A7F330099E314 /* QuantityView.h */,
+				06936DC4260A7F330099E314 /* QuantityView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		06936DC5260A7F330099E314 /* CheckoutViewController */ = {
+			isa = PBXGroup;
+			children = (
+				06936DC7260A7F330099E314 /* CheckoutViewController.h */,
+				06936DC6260A7F330099E314 /* CheckoutViewController.m */,
+				06936DC8260A7F330099E314 /* Views */,
+			);
+			path = CheckoutViewController;
+			sourceTree = "<group>";
+		};
+		06936DC8260A7F330099E314 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				06936DCC260A7F330099E314 /* TotalCell.h */,
+				06936DC9260A7F330099E314 /* TotalCell.m */,
+				06936DCA260A7F330099E314 /* ItemCell.h */,
+				06936DCE260A7F330099E314 /* ItemCell.m */,
+				06936DCB260A7F330099E314 /* AddItemCell.h */,
+				06936DCD260A7F330099E314 /* AddItemCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		06936DD5260A7F330099E314 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				117AAAC72479FDBA00A63B34 /* PayPalAPI.h */,
+				117AAAC82479FDBA00A63B34 /* PayPalAPI.m */,
+				06936DD6260A7F330099E314 /* Endpoints */,
+				06936DDB260A7F330099E314 /* Responses */,
+				06936DE0260A7F330099E314 /* Requests */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		06936DD6260A7F330099E314 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				06936DD8260A7F330099E314 /* FetchAccessTokenEndpoint.h */,
+				06936DDA260A7F330099E314 /* FetchAccessTokenEndpoint.m */,
+				06936DD9260A7F330099E314 /* CreateOrderEndpoint.h */,
+				06936DD7260A7F330099E314 /* CreateOrderEndpoint.m */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		06936DDB260A7F330099E314 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				06936DDD260A7F330099E314 /* AccessTokenResponse.h */,
+				06936DDF260A7F330099E314 /* AccessTokenResponse.m */,
+				06936DDE260A7F330099E314 /* CreateOrderResponse.h */,
+				06936DDC260A7F330099E314 /* CreateOrderResponse.m */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		06936DE0260A7F330099E314 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				06936DE2260A7F330099E314 /* FetchAccessTokenRequest.h */,
+				06936DE4260A7F330099E314 /* FetchAccessTokenRequest.m */,
+				06936DE3260A7F330099E314 /* CreateOrderRequest.h */,
+				06936DE1260A7F330099E314 /* CreateOrderRequest.m */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		06FFBAA4261E058F003FC893 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				06FFBAA5261E0608003FC893 /* UIViewController+Extension.h */,
+				06FFBAA6261E0617003FC893 /* UIViewController+Extension.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		117AAA712479FAE600A63B34 = {
 			isa = PBXGroup;
 			children = (
-				117AABA8247B1FBA00A63B34 /* Dependencies */,
 				117AAA7C2479FAE600A63B34 /* Samples.ObjC */,
 				117AAA7B2479FAE600A63B34 /* Products */,
+				06936DB3260A7DC80099E314 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,93 +238,20 @@
 		117AAA7C2479FAE600A63B34 /* Samples.ObjC */ = {
 			isa = PBXGroup;
 			children = (
-				117AAAC62479FD7400A63B34 /* API */,
-				117AAA7D2479FAE600A63B34 /* AppDelegate.h */,
-				117AAA7E2479FAE600A63B34 /* AppDelegate.m */,
-				117AAA802479FAE600A63B34 /* SceneDelegate.h */,
-				117AAA812479FAE600A63B34 /* SceneDelegate.m */,
-				117AAA832479FAE600A63B34 /* ViewController.h */,
-				117AAA842479FAE600A63B34 /* ViewController.m */,
-				117AAA862479FAE600A63B34 /* Main.storyboard */,
-				117AAA892479FAE700A63B34 /* Assets.xcassets */,
-				117AAA8B2479FAE700A63B34 /* LaunchScreen.storyboard */,
-				117AAA8E2479FAE700A63B34 /* Info.plist */,
-				117AAA8F2479FAE700A63B34 /* main.m */,
+				06FFBAA4261E058F003FC893 /* Extensions */,
+				06936DD5260A7F330099E314 /* API */,
+				06936DBC260A7F330099E314 /* ViewControllers */,
+				06936DD4260A7F330099E314 /* AppDelegate.h */,
+				06936DE5260A7F330099E314 /* AppDelegate.m */,
+				06936DCF260A7F330099E314 /* Assets.xcassets */,
+				06936DD3260A7F330099E314 /* Info.plist */,
+				06936DD2260A7F330099E314 /* LaunchScreen.storyboard */,
+				06936DBB260A7F320099E314 /* main.m */,
+				06936DD0260A7F330099E314 /* Main.storyboard */,
+				06936DD1260A7F330099E314 /* SceneDelegate.h */,
+				06936DE6260A7F330099E314 /* SceneDelegate.m */,
 			);
 			path = Samples.ObjC;
-			sourceTree = "<group>";
-		};
-		117AAAC62479FD7400A63B34 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				117AAACA2479FDE000A63B34 /* Endpoints */,
-				117AAAD12479FE5100A63B34 /* Models */,
-				117AAADE2479FEDD00A63B34 /* Requests */,
-				117AAAE52479FF1E00A63B34 /* Responses */,
-				117AAAC72479FDBA00A63B34 /* PayPalAPI.h */,
-				117AAAC82479FDBA00A63B34 /* PayPalAPI.m */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
-		117AAACA2479FDE000A63B34 /* Endpoints */ = {
-			isa = PBXGroup;
-			children = (
-				117AAACB2479FDF300A63B34 /* CreateOrderEndpoint.h */,
-				117AAACC2479FDF300A63B34 /* CreateOrderEndpoint.m */,
-				117AAACE2479FE2F00A63B34 /* FetchAccessTokenEndpoint.h */,
-				117AAACF2479FE2F00A63B34 /* FetchAccessTokenEndpoint.m */,
-				11DF7A2C2481B9B6003B1AC2 /* CaptureOrderEndpoint.h */,
-				11DF7A2D2481B9B6003B1AC2 /* CaptureOrderEndpoint.m */,
-			);
-			path = Endpoints;
-			sourceTree = "<group>";
-		};
-		117AAAD12479FE5100A63B34 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				117AAAD22479FE5B00A63B34 /* Amount.h */,
-				117AAAD32479FE5B00A63B34 /* Amount.m */,
-				117AAAD52479FE7700A63B34 /* Link.h */,
-				117AAAD62479FE7700A63B34 /* Link.m */,
-				117AAAD82479FE9C00A63B34 /* NSString+CurrencyCodes.h */,
-				117AAAD92479FE9C00A63B34 /* NSString+CurrencyCodes.m */,
-				117AAADB2479FEBF00A63B34 /* PurchaseUnit.h */,
-				117AAADC2479FEBF00A63B34 /* PurchaseUnit.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		117AAADE2479FEDD00A63B34 /* Requests */ = {
-			isa = PBXGroup;
-			children = (
-				117AAADF2479FEF500A63B34 /* CreateOrderRequest.h */,
-				117AAAE02479FEF500A63B34 /* CreateOrderRequest.m */,
-				11DF7A282481B931003B1AC2 /* CaptureOrderRequest.h */,
-				11DF7A292481B931003B1AC2 /* CaptureOrderRequest.m */,
-				117AAAE22479FF1000A63B34 /* FetchAccessTokenRequest.h */,
-				117AAAE32479FF1000A63B34 /* FetchAccessTokenRequest.m */,
-			);
-			path = Requests;
-			sourceTree = "<group>";
-		};
-		117AAAE52479FF1E00A63B34 /* Responses */ = {
-			isa = PBXGroup;
-			children = (
-				117AAAE62479FF3900A63B34 /* AccessTokenResponse.h */,
-				117AAAE72479FF3900A63B34 /* AccessTokenResponse.m */,
-				117AAAE92479FF7100A63B34 /* CreateOrderResponse.h */,
-				117AAAEA2479FF7100A63B34 /* CreateOrderResponse.m */,
-			);
-			path = Responses;
-			sourceTree = "<group>";
-		};
-		117AABA8247B1FBA00A63B34 /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				117AABA9247B20D100A63B34 /* PayPalCheckout.framework */,
-			);
-			path = Dependencies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,19 +261,22 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				117AAAF7247A008E00A63B34 /* CreateOrderEndpoint.h in Headers */,
-				117AAAED247A006300A63B34 /* CreateOrderRequest.h in Headers */,
-				117AAAEE247A006F00A63B34 /* FetchAccessTokenRequest.h in Headers */,
-				117AAAF5247A008800A63B34 /* NSString+CurrencyCodes.h in Headers */,
-				11DF7A2A2481B931003B1AC2 /* CaptureOrderRequest.h in Headers */,
-				117AAAF0247A007600A63B34 /* CreateOrderResponse.h in Headers */,
+				06936DEF260A7F330099E314 /* CheckoutViewController.h in Headers */,
+				06936E01260A7F330099E314 /* AccessTokenResponse.h in Headers */,
+				06936E02260A7F330099E314 /* CreateOrderResponse.h in Headers */,
+				06936E05260A7F330099E314 /* FetchAccessTokenRequest.h in Headers */,
+				06936DF1260A7F330099E314 /* ItemCell.h in Headers */,
+				06936DF8260A7F330099E314 /* SceneDelegate.h in Headers */,
 				117AAAF1247A007800A63B34 /* PayPalAPI.h in Headers */,
-				117AAAF3247A008400A63B34 /* Amount.h in Headers */,
-				117AAAF4247A008600A63B34 /* Link.h in Headers */,
-				11DF7A2E2481B9B6003B1AC2 /* CaptureOrderEndpoint.h in Headers */,
-				117AAAF6247A008A00A63B34 /* PurchaseUnit.h in Headers */,
-				117AAAEF247A007300A63B34 /* AccessTokenResponse.h in Headers */,
-				117AAAF8247A009000A63B34 /* FetchAccessTokenEndpoint.h in Headers */,
+				06936DFE260A7F330099E314 /* CreateOrderEndpoint.h in Headers */,
+				06936DFD260A7F330099E314 /* FetchAccessTokenEndpoint.h in Headers */,
+				06936DF2260A7F330099E314 /* AddItemCell.h in Headers */,
+				06936E06260A7F330099E314 /* CreateOrderRequest.h in Headers */,
+				06936DE9260A7F330099E314 /* AddItemViewController.h in Headers */,
+				06936DEB260A7F330099E314 /* QuantityView.h in Headers */,
+				06936DF3260A7F330099E314 /* TotalCell.h in Headers */,
+				06936DEC260A7F330099E314 /* TextFieldCell.h in Headers */,
+				06936DFB260A7F330099E314 /* AppDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,7 +291,7 @@
 				117AAA762479FAE600A63B34 /* Sources */,
 				117AAA772479FAE600A63B34 /* Frameworks */,
 				117AAA782479FAE600A63B34 /* Resources */,
-				117AABAD247B20F300A63B34 /* Embed Frameworks */,
+				062A4F3C26251B690071FEAE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -303,59 +339,63 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				119ED0B12485F950004576BF /* Main.storyboard in Resources */,
-				117AAA8D2479FAE700A63B34 /* LaunchScreen.storyboard in Resources */,
-				117AAA8A2479FAE700A63B34 /* Assets.xcassets in Resources */,
+				06936DF9260A7F330099E314 /* LaunchScreen.storyboard in Resources */,
+				06936DF6260A7F330099E314 /* Assets.xcassets in Resources */,
+				06936DF7260A7F330099E314 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		062A4F3C26251B690071FEAE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../Carthage/Build/iOS/PayPalCheckout.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -d $SRCROOT/../Pods ]; then \n  echo \"💫 Pods folder exists so skipping carthage copy...\"\nelse \n  if [ -d $SRCROOT/../Carthage ]; then \n    echo \"💫 Carthage folder exists, now copying frameworks...\"\n    /usr/local/bin/carthage copy-frameworks\n  else \n    echo \"❌ Carthage folder does not exist, did you run carthage update?\"\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		117AAA762479FAE600A63B34 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				117AAA852479FAE600A63B34 /* ViewController.m in Sources */,
-				117AAA7F2479FAE600A63B34 /* AppDelegate.m in Sources */,
-				117AAAD02479FE2F00A63B34 /* FetchAccessTokenEndpoint.m in Sources */,
-				117AAA902479FAE700A63B34 /* main.m in Sources */,
-				117AAADD2479FEBF00A63B34 /* PurchaseUnit.m in Sources */,
-				117AAAD72479FE7700A63B34 /* Link.m in Sources */,
-				117AAACD2479FDF300A63B34 /* CreateOrderEndpoint.m in Sources */,
-				117AAAEB2479FF7100A63B34 /* CreateOrderResponse.m in Sources */,
+				06936DEE260A7F330099E314 /* CheckoutViewController.m in Sources */,
+				06936DF5260A7F330099E314 /* ItemCell.m in Sources */,
+				06936E07260A7F330099E314 /* FetchAccessTokenRequest.m in Sources */,
+				06936DFF260A7F330099E314 /* FetchAccessTokenEndpoint.m in Sources */,
+				06936DEA260A7F330099E314 /* TextFieldCell.m in Sources */,
+				06936E00260A7F330099E314 /* CreateOrderResponse.m in Sources */,
+				06936E04260A7F330099E314 /* CreateOrderRequest.m in Sources */,
 				117AAAC92479FDBA00A63B34 /* PayPalAPI.m in Sources */,
-				11DF7A2B2481B931003B1AC2 /* CaptureOrderRequest.m in Sources */,
-				117AAAE82479FF3900A63B34 /* AccessTokenResponse.m in Sources */,
-				117AAAE42479FF1000A63B34 /* FetchAccessTokenRequest.m in Sources */,
-				11DF7A2F2481B9B6003B1AC2 /* CaptureOrderEndpoint.m in Sources */,
-				117AAAE12479FEF500A63B34 /* CreateOrderRequest.m in Sources */,
-				117AAA822479FAE600A63B34 /* SceneDelegate.m in Sources */,
-				117AAAD42479FE5B00A63B34 /* Amount.m in Sources */,
-				117AAADA2479FE9C00A63B34 /* NSString+CurrencyCodes.m in Sources */,
+				06936E09260A7F330099E314 /* SceneDelegate.m in Sources */,
+				06936DF0260A7F330099E314 /* TotalCell.m in Sources */,
+				06936DED260A7F330099E314 /* QuantityView.m in Sources */,
+				06936DF4260A7F330099E314 /* AddItemCell.m in Sources */,
+				06FFBAA7261E0617003FC893 /* UIViewController+Extension.m in Sources */,
+				06936E08260A7F330099E314 /* AppDelegate.m in Sources */,
+				06936E03260A7F330099E314 /* AccessTokenResponse.m in Sources */,
+				06936DE7260A7F330099E314 /* main.m in Sources */,
+				06936DFC260A7F330099E314 /* CreateOrderEndpoint.m in Sources */,
+				06936DE8260A7F330099E314 /* AddItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		117AAA862479FAE600A63B34 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				117AAA872479FAE600A63B34 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		117AAA8B2479FAE700A63B34 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				117AAA8C2479FAE700A63B34 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		117AAA912479FAE700A63B34 /* Debug */ = {
@@ -408,11 +448,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -460,11 +501,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};

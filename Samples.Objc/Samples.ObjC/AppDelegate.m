@@ -1,22 +1,30 @@
 //
 //  AppDelegate.m
-//  PayPalCheckout-Samples-iOS-Objc
+//  PayPalNativeCheckoutObjC
 //
 //  Created by Haider Khan on 5/23/20.
 //  Copyright © 2020 PayPal. All rights reserved.
 //
 
 #import "AppDelegate.h"
+#import "PayPalAPI.h"
+@import PayPalCheckout;
 
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  // Override point for customization after application launch.
+  PPCheckoutConfig *config = [[PPCheckoutConfig alloc] initWithClientID:[PayPalAPI.shared clientId]
+                                                              returnUrl:[PayPalAPI.shared returnUrl]
+                                                            createOrder:nil
+                                                              onApprove:nil
+                                                               onCancel:nil
+                                                                onError:nil
+                                                            environment:PPCEnvironmentSandbox];
+  [PPCheckout setConfig:config];
   return YES;
 }
 

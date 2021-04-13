@@ -1,6 +1,6 @@
 //
 //  FetchAccessTokenRequest.m
-//  PayPalCheckout-Samples-iOS-Objc
+//  PayPalNativeCheckoutObjC
 //
 //  Created by Haider Khan on 5/18/20.
 //  Copyright © 2020 PayPal. All rights reserved.
@@ -24,13 +24,14 @@
   };
 }
 
-- (NSData *)jsonData {
+- (NSDictionary *)requestHeader {
+  return @{@"Content-Type": @"application/json"};
+}
+
+- (NSData *)requestBody {
   NSError *error;
-  NSData *jsonData = [NSJSONSerialization
-                      dataWithJSONObject:[self properties]
-                      options:0 // Pass 0 if you don't care about the readability of the generated string
-                      error:&error];
-  return jsonData;
+  NSData *data = [NSJSONSerialization dataWithJSONObject:[self properties] options:0 error:&error];
+  return data;
 }
 
 @end

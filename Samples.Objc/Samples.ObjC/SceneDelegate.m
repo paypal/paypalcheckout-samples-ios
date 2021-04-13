@@ -1,4 +1,13 @@
+//
+//  SceneDelegate.m
+//  PayPalNativeCheckoutObjC
+//
+//  Created by Haider Khan on 5/23/20.
+//  Copyright © 2020 PayPal. All rights reserved.
+//
+
 #import "SceneDelegate.h"
+#import "CheckoutViewController.h"
 
 @interface SceneDelegate ()
 
@@ -18,7 +27,7 @@
   // Called as the scene is being released by the system.
   // This occurs shortly after the scene enters the background, or when its session is discarded.
   // Release any resources associated with this scene that can be re-created the next time the scene connects.
-  // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
+  // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
 }
 
 

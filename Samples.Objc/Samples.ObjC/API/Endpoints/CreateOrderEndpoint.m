@@ -1,12 +1,13 @@
 //
 //  CreateOrderEndpoint.m
-//  PayPalCheckout-Samples-iOS-Objc
+//  PayPalNativeCheckoutObjC
 //
 //  Created by Haider Khan on 5/19/20.
 //  Copyright © 2020 PayPal. All rights reserved.
 //
 
 #import "CreateOrderEndpoint.h"
+#import "PayPalAPI.h"
 
 @implementation CreateOrderEndpoint
 
@@ -14,14 +15,9 @@
   return @"checkout/orders";
 }
 
-- (NSString *)method {
-  return @"POST";
-}
-
 - (NSURLRequest *)urlRequestFor:(CreateOrderRequest *)request {
-  NSString *baseUrlString = [[PayPalAPI shared] baseURLv2];
-  NSString *fullPath = [NSString stringWithFormat:@"%@%@", baseUrlString, [self path]];
-  NSURL *url = [NSURL URLWithString:fullPath];
+  NSString *urlString = [NSString stringWithFormat:@"%@%@", [PayPalAPI.shared baseURLv2], [self path]];
+  NSURL *url = [NSURL URLWithString:urlString];
   
   if (!url) {
     return nil;
@@ -29,11 +25,9 @@
   
   NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
   NSMutableURLRequest *mutableRequest = [urlRequest mutableCopy];
-  [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-  NSString *accessToken = [[PayPalAPI shared] accessToken];
-  [mutableRequest addValue:[NSString stringWithFormat:@"Bearer %@", accessToken] forHTTPHeaderField:@"Authorization"];
-  [mutableRequest setHTTPMethod:[self method]];
-  [mutableRequest setHTTPBody:[request jsonData]];
+  [mutableRequest setHTTPMethod:@"POST"];
+  [mutableRequest setAllHTTPHeaderFields:[request requestHeader]];
+  [mutableRequest setHTTPBody:[request requestBody]];
   return mutableRequest;
 }
 

@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "FetchAccessTokenRequest.h"
 #import "CreateOrderRequest.h"
-#import "CaptureOrderRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PayPalAPI : NSObject
 
 @property NSString *clientId;
+@property NSString *returnUrl;
 @property NSString *nodeAppBaseURL;
 @property NSString *baseURLv2;
 @property NSString * _Nullable accessToken;
@@ -35,9 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Create our order through api.sandbox.paypal.com
 - (void)createOrder:(CreateOrderRequest *)request completion:(void (^)(NSData *data, NSError *error))completion;
-
-/// Capture and validate the transaction through api.sandbox.paypal.com | the link is provided in the order creation
-- (void)captureOrder:(CaptureOrderRequest *)request completion:(void (^)(NSData *data, NSError *error))completion;
 
 @end
 
