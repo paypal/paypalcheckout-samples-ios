@@ -42,25 +42,10 @@
 		06936E08260A7F330099E314 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DE5260A7F330099E314 /* AppDelegate.m */; };
 		06936E09260A7F330099E314 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06936DE6260A7F330099E314 /* SceneDelegate.m */; };
 		06D715F426127D0400B611B7 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB4260A7DC80099E314 /* PayPalCheckout.framework */; };
-		06D715F526127D0400B611B7 /* PayPalCheckout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB4260A7DC80099E314 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		06FFBAA7261E0617003FC893 /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FFBAA6261E0617003FC893 /* UIViewController+Extension.m */; };
 		117AAAC92479FDBA00A63B34 /* PayPalAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AAAC82479FDBA00A63B34 /* PayPalAPI.m */; };
 		117AAAF1247A007800A63B34 /* PayPalAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 117AAAC72479FDBA00A63B34 /* PayPalAPI.h */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		06D715F626127D0400B611B7 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				06D715F526127D0400B611B7 /* PayPalCheckout.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		06936DB4260A7DC80099E314 /* PayPalCheckout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalCheckout.framework; path = ../Carthage/Build/iOS/PayPalCheckout.framework; sourceTree = "<group>"; };
@@ -306,7 +291,6 @@
 				117AAA762479FAE600A63B34 /* Sources */,
 				117AAA772479FAE600A63B34 /* Frameworks */,
 				117AAA782479FAE600A63B34 /* Resources */,
-				06D715F626127D0400B611B7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
