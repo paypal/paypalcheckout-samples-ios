@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,21 +28,8 @@
 		BE7CF076260B882F00288176 /* PayPal.API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7CF075260B882F00288176 /* PayPal.API.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		117AAB01247B029D00A63B34 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				117AAB0E247B066100A63B34 /* PayPalCheckout.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		06936DB8260A7DD50099E314 /* PayPalCheckout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalCheckout.framework; path = ../Carthage/Build/iOS/PayPalCheckout.framework; sourceTree = "<group>"; };
 		117AAA9F2479FB4900A63B34 /* Samples.Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samples.Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		117AAAAB2479FB4900A63B34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		117AAAAE2479FB4900A63B34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -70,19 +57,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				117AAB0D247B066100A63B34 /* PayPalCheckout.framework in Frameworks */,
+				06D715F726127D0C00B611B7 /* PayPalCheckout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06936DB7260A7DD50099E314 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06936DB8260A7DD50099E314 /* PayPalCheckout.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		117AAA962479FB4800A63B34 = {
 			isa = PBXGroup;
 			children = (
-				117AAAFA247B009300A63B34 /* Dependencies */,
 				117AAAA12479FB4900A63B34 /* Samples.Swift */,
 				117AAAA02479FB4900A63B34 /* Products */,
+				06936DB7260A7DD50099E314 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -209,7 +204,7 @@
 				117AAA9B2479FB4900A63B34 /* Sources */,
 				117AAA9C2479FB4900A63B34 /* Frameworks */,
 				117AAA9D2479FB4900A63B34 /* Resources */,
-				117AAB01247B029D00A63B34 /* Embed Frameworks */,
+				062A4F3E26251CC60071FEAE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -264,6 +259,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		062A4F3E26251CC60071FEAE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../Carthage/Build/iOS/PayPalCheckout.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -d $SRCROOT/../Pods ]; then \n  echo \"💫 Pods folder exists so skipping carthage copy...\"\nelse \n  if [ -d $SRCROOT/../Carthage ]; then \n    echo \"💫 Carthage folder exists, now copying frameworks...\"\n    /usr/local/bin/carthage copy-frameworks\n  else \n    echo \"❌ Carthage folder does not exist, did you run carthage update?\"\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		117AAA9B2479FB4900A63B34 /* Sources */ = {
@@ -359,6 +376,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -413,6 +431,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};
@@ -423,7 +442,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = Samples.Swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -446,7 +468,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = Samples.Swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

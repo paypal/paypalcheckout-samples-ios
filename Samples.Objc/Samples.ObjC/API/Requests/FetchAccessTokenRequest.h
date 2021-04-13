@@ -1,6 +1,6 @@
 //
 //  FetchAccessTokenRequest.h
-//  PayPalCheckout-Samples-iOS-Objc
+//  PayPalNativeCheckoutObjC
 //
 //  Created by Haider Khan on 5/18/20.
 //  Copyright © 2020 PayPal. All rights reserved.
@@ -13,10 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FetchAccessTokenRequest : NSObject
 
 @property (nonatomic) NSString *clientId;
-
+- (NSDictionary *)requestHeader;
+- (NSData *)requestBody;
 - (id)initWith:(NSString *)clientId;
-- (NSDictionary *)properties;
-- (NSData *)jsonData;
 
 @end
 

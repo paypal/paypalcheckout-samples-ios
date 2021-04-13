@@ -10,12 +10,10 @@
 #import "PayPalAPI.h"
 #import "FetchAccessTokenEndpoint.h"
 #import "CreateOrderEndpoint.h"
-#import "CaptureOrderEndpoint.h"
 
 @interface PayPalAPI ()
 @property (nonatomic) FetchAccessTokenEndpoint *accessTokenEndpoint;
 @property (nonatomic) CreateOrderEndpoint *createOrderEndpoint;
-@property (nonatomic) CaptureOrderEndpoint *captureOrderEndpoint;
 @end
 
 @implementation PayPalAPI
@@ -36,11 +34,11 @@
 - (id)init {
   if (self = [super init]) {
     self.clientId = @"<client_id>";
+    self.returnUrl = @"<return_url>";
     self.nodeAppBaseURL = @"http://localhost:3000/";
     self.baseURLv2 = @"https://api.sandbox.paypal.com/v2/";
     self.accessTokenEndpoint = [[FetchAccessTokenEndpoint alloc] init];
     self.createOrderEndpoint = [[CreateOrderEndpoint alloc] init];
-    self.captureOrderEndpoint = [[CaptureOrderEndpoint alloc] init];
   }
   return self;
 }
@@ -62,19 +60,6 @@
 
 - (void)createOrder:(CreateOrderRequest *)request completion:(void (^)(NSData *data, NSError *error))completion {
   NSURLRequest *urlRequest = [self.createOrderEndpoint urlRequestFor:request];
-  [[[NSURLSession sharedSession]
-    dataTaskWithRequest:urlRequest
-    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-    if (error) {
-      completion(nil, error);
-      return;
-    }
-    completion(data, nil);
-  }] resume];
-}
-
-- (void)captureOrder:(CaptureOrderRequest *)request completion:(void (^)(NSData *data, NSError *error))completion {
-  NSURLRequest *urlRequest = [self.captureOrderEndpoint urlRequestFor:request];
   [[[NSURLSession sharedSession]
     dataTaskWithRequest:urlRequest
     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
