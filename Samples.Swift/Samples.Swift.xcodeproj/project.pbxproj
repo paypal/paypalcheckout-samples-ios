@@ -9,10 +9,9 @@
 /* Begin PBXBuildFile section */
 		117AAAAC2479FB4900A63B34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 117AAAAB2479FB4900A63B34 /* Assets.xcassets */; };
 		117AAAAF2479FB4900A63B34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 117AAAAD2479FB4900A63B34 /* LaunchScreen.storyboard */; };
-		117AAB0D247B066100A63B34 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117AAB07247B059700A63B34 /* PayPalCheckout.framework */; };
-		117AAB0E247B066100A63B34 /* PayPalCheckout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 117AAB07247B059700A63B34 /* PayPalCheckout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BE21914A260CF5BA00ECE484 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE219149260CF5BA00ECE484 /* String+Extensions.swift */; };
 		BE435C49261F3EA800E17CA6 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE435C48261F3EA800E17CA6 /* UITextField+Extensions.swift */; };
+		BE435D472625E9FB00E17CA6 /* PayPalCheckout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06936DB8260A7DD50099E314 /* PayPalCheckout.framework */; };
 		BE7CF047260B7B6500288176 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7CF046260B7B6500288176 /* AppDelegate.swift */; };
 		BE7CF049260B7CB700288176 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7CF048260B7CB700288176 /* SceneDelegate.swift */; };
 		BE7CF04C260B7D4900288176 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7CF04B260B7D4900288176 /* UIViewController+Extensions.swift */; };
@@ -34,7 +33,6 @@
 		117AAAAB2479FB4900A63B34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		117AAAAE2479FB4900A63B34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		117AAAB02479FB4900A63B34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		117AAB07247B059700A63B34 /* PayPalCheckout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayPalCheckout.framework; path = ../../Carthage/Build/iOS/PayPalCheckout.framework; sourceTree = "<group>"; };
 		BE219149260CF5BA00ECE484 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		BE435C48261F3EA800E17CA6 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		BE7CF046260B7B6500288176 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06D715F726127D0C00B611B7 /* PayPalCheckout.framework in Frameworks */,
+				BE435D472625E9FB00E17CA6 /* PayPalCheckout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,14 +100,6 @@
 				117AAAB02479FB4900A63B34 /* Info.plist */,
 			);
 			path = Samples.Swift;
-			sourceTree = "<group>";
-		};
-		117AAAFA247B009300A63B34 /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				117AAB07247B059700A63B34 /* PayPalCheckout.framework */,
-			);
-			path = Dependencies;
 			sourceTree = "<group>";
 		};
 		BE7CF04A260B7D3700288176 /* Extensions */ = {
