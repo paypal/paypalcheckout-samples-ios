@@ -12,23 +12,23 @@ This is a sample repository showcasing how to integrate the Native Checkout expe
     - [Application Creation](#application-creation)
     - [NVM](#nvm)
     - [Docker](#docker)
-    - [Carthage](#carthage)
 3. [Setup](#setup)
-4. [Additional Info](#additional-info)
-5. [Troubleshooting](#troubleshooting)
+    - [Set Client ID / Client Secret / Return URL](#1-set-client-id--client-secret--return-url)
+    - [Setup Dependencies](#2-setup-dependencies)
+4. [Troubleshooting](#troubleshooting)
     - [NVM Issues](#nvm-issues)
-    - [Carthage Issues](#carthage-issues)
+5. [Reference](#reference)
 <!-- /TOC -->
 
 ## Quick Setup
 
 ### Create Application ID
 
-Create an application at [PayPal Applications](https://developer.paypal.com/developer/applications/). You can retrieve your client id and secret there.
+Create an application at [PayPal Applications](https://developer.paypal.com/developer/applications/). You can retrieve your client id, client secret, and create a return url there.
 
 ### Application Scopes
 
-In order to set the proper application scope permissions follow the documentation for settings scopes at [Initial Setup Documentation](https://developer.paypal.com/docs/limited-release/native-checkout/setup/#).
+In order to set the proper application scope permissions follow the documentation for settings scopes at [Initial Setup Documentation](https://developer.paypal.com/docs/business/native-checkout/ios/#know-before-you-code).
 
 ### Quick Start
 
@@ -38,11 +38,11 @@ After creating your application, run the following commands at the root director
 # Set client id and secret for server and client
 $ ./bin/setids "<your_client_id>" "<your_client_secret>" "<redirect_uri>"
 
-# Setup dependencies, open workspace, and start server
-$ ./bin/setup
+# Setup dependencies, install PayPayCheckout with Cocoapods, open workspace, and start server
+$ ./bin/setup --cocoapods
 ```
 
-Your `CLIENT_ID` and `CLIENT_SECRET` are retrieved from the [applications portal](https://developer.paypal.com/developer/applications/). Your `<redirect_uri>` will be retrieved from there as well, but you will need to set the proper [scopes](#application-scopes) before your uri can be utilized.
+Your `CLIENT_ID` and `CLIENT_SECRET` are retrieved from the [applications portal](https://developer.paypal.com/developer/applications/). Your `return_url` will be retrieved from there as well, but you will need to set the proper [scopes](#application-scopes) before your uri can be utilized.
 
 **Note**: Please note run this on Simulator as you will be running a local server.
 
@@ -50,15 +50,15 @@ Your `CLIENT_ID` and `CLIENT_SECRET` are retrieved from the [applications portal
 
 ### Application Creation
 
-In order for this project to run properly we need to create an application at [PayPal Applications](https://developer.paypal.com/developer/applications/). Make sure you login and create your appropriate application. You can find additional information on our documentation [here](https://developer.paypal.com/docs/limited-release/native-checkout/setup/#obtaining-a-merchant-id). Then you need to ensure that you have a `.env` file inside the `node_checkout/` directory which contains your `CLIENT_ID` and `CLIENT_SECRET`.
+In order for this project to run properly we need to create an application at [PayPal Applications](https://developer.paypal.com/developer/applications/). Make sure you login and create your appropriate application. You can find additional information on our documentation [here](https://developer.paypal.com/docs/business/native-checkout/ios/#know-before-you-code). Then you need to ensure that you have a `.env` file inside the `node_checkout/` directory which contains your `CLIENT_ID` and `CLIENT_SECRET`.
 
-We've automated away the process for you to create your .env file and finding / replacing any source code with the CLIENT_ID by running the following command:
+We've automated away the process for you to create your .env file and finding / replacing any source code with the client_id and return_url by running the following command:
 
 ```bash
 $ ./bin/setids "<your_client_id>" "<your_client_secret>" "<redirect_uri>"
 ```
 
-As a result after running this script the CLIENT_ID and CLIENT_SECRET environment variables in .env file will be set to the values you provided.
+As a result after running this script the `CLIENT_ID` and `CLIENT_SECRET` environment variables in .env file, and the `<client_id>` and `<return_url>` in the sample apps' source code will be set to the values you provided.
 
 If you do not want to expose your `CLIENT_SECRET` into your bash history, you can optionally choose to only include your `CLIENT_ID`, then bash or zsh will prompt you to enter your `CLIENT_SECRET`:
 
@@ -94,52 +94,65 @@ $ ./bin/setup --use-docker
 
 **Note:** You will need to ensure that Docker is running before you execute `./bin/setup`, if you are installing docker from the `./bin/setup` script you can run it again since the script will ensure Docker opens after install.
 
-### Carthage
-
-The official Carthage repository is semi-abandoned, see [is this project alive?](https://github.com/Carthage/Carthage/issues/2925). This means that the official Carthage repository does not work for module stability, so it is advised to work off of the [Carthage NSOperations Fork](https://github.com/nsoperations/Carthage). To install `Carthage NSOperations` run the following commands:
-
-```bash
-$ brew tap nsoperations/formulas
-$ brew install nsoperations/formulas/carthage
-```
-
-**Note**: You may need to unlink and uninstall `carthage` from `Homebrew` before the above step.
-
 ## Setup
 
 There are two steps required to run the project:
 
 ```text
-1. Set Client ID / Client Secret / Redirect Uri
+1. Set Client ID / Client Secret / Return URL
 2. Setup Dependencies
 ```
 
-The above two steps are handled by two scripts, `./bin/setids` and `./bin/setup`, respectively. Run the following commands at the _project root level_:
+The above two steps are handled by two scripts, `./bin/setids` and `./bin/setup`, respectively.
 
+### 1. Set Client ID / Client Secret / Return URL
+Run the following commands at the _project root level_:
 ```bash
 $ ./bin/setids "<your_client_id>" "<your_client_secret>" "<your_redirect_uri>"
 # optionally just enter client id and bash will prompt for secret, and redirect uri
-
-$ ./bin/setup
-# will run carthage, and install and programs you require
 ```
 
-This activates a build script which runs the following steps:
+### 2. Setup Dependencies
 
-1. Check if Homebrew, Docker (if we specified it), nvm, and Carthage are installed
-2. Run `carthage update` which will download binaries for the project
+Setting up dependencies will be handled with the `./bin/setup` script. In detail, this activates a build script which runs the following steps:
+
+1. Check if Homebrew, Docker (if we specified it), nvm, and Cocoapods/Carthage are installed
+2. Run `pod install` or `carthage update` (depending on whether you specified `--cocoapods` or `--carthage`). This will download binaries for the project
 3. Open the workspace, `Samples.xcworkspace`
 4. Check to see if we've specified `--use-docker`
     - If we've specified `--use-docker`, we will run `docker-compose up`, this will create the container, install dependencies in container, and run on port 3000
     - If we did not specify `--use-docker` which is the default flow, then we will use `nvm` to install `node@10.17.0` then switch to that via `nvm use 10.17.0`, and finally `npm install && npm start`
 
-## Additional Info
 
-The following `Search Paths` must be present under `Framework Search Paths` for both `Samples.Swift` and `Samples.Objc`:
+We provide three ways you can install our SDK: via Cocoapods, Carthage, or Swift Package Manager.
+
+#### Cocoapods
+Run the following commands at the _project root level_:
+```
+$ ./bin/setup --cocoapods
+# will install pod if not already installed, run pod install using our provided Podfile, and install any programs you require
+```
+
+#### Carthage
+Run the following commands at the _project root level_:
+```
+$ ./bin/setup --carthage
+# will install carthage if not already installed, run carthage update using our provided Cartfile, and install any programs you require
+```
+Note: The following `Search Paths` must be present under `Framework Search Paths` for both `Samples.Swift` and `Samples.Objc`:
 
 ```bash
 $(PROJECT_DIR)/../Carthage/Build/iOS
 ```
+
+#### Swift Package Manager
+Run the following commands at the _project root level_:
+```
+$ ./bin/setup
+# will install any programs you require
+```
+
+Then you can install the PayPalCheckout SDK via Swift Package Manager by following Apple's [package integration guide](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app), while specifying `https://github.com/paypal/paypalcheckout-ios.git` as the source git repository.
 
 ## Troubleshooting
 
@@ -161,6 +174,6 @@ rm -rf ~/.npm
 
 Then rerun the `./bin/setup` script to install `nvm`.
 
-### Carthage Issues
-
-If you are using the official Carthage binary, you will run into issues around module stability. The official Carthage repository has now been semi-abandoned. Please use the [Carthage NSOperations Fork](https://github.com/nsoperations/Carthage) instead.
+## Reference
+- [iOS Native Checkout SDK repo](https://github.com/paypal/paypalcheckout-ios)
+- [iOS Native Checkout Reference docs](https://paypal.github.io/mobile-checkout-docs/ios/reference/)
