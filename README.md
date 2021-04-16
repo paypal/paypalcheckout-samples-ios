@@ -28,7 +28,7 @@ Create an application at [PayPal Applications](https://developer.paypal.com/deve
 
 ### Application Scopes
 
-In order to set the proper application scope permissions follow the documentation for settings scopes at [Initial Setup Documentation](https://developer.paypal.com/docs/limited-release/native-checkout/setup/#opt-in-to-native-checkout).
+In order to set the proper application scope permissions follow the documentation for settings scopes at [Initial Setup Documentation](https://developer.paypal.com/docs/business/native-checkout/ios/#know-before-you-code).
 
 ### Quick Start
 
@@ -50,7 +50,7 @@ Your `CLIENT_ID` and `CLIENT_SECRET` are retrieved from the [applications portal
 
 ### Application Creation
 
-In order for this project to run properly we need to create an application at [PayPal Applications](https://developer.paypal.com/developer/applications/). Make sure you login and create your appropriate application. You can find additional information on our documentation [here](https://developer.paypal.com/docs/limited-release/native-checkout/setup/). Then you need to ensure that you have a `.env` file inside the `node_checkout/` directory which contains your `CLIENT_ID` and `CLIENT_SECRET`.
+In order for this project to run properly we need to create an application at [PayPal Applications](https://developer.paypal.com/developer/applications/). Make sure you login and create your appropriate application. You can find additional information on our documentation [here](https://developer.paypal.com/docs/business/native-checkout/ios/#know-before-you-code). Then you need to ensure that you have a `.env` file inside the `node_checkout/` directory which contains your `CLIENT_ID` and `CLIENT_SECRET`.
 
 We've automated away the process for you to create your .env file and finding / replacing any source code with the client_id and return_url by running the following command:
 
