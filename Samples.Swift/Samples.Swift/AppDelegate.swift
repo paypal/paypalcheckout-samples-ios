@@ -1,25 +1,43 @@
 //
 //  AppDelegate.swift
-//  PayPalCheckout-Samples-iOS-Swift
+//  paypalcheckout-iOS-swift-sample
 //
-//  Created by Haider Khan on 5/23/20.
-//  Copyright © 2020 PayPal. All rights reserved.
+//  Created by Jax DesMarais-Leder on 3/4/21.
+//  Copyright © 2021 PayPal. All rights reserved.
 //
 
 import UIKit
+import PayPalCheckout
 
-@UIApplicationMain
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+  var window : UIWindow?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+    if #available(iOS 13, *) {
+      setConfig()
+    }
+    else {
+      setConfig()
+      self.window = UIWindow()
+      let viewController = CheckoutViewController()
+      window?.rootViewController = viewController
+      window?.makeKeyAndVisible()
+    }
     return true
   }
 
-  // MARK: UISceneSession Lifecycle
+  func setConfig() {
+    let config = CheckoutConfig(
+      clientID: PayPal.clientId,
+      returnUrl: PayPal.returnUrl,
+      environment: .sandbox
+    )
 
+    Checkout.set(config: config)
+  }
+
+  // MARK: UISceneSession Lifecycle
   @available(iOS 13.0, *)
   func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
     // Called when a new scene session is being created.
@@ -33,7 +51,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
   }
-
-
 }
-

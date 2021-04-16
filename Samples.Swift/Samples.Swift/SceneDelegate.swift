@@ -1,9 +1,9 @@
 //
 //  SceneDelegate.swift
-//  PayPalCheckout-Samples-iOS-Swift
+//  paypalcheckout-iOS-swift-sample
 //
-//  Created by Haider Khan on 5/23/20.
-//  Copyright © 2020 PayPal. All rights reserved.
+//  Created by Jax DesMarais-Leder on 3/4/21.
+//  Copyright © 2021 PayPal. All rights reserved.
 //
 
 import UIKit
@@ -14,10 +14,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   @available(iOS 13.0, *)
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-    // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-    // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-    guard let _ = (scene as? UIWindowScene) else { return }
+    guard let windowScene = (scene as? UIWindowScene) else { return }
+      window = UIWindow(frame: UIScreen.main.bounds)
+      let viewController = CheckoutViewController()
+      window?.rootViewController = viewController
+      window?.makeKeyAndVisible()
+      window?.windowScene = windowScene
   }
 
   @available(iOS 13.0, *)
@@ -25,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Called as the scene is being released by the system.
     // This occurs shortly after the scene enters the background, or when its session is discarded.
     // Release any resources associated with this scene that can be re-created the next time the scene connects.
-    // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
+    // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
   }
 
   @available(iOS 13.0, *)
