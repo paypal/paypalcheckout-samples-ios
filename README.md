@@ -36,7 +36,7 @@ After creating your application, run the following commands at the root director
 
 ```bash
 # Set client id and secret for server and client
-$ ./bin/setids "<your_client_id>" "<your_client_secret>" "<redirect_uri>"
+$ ./bin/setids "<your_client_id>" "<your_client_secret>" "<return_url>"
 
 # Setup dependencies, install PayPayCheckout with Cocoapods, open workspace, and start server
 $ ./bin/setup --cocoapods
@@ -55,7 +55,7 @@ In order for this project to run properly we need to create an application at [P
 We've automated away the process for you to create your .env file and finding / replacing any source code with the client_id and return_url by running the following command:
 
 ```bash
-$ ./bin/setids "<your_client_id>" "<your_client_secret>" "<redirect_uri>"
+$ ./bin/setids "<your_client_id>" "<your_client_secret>" "<return_url>"
 ```
 
 As a result after running this script the `CLIENT_ID` and `CLIENT_SECRET` environment variables in .env file, and the `<client_id>` and `<return_url>` in the sample apps' source code will be set to the values you provided.
@@ -65,15 +65,15 @@ If you do not want to expose your `CLIENT_SECRET` into your bash history, you ca
 ```bash
 $ ./bin/setids "<your_client_id>"
 Please enter your [client secret]: "<your_client_secret>"
-Please enter your [client redirect uri]: "<redirect_uri>"
+Please enter your [client return url]: "<return_url>"
 
-Checking for places where your client ids, secrets, and redirect uri are used
+Checking for places where your client ids, secrets, and return url are used
 
 [done] Check for an existing .env file
 [done] Updating objective-c files for CLIENT_ID...
 [done] Updating swift files for CLIENT_ID...
-[done] Updating objective-c files for redirect_uri...
-[done] Updating swift files for redirect_uri...
+[done] Updating objective-c files for return_url...
+[done] Updating swift files for return_url...
 ```
 
 ### NVM
@@ -108,8 +108,8 @@ The above two steps are handled by two scripts, `./bin/setids` and `./bin/setup`
 ### 1. Set Client ID / Client Secret / Return URL
 Run the following commands at the _project root level_:
 ```bash
-$ ./bin/setids "<your_client_id>" "<your_client_secret>" "<your_redirect_uri>"
-# optionally just enter client id and bash will prompt for secret, and redirect uri
+$ ./bin/setids "<your_client_id>" "<your_client_secret>" "<your_return_url>"
+# optionally just enter client id and bash will prompt for secret, and return url 
 ```
 
 ### 2. Setup Dependencies
