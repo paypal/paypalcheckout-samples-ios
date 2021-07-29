@@ -338,7 +338,7 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
 
   func getItemTotal() -> String {
     let total = items.reduce(0) { (runningTotal, item) -> Double in
-       let unitAmount = Double(item.unitAmount.value) ?? 0
+       let unitAmount = Double(item.unitAmount.value ?? "0") ?? 0
        let quantity = Double(item.quantity) ?? 0
        return runningTotal + (quantity * unitAmount)
      }
@@ -348,7 +348,7 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
 
   func getTaxTotal() -> String {
     let total = items.reduce(0) { (runningTotal, item) -> Double in
-      let taxPrice = Double(item.tax!.value) ?? 0
+      let taxPrice = Double(item.tax?.value ?? "0") ?? 0
       let quantity = Double(item.quantity) ?? 0
       return runningTotal + (taxPrice * quantity)
     }
@@ -358,8 +358,8 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
 
   func getTotal() -> String {
     let total = items.reduce(0) { (runningTotal, item) -> Double in
-      let unitPrice = Double(item.unitAmount.value) ?? 0
-      let taxPrice = Double(item.tax!.value) ?? 0
+      let unitPrice = Double(item.unitAmount.value ?? "0") ?? 0
+      let taxPrice = Double(item.tax?.value ?? "0") ?? 0
       let quantity = Double(item.quantity) ?? 0
       return runningTotal + ((unitPrice * quantity) + (taxPrice * quantity))
     }
