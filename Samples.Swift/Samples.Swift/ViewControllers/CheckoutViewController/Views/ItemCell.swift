@@ -49,7 +49,7 @@ class ItemCell: UITableViewCell {
 
     priceLabel.textColor = .black
     priceLabel.font = .systemFont(ofSize: 12)
-    priceLabel.text = "Price: \(item.unitAmount.value.convertDoubleToCurrency(withQuantity: item.quantity) ?? "")"
+    priceLabel.text = "Price: \(item.unitAmount.value?.convertDoubleToCurrency(withQuantity: item.quantity) ?? "")"
     priceLabel.sizeToFit()
 
     taxLabel.textColor = .black
