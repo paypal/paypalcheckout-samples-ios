@@ -25,6 +25,7 @@
 		BE7CF073260B7DA000288176 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7CF06A260B7DA000288176 /* ResultViewController.swift */; };
 		BE7CF074260B7DA000288176 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7CF06C260B7DA000288176 /* AddItemViewController.swift */; };
 		BE7CF076260B882F00288176 /* PayPal.API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7CF075260B882F00288176 /* PayPal.API.swift */; };
+		F03B01A565CCBA2D14566498 /* Pods_Samples_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE423772ADFC52BF885768B9 /* Pods_Samples_Swift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,8 @@
 		117AAAAB2479FB4900A63B34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		117AAAAE2479FB4900A63B34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		117AAAB02479FB4900A63B34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		285EF697D67C58DB27DDF133 /* Pods-Samples.Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Samples.Swift.release.xcconfig"; path = "Target Support Files/Pods-Samples.Swift/Pods-Samples.Swift.release.xcconfig"; sourceTree = "<group>"; };
+		BB9206836AF5E4D66416EBAD /* Pods-Samples.Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Samples.Swift.debug.xcconfig"; path = "Target Support Files/Pods-Samples.Swift/Pods-Samples.Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		BE219149260CF5BA00ECE484 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		BE435C48261F3EA800E17CA6 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		BE7CF046260B7B6500288176 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +51,7 @@
 		BE7CF06A260B7DA000288176 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		BE7CF06C260B7DA000288176 /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		BE7CF075260B882F00288176 /* PayPal.API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPal.API.swift; sourceTree = "<group>"; };
+		DE423772ADFC52BF885768B9 /* Pods_Samples_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Samples_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE435D472625E9FB00E17CA6 /* PayPalCheckout.framework in Frameworks */,
+				F03B01A565CCBA2D14566498 /* Pods_Samples_Swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				06936DB8260A7DD50099E314 /* PayPalCheckout.framework */,
+				DE423772ADFC52BF885768B9 /* Pods_Samples_Swift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -76,6 +82,7 @@
 				117AAAA12479FB4900A63B34 /* Samples.Swift */,
 				117AAAA02479FB4900A63B34 /* Products */,
 				06936DB7260A7DD50099E314 /* Frameworks */,
+				19D266D0833B806F45792C8D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +107,16 @@
 				117AAAB02479FB4900A63B34 /* Info.plist */,
 			);
 			path = Samples.Swift;
+			sourceTree = "<group>";
+		};
+		19D266D0833B806F45792C8D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BB9206836AF5E4D66416EBAD /* Pods-Samples.Swift.debug.xcconfig */,
+				285EF697D67C58DB27DDF133 /* Pods-Samples.Swift.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
 			sourceTree = "<group>";
 		};
 		BE7CF04A260B7D3700288176 /* Extensions */ = {
@@ -191,10 +208,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 117AAAB32479FB4900A63B34 /* Build configuration list for PBXNativeTarget "Samples.Swift" */;
 			buildPhases = (
+				989C60B77D16BFEEA32CE683 /* [CP] Check Pods Manifest.lock */,
 				117AAA9B2479FB4900A63B34 /* Sources */,
 				117AAA9C2479FB4900A63B34 /* Frameworks */,
 				117AAA9D2479FB4900A63B34 /* Resources */,
 				062A4F3E26251CC60071FEAE /* ShellScript */,
+				BA98D63099D8531E5D5AAB9C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -269,6 +288,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ -d $SRCROOT/../Pods ]; then \n  echo \"💫 Pods folder exists so skipping carthage copy...\"\nelse \n  if [ -d $SRCROOT/../Carthage ]; then \n    echo \"💫 Carthage folder exists, now copying frameworks...\"\n    /usr/local/bin/carthage copy-frameworks\n  else \n    echo \"❌ Carthage folder does not exist, did you run carthage update?\"\n  fi\nfi\n";
+		};
+		989C60B77D16BFEEA32CE683 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Samples.Swift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA98D63099D8531E5D5AAB9C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Samples.Swift/Pods-Samples.Swift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Samples.Swift/Pods-Samples.Swift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Samples.Swift/Pods-Samples.Swift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -427,6 +485,7 @@
 		};
 		117AAAB42479FB4900A63B34 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB9206836AF5E4D66416EBAD /* Pods-Samples.Swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -453,6 +512,7 @@
 		};
 		117AAAB52479FB4900A63B34 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 285EF697D67C58DB27DDF133 /* Pods-Samples.Swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";

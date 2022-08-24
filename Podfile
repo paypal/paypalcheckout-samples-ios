@@ -2,7 +2,7 @@ workspace 'Samples.xcworkspace'
 use_frameworks!
 
 def dependency
-  pod 'PayPalCheckout', '0.77.0'
+  pod 'PayPalCheckout', '0.102.0'
 end
 
 target 'Samples.ObjC' do

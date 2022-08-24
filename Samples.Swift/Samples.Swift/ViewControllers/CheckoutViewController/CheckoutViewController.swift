@@ -283,7 +283,7 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
 
   private func processOrderActions(with approval: Approval) {
     switch approval.data.intent {
-    case "AUTHORIZE":
+    case ApprovalOrderIntent.authorize:
       approval.actions.authorize { success, error in
         if let error = error {
           self.errorResultAction(errorMessage: error.localizedDescription)
@@ -296,7 +296,7 @@ class CheckoutViewController: UIViewController, AddItemViewControllerDelegate {
         }
       }
 
-    case "CAPTURE", "SALE":
+    case ApprovalOrderIntent.capture, ApprovalOrderIntent.order:
       approval.actions.capture { success, error in
         if let error = error {
           self.errorResultAction(errorMessage: error.localizedDescription)
