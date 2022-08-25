@@ -61,6 +61,7 @@
   onApprove:^(PPCApproval *approval) {
     [self onApproveCallbackWithApproval:approval];
   }
+  onShippingChange: nil
   onCancel:^{
     [self onCancelCallback];
   }
@@ -104,6 +105,7 @@
 
   PPCOrderRequest *order = [[PPCOrderRequest alloc] initWithIntent:PPCOrderIntentAuthorize
                                                      purchaseUnits:@[purchaseUnit]
+                                             processingInstruction:PPCOrderProcessingInstructionNone
                                                              payer:nil
                                                 applicationContext:nil];
   return order;
@@ -150,7 +152,7 @@
 
 /// onApprove callback: This will be called when checkout with PayPalCheckout is completed, you will need to handle authorizing or capturing the funds in this callback
 - (void)onApproveCallbackWithApproval:(PPCApproval *)approval {
-  if ([approval.data.intent isEqualToString:@"AUTHORIZE"]) {
+  if (approval.data.intent == PPCOrderIntentAuthorize) {
     [approval.actions authorizeOnComplete:^(PPCAuthorizeActionSuccess *success, NSError *error) {
       if (error) {
         NSLog(@"Fail to authorize order with error %@", error.localizedDescription);
@@ -160,7 +162,7 @@
         NSLog(@"Authorize order: No error and no success response");
       }
     }];
-  } else if ([approval.data.intent isEqualToString:@"CAPTURE"] || [approval.data.intent isEqualToString:@"SALE"]) {
+  } else if (approval.data.intent == PPCOrderIntentCapture) {
     [approval.actions captureOnComplete:^(PPCCaptureActionSuccess *success, NSError *error) {
       if (error) {
         NSLog(@"Fail to capture order with error %@", error.localizedDescription);

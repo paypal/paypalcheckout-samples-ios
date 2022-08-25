@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func setConfig() {
     let config = CheckoutConfig(
       clientID: PayPal.clientId,
-      returnUrl: PayPal.returnUrl,
       environment: .sandbox
     )
 
