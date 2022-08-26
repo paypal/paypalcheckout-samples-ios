@@ -3,7 +3,6 @@
 # If they give us the input on the command line use it
 clientId="${1-}"
 clientSecret="${2-}"
-returnUrl="${3-}"
 
 ## Gather our input
 
@@ -21,23 +20,12 @@ fi
 # Read client secret if provided
 if [[ "${clientSecret}" = "" ]]; then
   printf "Please enter your \x1b[1mclient secret\x1b[0m: "
-  read clientSecret 
+  read clientSecret
 
   if [[ "${clientSecret}" = "" ]]; then
     printf "\nCanceling; we need a CLIENT_SECRET from you"
     exit 1
   fi
-fi
-
-# Read return url if provided 
-if [[ "${returnUrl}" = "" ]]; then 
-  printf "Please enter your \x1b[1mclient return url\x1b[0m: "
-  read returnUrl
-
-  if [[ "${returnUrl}" = "" ]]; then 
-    printf "\nCanceling; we need a return_url from you"
-    exit 1
-  fi 
 fi
 
 # Create a functions for easy reuse of status
@@ -46,13 +34,13 @@ function STATUS() {
 }
 
 # Check to see if we have enough parameters
-if [[ "${clientId}" = "" ]] || [[ "${clientSecret}" = "" ]] || [[ "${returnUrl}" = "" ]]; then
-  printf "Usage: setids <client_id> <client_secret> <return_url>\n"
+if [[ "${clientId}" = "" ]] || [[ "${clientSecret}" = "" ]]; then
+  printf "Usage: setids <client_id> <client_secret>\n"
   exit 1
 fi
 
 # Let's get started
-printf "\nChecking for places where your client ids, secrets, and return url are used\n\n"
+printf "\nChecking for places where your client ids and secrets are used\n\n"
 
 # Check to see if have a .env file and if not, create one
 printf "[    ] Check for an existing .env file"
@@ -72,15 +60,5 @@ find . -name "*.m" -print0 | eval $sedString
 STATUS 32 done
 
 printf "[    ] Updating swift files for CLIENT_ID..."
-find . -name "*.swift" -print0 | eval $sedString
-STATUS 32 done
-
-sedString=$(echo "xargs -0 sed -i '' 's,<return_url>,${returnUrl},g'")
-
-printf "[    ] Updating objective-c files for return_url..."
-find . -name "*.m" -print0 | eval $sedString
-STATUS 32 done 
-
-printf "[    ] Updating swift files for return_url..."
 find . -name "*.swift" -print0 | eval $sedString
 STATUS 32 done
