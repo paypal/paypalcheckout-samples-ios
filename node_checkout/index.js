@@ -17,8 +17,9 @@ const authUrl = "https://api.sandbox.paypal.com/v1/oauth2/token";
 
 app.post("/auth/token", (req, res) => {
   let body = req.body;
-  if ("clientId" in body && body.clientId == process.env.CLIENT_ID) {
-    const authString = `${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`;
+
+  if (body.clientId) {
+    const authString = `${body.clientId}:`;
     const buffer = Buffer.from(`${authString}`);
     const base64EncodedString = buffer.toString('base64');
     const headers = {
@@ -43,19 +44,19 @@ app.post("/auth/token", (req, res) => {
               { colors: true }
             )
 
-            console.error(`${red('Error fetching token:')}: ${message}`)            
+            console.error(`${red('Error fetching token:')}: ${message}`)
             res.status(400).send(value.error_description);
           }
           else {
             let message = inspect(value, { colors: true })
 
-            console.error(`${green('Successful token fetch')}: ${message}`)            
+            console.error(`${green('Successful token fetch')}: ${message}`)
             res.status(200).send(value);
           }
         })
         .catch(error => {
           let message = inspect(error, { colors: true })
-        
+
           console.error(`${red('Error receiving response')}: ${message}`)
           res.status(400).send(error);
         })

@@ -17,12 +17,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  PPCheckoutConfig *config = [[PPCheckoutConfig alloc] initWithClientID:[PayPalAPI.shared clientId]
-                                                              returnUrl:[PayPalAPI.shared returnUrl]
-                                                            createOrder:nil
-                                                              onApprove:nil
-                                                               onCancel:nil
-                                                                onError:nil
+  PPCheckoutConfig *config = [[PPCheckoutConfig alloc] initWithClientID: [PayPalAPI.shared clientId]
+                                                            createOrder: nil
+                                                              onApprove: nil
+                                                       onShippingChange: nil
+                                                               onCancel: nil
+                                                                onError: nil
                                                             environment:PPCEnvironmentSandbox];
   [PPCheckout setConfig:config];
   return YES;

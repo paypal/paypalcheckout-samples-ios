@@ -22,7 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PayPalAPI : NSObject
 
 @property NSString *clientId;
-@property NSString *returnUrl;
 @property NSString *nodeAppBaseURL;
 @property NSString *baseURLv2;
 @property NSString * _Nullable accessToken;

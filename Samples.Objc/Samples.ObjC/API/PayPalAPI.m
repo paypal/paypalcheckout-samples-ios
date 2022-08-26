@@ -34,7 +34,6 @@
 - (id)init {
   if (self = [super init]) {
     self.clientId = @"<client_id>";
-    self.returnUrl = @"<return_url>";
     self.nodeAppBaseURL = @"http://localhost:3000/";
     self.baseURLv2 = @"https://api.sandbox.paypal.com/v2/";
     self.accessTokenEndpoint = [[FetchAccessTokenEndpoint alloc] init];
